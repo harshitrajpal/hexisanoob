@@ -7,5 +7,3 @@ description: >-
 # Introduction
 
 I wanted to make notes of everything I study, when I study, and in the way I study.
-
-<script src="https://tryhackme.com/badge/750705"></script>
