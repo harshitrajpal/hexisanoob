@@ -19,6 +19,7 @@
     * [Kerberos](enum-and-initial-compromise/active-directory-basics/kerberos.md)
     * [Attacking Kerberos](enum-and-initial-compromise/active-directory-basics/attacking-kerberos.md)
     * [Priv Esc (Post Exploitation)](enum-and-initial-compromise/active-directory-basics/priv-esc-post-exploitation.md)
+  * [DNS/Domain Enum Masterguide](enum-and-initial-compromise/dns-domain-enum-masterguide.md)
 * [Post Exploitation](post-exploitation/README.md)
   * [Shell Escape Techniques](post-exploitation/shell-escape-techniques.md)
   * [Getting stable shell after compromise](post-exploitation/getting-stable-shell-after-compromise.md)
