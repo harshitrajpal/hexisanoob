@@ -38,6 +38,8 @@
   * [Windows Privilege Escalation](post-exploitation/windows-privilege-escalation/README.md)
     * [SeImpersonatePrivilege Token Impersonation](post-exploitation/windows-privilege-escalation/seimpersonateprivilege-token-impersonation.md)
     * [Firefox Creds](post-exploitation/windows-privilege-escalation/firefox-creds.md)
+    * [Potatoes](post-exploitation/windows-privilege-escalation/potatoes.md)
+    * [Print Spooler](post-exploitation/windows-privilege-escalation/print-spooler.md)
 * [Port Forwarding Cheatsheet](port-forwarding-cheatsheet.md)
 * [Powershell Essentials](powershell-essentials/README.md)
   * [Powershell Basics](powershell-essentials/powershell-basics.md)

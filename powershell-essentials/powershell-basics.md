@@ -78,7 +78,7 @@ Lets count the cmdlets installed in the system
 
 `Get-Command | Where-Object -Parameter CommandType -eq Cmdlet | measure`
 
-![](<../.gitbook/assets/image (87).png>)
+![](<../.gitbook/assets/image (87) (1).png>)
 
 **Getting a file's hash**
 
