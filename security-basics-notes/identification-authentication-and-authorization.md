@@ -1,7 +1,3 @@
----
-description: Basics, am I right?
----
-
 # Identification, Authentication and Authorization
 
 Identification occurs when a user claims their identity,&#x20;

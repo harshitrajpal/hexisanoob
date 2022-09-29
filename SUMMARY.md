@@ -1,7 +1,8 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [Identification, Authentication and Authorization](identification-authentication-and-authorization.md)
+* [Security Basics Notes](security-basics-notes/README.md)
+  * [Identification, Authentication and Authorization](security-basics-notes/identification-authentication-and-authorization.md)
 * [Enumeration and Initial Compromise](enum-and-initial-compromise/README.md)
   * [Nifty One Liners](enum-and-initial-compromise/nifty-one-liners.md)
   * [Brute-Force Web Pages](enum-and-initial-compromise/brute-force-web-pages/README.md)

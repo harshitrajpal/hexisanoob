@@ -1,7 +1,3 @@
----
-description: Learnt on Tryhackme modules
----
-
 # Nifty One Liners
 
 **PHP Reverse netcat**
