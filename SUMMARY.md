@@ -1,6 +1,8 @@
 # Table of contents
 
 * [Introduction](README.md)
+* [Paper Reviews](paper-reviews/README.md)
+  * [Imperfect Forward Secrecy: How Diffie-Hellman Fails in Practice](paper-reviews/imperfect-forward-secrecy-how-diffie-hellman-fails-in-practice.md)
 * [Security Basics Notes](security-basics-notes/README.md)
   * [Identification, Authentication and Authorization](security-basics-notes/identification-authentication-and-authorization.md)
 * [Enumeration and Initial Compromise](enum-and-initial-compromise/README.md)
