@@ -1,6 +1,8 @@
 # Table of contents
 
 * [Introduction](README.md)
+* [CVEs](cves/README.md)
+  * [CVE-2022-33106](cves/cve-2022-33106.md)
 * [Paper Reviews](paper-reviews/README.md)
   * [Imperfect Forward Secrecy: How Diffie-Hellman Fails in Practice](paper-reviews/imperfect-forward-secrecy-how-diffie-hellman-fails-in-practice.md)
 * [Security Basics Notes](security-basics-notes/README.md)
