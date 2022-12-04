@@ -53,3 +53,4 @@
   * [Powershell Basics](powershell-essentials/powershell-basics.md)
   * [Powershell Enumeration](powershell-essentials/powershell-enumeration.md)
   * [Powershell Port Scanner](powershell-essentials/powershell-port-scanner.md)
+  * [Powershell One Liner Port Scanning](powershell-essentials/powershell-one-liner-port-scanning.md)
