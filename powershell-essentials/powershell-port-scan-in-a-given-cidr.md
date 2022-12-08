@@ -2,7 +2,7 @@
 
 Here CIDR given is 10.10.0.32/29
 
-I have hardcoded the CIDR in foreach loop which can be replaced by two variables taken in as input from the user or by customizing it.
+I have hardcoded the valid IPs in CIDR (33 to 38) in foreach loop which can be replaced by two variables taken in as input from the user or by customizing it.
 
 
 
