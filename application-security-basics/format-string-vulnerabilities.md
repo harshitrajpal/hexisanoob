@@ -35,3 +35,7 @@ Explanation: %d: It reads whatever integer value is stored in the current execut
 Also, in some cases, passwords (by using %s for string):
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+## Case Study
+
+A while ago, When you kept your Wi-Fi name as %n%n%n%n, it crashed iPhones as they read Wi-Fi names on the page.
