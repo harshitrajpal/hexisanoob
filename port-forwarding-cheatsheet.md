@@ -38,7 +38,7 @@ ssh -i \<id\_rsa of compromised PC> -p 443 \<hostname of compromissed PC>@\<ip o
 
 ssh -i ssh\_key -p 443 root@172.16.1.1 -L 8080:172.16.1.2:22
 
-<figure><img src=".gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (3) (2).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src=".gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
@@ -66,7 +66,7 @@ ssh -D 127.0.0.1:8080 gibson@172.16.1.1 -p 443
 
 Then add this in proxychains conf file
 
-<figure><img src=".gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 Then run nmap scan
 

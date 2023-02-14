@@ -7,7 +7,7 @@
     Drawbacks: Can not prevent integer overflow, heap overflow.\
 
 
-    <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Attack against Canary: Canary Extraction
 
@@ -21,7 +21,7 @@ Now attacker inputs a string "A"\*10 + A ->program crash
 
 "A"\*10 + C -> Doesn't crash
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 This can continue until return address is hit to extract full canary
 
@@ -31,4 +31,7 @@ This can continue until return address is hit to extract full canary
 
 4. Stack Guard -> For buffer overflow
 5. PointGuard -> For heap overflow
-6. ASAN -> Detects use after free (like double free) attacks.
+6.  ASAN -> Detects use after free (like double free) attacks.\
+
+
+    <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
