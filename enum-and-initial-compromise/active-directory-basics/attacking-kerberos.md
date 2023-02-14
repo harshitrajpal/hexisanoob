@@ -76,7 +76,7 @@ Download rubeus [here](https://github.com/GhostPack/Rubeus).
 
 `Rubeus.exe brute /password:Password1 /noticket` - This will take a given password and "spray" it against all found users then give the .kirbi TGT for that user.
 
-![](<../../.gitbook/assets/image (10).png>)
+![](<../../.gitbook/assets/image (10) (1).png>)
 
 ## Kerberoasting
 

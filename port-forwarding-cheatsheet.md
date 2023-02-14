@@ -66,10 +66,10 @@ ssh -D 127.0.0.1:8080 gibson@172.16.1.1 -p 443
 
 Then add this in proxychains conf file
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
 Then run nmap scan
 
-<figure><img src=".gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (5) (2).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src=".gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (8) (2).png" alt=""><figcaption></figcaption></figure>
