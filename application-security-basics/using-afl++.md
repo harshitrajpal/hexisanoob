@@ -28,3 +28,4 @@ Now I put all the testcases that I need to supply to the application in aflfuzz/
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
+Finally, in the aflfuzz/outputs directory we'll have made queue/ which would have all the different crashes and hangs file that the application would crash on. We can manually see code coverage in this file and then see what inputs causes these crashes, and fix them!
