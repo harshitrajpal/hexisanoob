@@ -55,3 +55,6 @@
   * [Powershell Port Scanner](powershell-essentials/powershell-port-scanner.md)
   * [Powershell One Liner Port Scanning](powershell-essentials/powershell-one-liner-port-scanning.md)
   * [Powershell Port Scan in a given CIDR](powershell-essentials/powershell-port-scan-in-a-given-cidr.md)
+* [Application Security Basics](application-security-basics/README.md)
+  * [Basic Bugs in Demo Application](application-security-basics/basic-bugs-in-demo-application.md)
+  * [Using AFL++](application-security-basics/using-afl++.md)
