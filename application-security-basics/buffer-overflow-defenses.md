@@ -7,7 +7,7 @@
     Drawbacks: Can not prevent integer overflow, heap overflow.\
 
 
-    <figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../.gitbook/assets/image (1) (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 ### Attack against Canary: Canary Extraction
 
