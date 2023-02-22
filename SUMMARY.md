@@ -63,4 +63,4 @@
   * [Using AFL++](application-security-basics/using-afl++.md)
 * [Cloud Security](cloud-security/README.md)
   * [Foundational Technology](cloud-security/foundational-technology.md)
-  * [Basic terms and definitions](cloud-security/basic-terms-and-definitions.md)
+  * [Amazon S3](cloud-security/amazon-s3.md)

@@ -1,4 +1,4 @@
-# Basic terms and definitions
+# Amazon S3
 
 ## Amazon S3
 
