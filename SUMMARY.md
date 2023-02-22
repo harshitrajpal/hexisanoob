@@ -61,3 +61,6 @@
   * [Sample Github Actions](application-security-basics/sample-github-actions.md)
   * [Basic Bugs in Demo Application](application-security-basics/basic-bugs-in-demo-application.md)
   * [Using AFL++](application-security-basics/using-afl++.md)
+* [Cloud Security](cloud-security/README.md)
+  * [Foundational Technology](cloud-security/foundational-technology.md)
+  * [Basic terms and definitions](cloud-security/basic-terms-and-definitions.md)
