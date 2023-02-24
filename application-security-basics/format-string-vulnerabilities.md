@@ -24,7 +24,7 @@ Normal working:\
 
 Giving %d  and %x as input.
 
-![](<../.gitbook/assets/image (1) (1).png>)
+![](<../.gitbook/assets/image (1) (1) (3).png>)
 
 Explanation: %d: It reads whatever integer value is stored in the current execution stack. Not necessarily have to be value of an integer in the defined program, but just random value in memory that is a result of some other program that has executed before.
 

@@ -22,10 +22,10 @@ afl-fuzz -i aflfuzz/inputs -o aflfuzz/outputs -- ./giftcardreader 1 @@
 
 Now I put all the testcases that I need to supply to the application in aflfuzz/inputs directory and create an empty directory aflfuzz/outputs in which AFL shall put its output testcases.
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (158).png" alt=""><figcaption></figcaption></figure>
 
 Finally, in the aflfuzz/outputs directory we'll have made queue/ which would have all the different crashes and hangs file that the application would crash on. We can manually see code coverage in this file and then see what inputs causes these crashes, and fix them!

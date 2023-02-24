@@ -64,3 +64,4 @@
 * [Cloud Security](cloud-security/README.md)
   * [Foundational Technology](cloud-security/foundational-technology.md)
   * [Amazon S3](cloud-security/amazon-s3.md)
+  * [Risk Management & Data Controls](cloud-security/risk-management-and-data-controls.md)
