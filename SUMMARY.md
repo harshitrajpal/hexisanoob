@@ -21,6 +21,7 @@
     * [Joomla Exploitation](enum-and-initial-compromise/web-pentest/joomla-exploitation.md)
     * [Login Bypass using Cookie Tampering/Poisoning](enum-and-initial-compromise/web-pentest/login-bypass-using-cookie-tampering-poisoning.md)
     * [Subdomain Enumeration](enum-and-initial-compromise/web-pentest/subdomain-enumeration.md)
+    * [XSS fix](enum-and-initial-compromise/web-pentest/xss-fix.md)
   * [Buffer Overflow Prep](enum-and-initial-compromise/buffer-overflow-prep.md)
   * [Active Directory - Basics](enum-and-initial-compromise/active-directory-basics/README.md)
     * [Kerberos](enum-and-initial-compromise/active-directory-basics/kerberos.md)
