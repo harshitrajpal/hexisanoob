@@ -58,6 +58,7 @@
   * [Powershell One Liner Port Scanning](powershell-essentials/powershell-one-liner-port-scanning.md)
   * [Powershell Port Scan in a given CIDR](powershell-essentials/powershell-port-scan-in-a-given-cidr.md)
 * [Application Security Basics](application-security-basics/README.md)
+  * [System Calls in Linux](application-security-basics/system-calls-in-linux.md)
   * [Buffer Overflow Defenses](application-security-basics/buffer-overflow-defenses.md)
   * [Format string vulnerabilities](application-security-basics/format-string-vulnerabilities.md)
   * [Sample Github Actions](application-security-basics/sample-github-actions.md)
