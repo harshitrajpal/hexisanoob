@@ -30,3 +30,17 @@ Set-ADAccountPassword sophie -Reset -NewPassword (Read-Host -AsSecureString -Pro
 ```shell-session
 Set-ADUser -ChangePasswordAtLogon $true -Identity sophie -Verbose
 ```
+
+
+
+### Creating New OUs
+
+When we go to computers in AD DS, we see laptops, PCs and servers. We can organize them neatly by creating separate OUs.
+
+Choose domain->new->OU
+
+We can now shift computers to respective OUs.
+
+Choose multiple computers->right click->move->choose OUs.
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
