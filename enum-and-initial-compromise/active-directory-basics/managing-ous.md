@@ -24,3 +24,9 @@ Where sophie is the desired user whose password will be changed.
 ```shell-session
 Set-ADAccountPassword sophie -Reset -NewPassword (Read-Host -AsSecureString -Prompt 'New Password') -Verbose
 ```
+
+### Powershell command to make a user change password on next logon
+
+```shell-session
+Set-ADUser -ChangePasswordAtLogon $true -Identity sophie -Verbose
+```
