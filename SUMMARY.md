@@ -29,6 +29,7 @@
     * [Managing OUs](enum-and-initial-compromise/active-directory-basics/managing-ous.md)
     * [Group Policies](enum-and-initial-compromise/active-directory-basics/group-policies.md)
     * [Authentications](enum-and-initial-compromise/active-directory-basics/authentications.md)
+    * [Trees, Forests and Trusts](enum-and-initial-compromise/active-directory-basics/trees-forests-and-trusts.md)
     * [Kerberos](enum-and-initial-compromise/active-directory-basics/kerberos.md)
     * [Attacking Kerberos](enum-and-initial-compromise/active-directory-basics/attacking-kerberos.md)
     * [Priv Esc (Post Exploitation)](enum-and-initial-compromise/active-directory-basics/priv-esc-post-exploitation.md)

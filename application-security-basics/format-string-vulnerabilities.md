@@ -4,7 +4,7 @@ There are specified format strings in C which if not used correctly in code, can
 
 Format strings:
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 Example of an attack:
 
