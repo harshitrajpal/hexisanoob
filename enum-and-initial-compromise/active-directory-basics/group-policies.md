@@ -84,7 +84,13 @@ _**Restrict Access to Control Panel**_
 
 We want to restrict access to the Control Panel across all machines to only the users that are part of the IT department. Users of other departments shouldn't be able to change the system's preferences.
 
-Let's create a new GPO called `Restrict Control Panel Access` and open it for editing. Since we want this GPO to apply to specific users, we will look under `User Configuration` for the following policy:
+Let's create a new GPO called `Restrict Control Panel Access` and open it for editing.&#x20;
+
+We can do this by->group policy management->group policy objects->new policy->name it "Restrict Control Panel Access".
+
+Then right click->edit->Userconfiguration->admin templates->control panel
+
+Since we want this GPO to apply to specific users, we will look under `User Configuration` for the following policy:
 
 \
 
