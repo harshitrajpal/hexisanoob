@@ -43,4 +43,4 @@ We can now shift computers to respective OUs.
 
 Choose multiple computers->right click->move->choose OUs.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>

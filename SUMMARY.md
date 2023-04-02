@@ -27,6 +27,7 @@
   * [Active Directory - Basics](enum-and-initial-compromise/active-directory-basics/README.md)
     * [AD DS](enum-and-initial-compromise/active-directory-basics/ad-ds.md)
     * [Managing OUs](enum-and-initial-compromise/active-directory-basics/managing-ous.md)
+    * [Group Policies](enum-and-initial-compromise/active-directory-basics/group-policies.md)
     * [Kerberos](enum-and-initial-compromise/active-directory-basics/kerberos.md)
     * [Attacking Kerberos](enum-and-initial-compromise/active-directory-basics/attacking-kerberos.md)
     * [Priv Esc (Post Exploitation)](enum-and-initial-compromise/active-directory-basics/priv-esc-post-exploitation.md)
