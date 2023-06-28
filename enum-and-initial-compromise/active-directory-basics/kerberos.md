@@ -1,5 +1,13 @@
 # Kerberos
 
-![](../../.gitbook/assets/IMG\_20211228\_220810.jpg)
+<div align="left">
 
-![](../../.gitbook/assets/IMG\_20211228\_220821.jpg)
+<img src="../../.gitbook/assets/IMG_20211228_220810.jpg" alt="">
+
+</div>
+
+<div align="left">
+
+<img src="../../.gitbook/assets/IMG_20211228_220821.jpg" alt="">
+
+</div>

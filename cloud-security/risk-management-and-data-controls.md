@@ -46,7 +46,7 @@ Object storage encryption can act as a Virtual Private Storage. Data stored in c
 
 ### NIST 500-292 - Shows the shift in responsibility and controls between the various cloud computing models.
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 ### CSA Cloud Security Guidance
 

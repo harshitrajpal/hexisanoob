@@ -55,6 +55,6 @@ Stands for Simple Storage Systems. It stores large objects that may have access 
 
 Note: ACLs are not recommended these days because they have finite controls and don't include all S3 permissions.
 
-****
+
 
 **ARN**: Amazon Resource Name. All users, resources etc have an ARN.

@@ -22,7 +22,11 @@ Common verbs to use include:
 You can also use "-examples" to see how it is used\
 `Get-Help Command-Name -Examples`
 
-![](<../.gitbook/assets/image (110).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (110).png" alt="">
+
+</div>
 
 Get-Command gets all the _cmdlets_ installed on the current Computer. The great thing about this _cmdlet_ is that it allows for pattern matching like the following
 
@@ -30,7 +34,11 @@ Get-Command gets all the _cmdlets_ installed on the current Computer. The great 
 
 Running `Get-Command New-*` to view all the _cmdlets_ for the verb new displays the following
 
-![](<../.gitbook/assets/image (5) (1) (1).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (5) (1) (1).png" alt="">
+
+</div>
 
 The Pipeline(|) is used to pass output from one _cmdlet_ to another. A major difference compared to other shells is that instead of passing text or string to the command after the pipe, powershell passes an object to the next cmdlet
 
@@ -38,7 +46,11 @@ To view these details, pass the output of a _cmdlet_ to the Get-Member _cmdlet_
 
 `Get-Command | Get-Member -MemberType Method`
 
-![](<../.gitbook/assets/image (73).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (73).png" alt="">
+
+</div>
 
 **Creating Objects From Previous **_**cmdlets**_
 
@@ -46,7 +58,11 @@ One way of manipulating objects is pulling out the properties from the output of
 
 `Get-ChildItem | Select-Object -Property Mode, Name`
 
-![](<../.gitbook/assets/image (102).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (102).png" alt="">
+
+</div>
 
 **Filtering Objects**
 
@@ -54,9 +70,17 @@ When retrieving output objects, you may want to select objects that match a very
 
 **Get-Service | Where-Object -Property Status -eq stopped**
 
-![](<../.gitbook/assets/image (67).png>)
+<div align="left">
 
-![](<../.gitbook/assets/image (32).png>)
+<img src="../.gitbook/assets/image (67).png" alt="">
+
+</div>
+
+<div align="left">
+
+<img src="../.gitbook/assets/image (32).png" alt="">
+
+</div>
 
 Other operators than "-eq" can be found [here](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/where-object?view=powershell-7.2\&viewFallbackFrom=powershell-6)
 
@@ -64,13 +88,21 @@ Other operators than "-eq" can be found [here](https://docs.microsoft.com/en-us/
 
 When a _cmdlet_ outputs a lot of information, you may need to sort it to extract the information more efficiently. You do this by pipe lining the output of a _cmdlet_ to the `Sort-Object` _cmdlet_.
 
-![](<../.gitbook/assets/image (151).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (151).png" alt="">
+
+</div>
 
 **Finding a file**
 
 `Get-ChildItem -Path c:\ -Include`` `_`*`_`interesting-file.txt`_`*`_` ``-File -Recurse -ErrorAction SilentlyContinue`
 
-![](<../.gitbook/assets/image (42).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (42).png" alt="">
+
+</div>
 
 **Counting an output (using measure)**
 
@@ -78,7 +110,11 @@ Lets count the cmdlets installed in the system
 
 `Get-Command | Where-Object -Parameter CommandType -eq Cmdlet | measure`
 
-![](<../.gitbook/assets/image (87) (1).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (87) (1).png" alt="">
+
+</div>
 
 **Getting a file's hash**
 
@@ -86,13 +122,21 @@ We want MD5 hash here, so:
 
 `Get-FileHash -Path "C:\Program Files\interesting-file.txt.txt" -Algorithm MD5`
 
-![](<../.gitbook/assets/image (124).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (124).png" alt="">
+
+</div>
 
 **Current Working Directory?**
 
 `Get-Location`
 
-![](<../.gitbook/assets/image (22).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (22).png" alt="">
+
+</div>
 
 **To see if a directory exists?**
 

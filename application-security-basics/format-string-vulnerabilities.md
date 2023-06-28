@@ -30,11 +30,11 @@ Explanation: %d: It reads whatever integer value is stored in the current execut
 
 %x: reads hexadecimal value in stack.
 
-**This also means now we can read the** [**STACK CANARY**](https://hexisanoob.gitbook.io/hexisanoob/application-security-basics/buffer-overflow-defenses)****
+**This also means now we can read the** [**STACK CANARY**](https://hexisanoob.gitbook.io/hexisanoob/application-security-basics/buffer-overflow-defenses)
 
 Also, in some cases, passwords (by using %s for string):
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Case Study
 

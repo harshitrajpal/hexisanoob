@@ -16,7 +16,11 @@ Stack supports two operations push and pop.\
 
 Stack can be visualised as:
 
-![](../.gitbook/assets/Screenshot\_2.png)
+<div align="left">
+
+<img src="../.gitbook/assets/Screenshot_2.png" alt="">
+
+</div>
 
 **Text:** Contains program code to be executed.\
 **Data:** Contains global information for program.\
@@ -58,7 +62,11 @@ int main (int argc, char **argv)
 }
 ```
 
-![](<../.gitbook/assets/image (53).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (53).png" alt="">
+
+</div>
 
 In programming, Prologue is what happens at the beginning of a function. Its responsibility is to set up the _stack frame_ of the called function. "Machine" allocates multiple blocks to a thread and assigns pointer to ensure flow. Let's call it the execution model.
 
@@ -70,11 +78,19 @@ In programming, Prologue is what happens at the beginning of a function. Its res
 
 When strcpy() runs, it starts writing data downwards like this:
 
-![](<../.gitbook/assets/image (117).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (117).png" alt="">
+
+</div>
 
 Now, when we input data > 128 bytes, buffer gets overflowed
 
-![](<../.gitbook/assets/image (20).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (20).png" alt="">
+
+</div>
 
 **VERY IMPORTANT**: The prologue is what happens at the beginning of a function. Its responsibility is to set up the _stack frame_ of the called function. The epilogue is the exact opposite: it is what happens last in a function, and its purpose is to restore the stack frame of the calling (parent) function.
 

@@ -34,28 +34,44 @@ eg: if we want to query google.com with our custom recursive server we do dig \<
 
 **`dig google.com @1.1.1.1`**
 
-![](<../.gitbook/assets/image (108).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (108).png" alt="">
+
+</div>
 
 **`TTL =>`** Another interesting piece of information that dig gives us is the TTL (**T**ime **T**o **L**ive) of the queried DNS record. As mentioned previously, when your computer queries a domain name, it stores the results in its local cache. The TTL of the record tells your computer when to stop considering the record as being valid -- i.e. when it should request the data again, rather than relying on the cached copy.
 
-**`ANSWER SECTION =>` ** This is the result (resolved IP of the URL as per 1.1.1.1's record)
+**`ANSWER SECTION =>`** This is the result (resolved IP of the URL as per 1.1.1.1's record)
 
 ## Cheatsheet
 
 * Digging IP address: dig google.com
 * Digging for short answers: dig google.com +short
 
-![](<../.gitbook/assets/image (54).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (54).png" alt="">
+
+</div>
 
 * Reverse IP lookup: dig -x 142.250.206.174\
 
 
-![](<../.gitbook/assets/image (31).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (31).png" alt="">
+
+</div>
 
 * Query any DNS record: dig google.com ANY\
 
 
-![](<../.gitbook/assets/image (140).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (140).png" alt="">
+
+</div>
 
 * dig for particular records: \
   dig hostinger.com txt (Query TXT record)\
@@ -63,12 +79,20 @@ eg: if we want to query google.com with our custom recursive server we do dig \<
   dig hostinger.com ns (Query NS record)\
   dig hostinger.com A (Query A record)
 
-![](<../.gitbook/assets/image (85).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (85).png" alt="">
+
+</div>
 
 * Trace DNS path: dig hostinger.com +trace (It will query the name servers starting from the root and subsequently traverses down the namespace tree using iterative queries)\
 
 
-![](<../.gitbook/assets/image (15).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (15).png" alt="">
+
+</div>
 
 ## DNS Zone Transfer
 
@@ -83,7 +107,11 @@ You can use different mechanisms for DNS zone transfer but the simplest one is A
 dig +short ns zonetransfer.me\
 dig axfr zonetransfer.me @nsztm1.digi.ninja
 
-![](<../.gitbook/assets/image (118).png>)
+<div align="left">
+
+<img src="../.gitbook/assets/image (118).png" alt="">
+
+</div>
 
 **AXFR Vulnerability =>** AXFR offers no authentication, so any client can ask a DNS server for a copy of the entire zone. This means that unless some kind of protection is introduced, an attacker can get a list of all hosts for a domain, which gives them a lot of potential attack vectors.
 

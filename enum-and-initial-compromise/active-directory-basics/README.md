@@ -23,4 +23,8 @@ Active Directory provides several different services, which fall under the umbre
 
 AD DS is included with Windows Server (including Windows Server 10) and is designed to manage client systems. While systems running the regular version of Windows do not have the administrative features of AD DS, they do support Active Directory. This means any Windows computer can connect to a Windows workgroup, provided the user has the correct login credentials.
 
-![](<../../.gitbook/assets/image (29).png>)
+<div align="left">
+
+<img src="../../.gitbook/assets/image (29).png" alt="">
+
+</div>

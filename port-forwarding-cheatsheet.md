@@ -4,9 +4,17 @@
 
 A service running on docker was discovered
 
-![](<.gitbook/assets/image (56).png>)
+<div align="left">
 
-![](<.gitbook/assets/image (63).png>)
+<img src=".gitbook/assets/image (56).png" alt="">
+
+</div>
+
+<div align="left">
+
+<img src=".gitbook/assets/image (63).png" alt="">
+
+</div>
 
 **`ssh -L <local port>:<ip of container>:<remote port> <username>@<host>`**
 
@@ -14,7 +22,11 @@ A service running on docker was discovered
 ssh -L 6767:172.17.0.2:8080 aubreanna@internal.thm
 ```
 
-![](<.gitbook/assets/image (125).png>)
+<div align="left">
+
+<img src=".gitbook/assets/image (125).png" alt="">
+
+</div>
 
 ## 2. SSH tunneling / Pivoting
 
