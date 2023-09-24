@@ -24,6 +24,7 @@
     * [CSRF mitigation](enum-and-initial-compromise/web-pentest/csrf-mitigation.md)
     * [XSS mitigation](enum-and-initial-compromise/web-pentest/xss-mitigation.md)
     * [CSP  bypass with JSONP](enum-and-initial-compromise/web-pentest/csp-bypass-with-jsonp.md)
+    * [PHP Vulnerabilities](enum-and-initial-compromise/web-pentest/php-vulnerabilities.md)
   * [Buffer Overflow Prep](enum-and-initial-compromise/buffer-overflow-prep.md)
   * [Active Directory - Basics](enum-and-initial-compromise/active-directory-basics/README.md)
     * [AD DS](enum-and-initial-compromise/active-directory-basics/ad-ds.md)
