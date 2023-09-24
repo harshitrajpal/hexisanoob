@@ -152,5 +152,5 @@ We want MD5 hash here, so:
 
 `certutil -decode "path\file.txt" decode.txt`
 
-![](<../.gitbook/assets/image (13).png>)
+![](<../.gitbook/assets/image (13) (1).png>)
 

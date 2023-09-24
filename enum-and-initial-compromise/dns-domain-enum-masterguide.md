@@ -90,7 +90,7 @@ eg: if we want to query google.com with our custom recursive server we do dig \<
 
 <div align="left">
 
-<img src="../.gitbook/assets/image (15).png" alt="">
+<img src="../.gitbook/assets/image (15) (1).png" alt="">
 
 </div>
 

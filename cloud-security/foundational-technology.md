@@ -40,7 +40,7 @@ Benefits:
 4. Rapid elasticity - scale up/down rapidly
 5. Measured service - Service is sold based on compute time, bits etc.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
 ## Service models on Cloud
 
@@ -48,7 +48,7 @@ Benefits:
 2. Platform as a Service - eg: heroic. The capability enables developers to build, run and operate applications entirely in the cloud without directly provisioning infrastructure components.
 3. Infrastructure as a service SaaS - eg: AWS, GCP, Azure - The capability provided to the consumer is to provision processing, storage, networks and other fundamental computing resources where the consumer is able to deploy and run arbitrary software, which can include operating systems and applications. How much the customer vs provider own in these models? 
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 Cloud deployment models:&#x20;
 
@@ -110,7 +110,7 @@ These policies can be made a little more granular (finely controlled) by using c
 
 Condition Keys: The accèss policy enables you to specify conditions when granting permissions using the condition element. Here we can use Boolean operators (=, <, > etc) to match your condition against values in the request. For example, when granting a user permission to upload an object, the bucket owner can require that the object be publicly readable by adding the StringEquals condition, as shown below:
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (2).png" alt=""><figcaption></figcaption></figure>
 
 When to use Bucket Policy? => If an AWS account that owns a bucket wants to grant permission to users in its account, it can use either. Or you want to manage cross account permissions for all Amazon S3 permissions. Both bucket and user policies support granting permission for all Amazon S2 operations.
 

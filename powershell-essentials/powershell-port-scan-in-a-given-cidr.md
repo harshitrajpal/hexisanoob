@@ -68,4 +68,4 @@ function Port-Scan
 }
 ```
 
-![](<../.gitbook/assets/image (6) (2).png>)
+![](<../.gitbook/assets/image (6) (2) (1).png>)
