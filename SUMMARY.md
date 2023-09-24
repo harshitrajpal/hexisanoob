@@ -75,3 +75,5 @@
   * [Amazon S3](cloud-security/amazon-s3.md)
   * [Risk Management & Data Controls](cloud-security/risk-management-and-data-controls.md)
   * [IAM](cloud-security/iam.md)
+* [CTF Challenge Learnings](ctf-challenge-learnings/README.md)
+  * [Command Injection with filter](ctf-challenge-learnings/command-injection-with-filter.md)
