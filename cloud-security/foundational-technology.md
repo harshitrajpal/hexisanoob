@@ -48,7 +48,7 @@ Benefits:
 2. Platform as a Service - eg: heroic. The capability enables developers to build, run and operate applications entirely in the cloud without directly provisioning infrastructure components.
 3. Infrastructure as a service SaaS - eg: AWS, GCP, Azure - The capability provided to the consumer is to provision processing, storage, networks and other fundamental computing resources where the consumer is able to deploy and run arbitrary software, which can include operating systems and applications. How much the customer vs provider own in these models? 
 
-<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 Cloud deployment models:&#x20;
 
