@@ -58,6 +58,7 @@
     * [Print Spooler Basics](post-exploitation/windows-privilege-escalation/print-spooler-basics.md)
     * [Print Spooler CVE 2020-1030](post-exploitation/windows-privilege-escalation/print-spooler-cve-2020-1030.md)
     * [SpoolFool](post-exploitation/windows-privilege-escalation/spoolfool.md)
+  * [Data Exfiltration Post Exploitation](post-exploitation/data-exfiltration-post-exploitation.md)
 * [Port Forwarding Cheatsheet](port-forwarding-cheatsheet.md)
 * [Powershell Essentials](powershell-essentials/README.md)
   * [Powershell Basics](powershell-essentials/powershell-basics.md)
