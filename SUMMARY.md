@@ -80,4 +80,5 @@
   * [Risk Management & Data Controls](cloud-security/risk-management-and-data-controls.md)
   * [IAM](cloud-security/iam.md)
 * [CTF Challenge Learnings](ctf-challenge-learnings/README.md)
+  * [C code using getenv()](ctf-challenge-learnings/c-code-using-getenv.md)
   * [Command Injection with filter](ctf-challenge-learnings/command-injection-with-filter.md)
