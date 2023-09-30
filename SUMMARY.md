@@ -87,5 +87,7 @@
     * [simple offer](ctf-challenge-learnings/amazon-wicys-ctf/simple-offer.md)
     * [Bad Actor](ctf-challenge-learnings/amazon-wicys-ctf/bad-actor.md)
     * [Secret Server](ctf-challenge-learnings/amazon-wicys-ctf/secret-server.md)
+    * [Simple PCAP](ctf-challenge-learnings/amazon-wicys-ctf/simple-pcap.md)
+    * [Hidden Message](ctf-challenge-learnings/amazon-wicys-ctf/hidden-message.md)
   * [C code using getenv()](ctf-challenge-learnings/c-code-using-getenv.md)
   * [Command Injection with filter](ctf-challenge-learnings/command-injection-with-filter.md)
