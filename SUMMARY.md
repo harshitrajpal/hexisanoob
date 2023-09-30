@@ -84,5 +84,6 @@
     * [Password Locker on the Web](ctf-challenge-learnings/amazon-wicys-ctf/password-locker-on-the-web.md)
     * [Happy Birthday Card Generator](ctf-challenge-learnings/amazon-wicys-ctf/happy-birthday-card-generator.md)
     * [Bloggergate](ctf-challenge-learnings/amazon-wicys-ctf/bloggergate.md)
+    * [simple offer](ctf-challenge-learnings/amazon-wicys-ctf/simple-offer.md)
   * [C code using getenv()](ctf-challenge-learnings/c-code-using-getenv.md)
   * [Command Injection with filter](ctf-challenge-learnings/command-injection-with-filter.md)

@@ -22,5 +22,3 @@ Upon negating the options which can't be a possibility, I shortlisted it to be X
 
 <figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
-Easy.
-
