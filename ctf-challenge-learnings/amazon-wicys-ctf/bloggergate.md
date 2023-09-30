@@ -1,12 +1,12 @@
 ---
-description: reflected XSS to SSRF
+description: reflected XSS and session hijacking
 ---
 
 # Bloggergate
 
 The server seemed to be taking in a URL and the backend processes it. When I gave it a webhook link, it didn't process anything.
 
-But going through the site, it was clear that I had to make server (admin) execute an HTTP request to my webhook and exfiltrate data there. (SSRF)
+But going through the site, it was clear that I had to make server (admin) execute an HTTP request to my webhook and exfiltrate data there.
 
 <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
@@ -48,7 +48,7 @@ We hit it! And the thing is, blogging site on the server had an admin panel that
 
 <figure><img src="../../.gitbook/assets/image (183).png" alt=""><figcaption></figcaption></figure>
 
-By changing user cookie to this newfound cookie, let's see what happens
+Session Hijacking: By changing user's cookie to this new found cookie, let's see what happens
 
 <figure><img src="../../.gitbook/assets/image (184).png" alt=""><figcaption></figcaption></figure>
 
