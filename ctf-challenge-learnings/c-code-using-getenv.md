@@ -2,7 +2,7 @@
 
 In "blog" CTF on TryHackMe, I encountered a chellenge where a C binary had SUID set. The binary's strings and ltrace output looked like this:
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 

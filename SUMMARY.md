@@ -85,5 +85,7 @@
     * [Happy Birthday Card Generator](ctf-challenge-learnings/amazon-wicys-ctf/happy-birthday-card-generator.md)
     * [Bloggergate](ctf-challenge-learnings/amazon-wicys-ctf/bloggergate.md)
     * [simple offer](ctf-challenge-learnings/amazon-wicys-ctf/simple-offer.md)
+    * [Bad Actor](ctf-challenge-learnings/amazon-wicys-ctf/bad-actor.md)
+    * [Secret Server](ctf-challenge-learnings/amazon-wicys-ctf/secret-server.md)
   * [C code using getenv()](ctf-challenge-learnings/c-code-using-getenv.md)
   * [Command Injection with filter](ctf-challenge-learnings/command-injection-with-filter.md)
