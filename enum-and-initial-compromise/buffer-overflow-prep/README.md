@@ -1,10 +1,10 @@
 ---
-description: Learning practical bufof on Tryhackme Room
+description: Learning practical bufof on Tryhackme Room - 32 bit x86 architecture
 ---
 
 # Buffer Overflow Prep
 
-## [Basics](buffer-overflow-prep.md#undefined)
+## [Basics](./#undefined)
 
 #### What is stack?
 
@@ -18,7 +18,7 @@ Stack can be visualised as:
 
 <div align="left">
 
-<img src="../.gitbook/assets/Screenshot_2.png" alt="">
+<img src="../../.gitbook/assets/Screenshot_2.png" alt="">
 
 </div>
 
@@ -43,7 +43,7 @@ It’s a LIFO structure. It grows downward in memory (from higher address space 
 
 **EIP** holds the address of next instruction to be executed. Our prime focus is on EIP register since we need to hijack execution flow. EIP read only register, so we cannot assign the memory address of the instruction to be executed to it.
 
-## [Visualise Stack](buffer-overflow-prep.md#visualise-stack)
+## [Visualise Stack](./#visualise-stack)
 
 
 
@@ -64,7 +64,7 @@ int main (int argc, char **argv)
 
 <div align="left">
 
-<img src="../.gitbook/assets/image (53).png" alt="">
+<img src="../../.gitbook/assets/image (53).png" alt="">
 
 </div>
 
@@ -80,7 +80,7 @@ When strcpy() runs, it starts writing data downwards like this:
 
 <div align="left">
 
-<img src="../.gitbook/assets/image (117).png" alt="">
+<img src="../../.gitbook/assets/image (117).png" alt="">
 
 </div>
 
@@ -88,7 +88,7 @@ Now, when we input data > 128 bytes, buffer gets overflowed
 
 <div align="left">
 
-<img src="../.gitbook/assets/image (20).png" alt="">
+<img src="../../.gitbook/assets/image (20).png" alt="">
 
 </div>
 
@@ -96,7 +96,7 @@ Now, when we input data > 128 bytes, buffer gets overflowed
 
 Here, after the input has been taken, epilogue makes the ESP move/point to the location stored in EIP (Saved EIP block). And through our input buffer, we have the control of EIP! This is the basis of stack based buffer overflow!
 
-## [The JMP ESP and NOPSled funda](buffer-overflow-prep.md#undefined)
+## [The JMP ESP and NOPSled funda](./#undefined)
 
 Now that we have access to EIP, we can use this to manipulate ESP into running our code. We will add our shellcode to a location where ESP directly points at. Windows binaries utilise DLLs that have various instructions. "JMP ESP" is a fairly common assembly instruction that makes an ESP point to these intructions for a program to work efficiently.
 
