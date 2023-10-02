@@ -46,7 +46,7 @@ Sometimes, we don't care about what a function is doing. So, we use nexti
 
 
 
-## ARM CPU
+## ARM CPUs like Mac M1, M2
 
 Use&#x20;
 
