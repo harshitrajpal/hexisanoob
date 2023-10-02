@@ -84,6 +84,7 @@
   * [IAM](cloud-security/iam.md)
 * [CTF Challenge Learnings](ctf-challenge-learnings/README.md)
   * [Amazon WiCys CTF](ctf-challenge-learnings/amazon-wicys-ctf/README.md)
+    * [I am Lazy](ctf-challenge-learnings/amazon-wicys-ctf/i-am-lazy.md)
     * [Password Locker on the Web](ctf-challenge-learnings/amazon-wicys-ctf/password-locker-on-the-web.md)
     * [Happy Birthday Card Generator](ctf-challenge-learnings/amazon-wicys-ctf/happy-birthday-card-generator.md)
     * [Bloggergate](ctf-challenge-learnings/amazon-wicys-ctf/bloggergate.md)
