@@ -30,7 +30,18 @@ int main()
 
 When we compile this, we can see a bunch of readable function names in GDB like main, func.
 
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
 **strip new\_basic**
 
 This will take the binary and remove all of those readable names making it more complicated to reverse engineer.
 
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+
+
+### How to overcome this?
+
+**break \_start**
+
+\_start is a special symbol that can be used to make debugger run from the first step even if debugger knows nothing about the program. Unfortunately this isn't the start of the code sincec OS does a lot of library setup before even reaching to the code. But it's a good point to start debugging!
