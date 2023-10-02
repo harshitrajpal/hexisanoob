@@ -1,6 +1,6 @@
 # I am Lazy
 
-The challenge presented us with a 47MB text file called "encoded\_output.txt"
+The challenge presented us with a 47MB zip file called "encoded\_output.txt"
 
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
