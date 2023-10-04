@@ -95,3 +95,5 @@
     * [Hidden Message](ctf-challenge-learnings/amazon-wicys-ctf/hidden-message.md)
   * [C code using getenv()](ctf-challenge-learnings/c-code-using-getenv.md)
   * [Command Injection with filter](ctf-challenge-learnings/command-injection-with-filter.md)
+* [Reverse Engineering](reverse-engineering/README.md)
+  * [CTF: Memory Dereferencing](reverse-engineering/ctf-memory-dereferencing.md)
