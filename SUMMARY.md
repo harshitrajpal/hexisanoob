@@ -28,6 +28,8 @@
     * [Python Serialization Vulnerabilities - Pickle](enum-and-initial-compromise/web-pentest/python-serialization-vulnerabilities-pickle.md)
   * [Buffer Overflow Prep](enum-and-initial-compromise/buffer-overflow-prep.md)
     * [Understanding CPUs](enum-and-initial-compromise/buffer-overflow-prep/understanding-cpus.md)
+    * [Virtual Memory and Paging](enum-and-initial-compromise/buffer-overflow-prep/virtual-memory-and-paging.md)
+    * [Syscalls](enum-and-initial-compromise/buffer-overflow-prep/syscalls.md)
     * [Stripping readable function names](enum-and-initial-compromise/buffer-overflow-prep/stripping-readable-function-names.md)
     * [My relevant GDB cheatsheet](enum-and-initial-compromise/buffer-overflow-prep/my-relevant-gdb-cheatsheet.md)
   * [Active Directory - Basics](enum-and-initial-compromise/active-directory-basics/README.md)

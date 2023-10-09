@@ -2,11 +2,11 @@
 
 The challenge presented us with a 47MB zip file called "encoded\_output.txt"
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 Upon opening the file I noticed that it was encoded using some cipher.
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now, we had to analyze which encryption it was using. Using dcode.fr I saw a couple of possibilities. I didn't want to use the lesser known ciphers. So I stuck with base64. But since flag is Amazon{......} no way the base64 cipher could encoded such a small string to an 80MB text file.
 
