@@ -30,6 +30,7 @@
     * [Understanding CPUs](enum-and-initial-compromise/buffer-overflow-prep/understanding-cpus.md)
     * [Virtual Memory and Paging](enum-and-initial-compromise/buffer-overflow-prep/virtual-memory-and-paging.md)
     * [Syscalls](enum-and-initial-compromise/buffer-overflow-prep/syscalls.md)
+    * [Theorem Proving](enum-and-initial-compromise/buffer-overflow-prep/theorem-proving.md)
     * [Stripping readable function names](enum-and-initial-compromise/buffer-overflow-prep/stripping-readable-function-names.md)
     * [My relevant GDB cheatsheet](enum-and-initial-compromise/buffer-overflow-prep/my-relevant-gdb-cheatsheet.md)
   * [Active Directory - Basics](enum-and-initial-compromise/active-directory-basics/README.md)
