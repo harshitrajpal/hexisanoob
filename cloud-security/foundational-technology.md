@@ -40,7 +40,7 @@ Benefits:
 4. Rapid elasticity - scale up/down rapidly
 5. Measured service - Service is sold based on compute time, bits etc.
 
-<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (17) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Service models on Cloud
 

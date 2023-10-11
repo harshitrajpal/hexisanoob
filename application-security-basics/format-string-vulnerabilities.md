@@ -16,7 +16,7 @@ Vulnerable code:\
 Here, in printf command, no format string is specified, so it will take in format of string provided in fgets and print it.
 
 Normal working:\
-![](<../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png>)
+![](<../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png>)
 
 
 
