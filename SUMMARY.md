@@ -101,3 +101,5 @@
 * [Reverse Engineering](reverse-engineering/README.md)
   * [CTF: Memory Dereferencing](reverse-engineering/ctf-memory-dereferencing.md)
   * [CTF: Monty Python](reverse-engineering/ctf-monty-python.md)
+* [Pwning](pwning/README.md)
+  * [Shoddy\_CMP](pwning/shoddy\_cmp.md)
