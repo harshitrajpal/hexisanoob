@@ -27,3 +27,11 @@ This is how Ghidra looks.
 
 
 
+\--------------------
+
+Important learnings
+
+1. While in ghidra, it uses some cryptic variable and function names. Make sure to copy all of it in sublime text and replace variables names wiith more understandable names.
+
+
+
