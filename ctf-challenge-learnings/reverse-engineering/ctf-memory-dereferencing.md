@@ -4,13 +4,13 @@ I encountered a CTF where I was provided with a binary which is taking a number 
 
 The problem is at any number input, a segmentation fault is given!
 
-<figure><img src="../.gitbook/assets/image (214).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (214).png" alt=""><figcaption></figcaption></figure>
 
 Now, segmentation fault happens when program is trying to access a memory address that it's not allowed to. [https://www.geeksforgeeks.org/segmentation-fault-c-cpp/](https://www.geeksforgeeks.org/segmentation-fault-c-cpp/)
 
 So, a good assumption is whatever I am entering, the program is considering it as an address. I decompiled it in Ghidra and saw what was happening below
 
-<figure><img src="../.gitbook/assets/image (216).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (216).png" alt=""><figcaption></figcaption></figure>
 
 I noticed some key things here.&#x20;
 
@@ -31,7 +31,7 @@ So this is what is happening in a nutshell:
 
 Let's check disassembly and see if we can locate 0xd000dfaceee.
 
-<figure><img src="../.gitbook/assets/image (217).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (217).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -51,9 +51,9 @@ Since the memory layout is in little endian, 004008ce + 2 bytes is where "0x0000
 
 I converted this to deecimal using python
 
-<figure><img src="../.gitbook/assets/image (219).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (219).png" alt=""><figcaption></figcaption></figure>
 
 When I input this number in the binary, I found the flag!!!
 
-<figure><img src="../.gitbook/assets/image (220).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (220).png" alt=""><figcaption></figcaption></figure>
 

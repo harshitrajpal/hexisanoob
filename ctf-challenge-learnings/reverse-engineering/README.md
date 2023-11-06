@@ -8,7 +8,7 @@ If you think my understanding or explanation is wrong somewhere, leave a comment
 
 ### Basics of Ghidra
 
-<figure><img src="../.gitbook/assets/image (221).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (221).png" alt=""><figcaption></figcaption></figure>
 
 This is how Ghidra looks.
 
