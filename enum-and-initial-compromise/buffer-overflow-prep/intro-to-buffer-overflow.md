@@ -10,3 +10,4 @@ gets() function will just keep on reading data from a user even though the buffe
 
 
 
+Exploitation is in CTF challenge learnings section
