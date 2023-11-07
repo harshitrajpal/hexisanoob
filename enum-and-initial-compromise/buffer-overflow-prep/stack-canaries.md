@@ -42,5 +42,20 @@ If they are equal, then jump to the return address or else call "stack\_check\_f
 * Stack canaries can still be avaded and attacks conducted by:
   * Stack Canary leaking
   * Stack canary bruteforcing - Guessing bytes of the canary one by one. Once the offset is known, we can start adding a single byte (00 to ff) and see which byte doesn't cause crash. THe byte that doesn't is the correct one. We can extend this for all bytes until the correct 64 bit number is known.
-*
+*   Stack canaries always start with a null byte. Because in C, strings are terminated by null bytes. so if an attacker tries to read canary, C would stop it right before it accesses the canary since null byte would be encountered. However, some C functions would still allow reading of this canary even with a null byte in place.\
+    \
+    \
+
+
+    <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+Now when we step to next intruction where fs is being assigned to rax, we can see the canary
+
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+See how it ends with 00? In little endian, when a program would read it, it would start backwards, so from 00 and the reading function would be terminated upon encountering the canary.
+
+
+
+
 
