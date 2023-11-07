@@ -39,5 +39,8 @@ If they are equal, then jump to the return address or else call "stack\_check\_f
 
 
 * Nothing in the function is supposed to change the stack cookie. If it is changed this means that there is a buffer overflow. Stack check fail would print out "stack smashing detected" and will exit the program
+* Stack canaries can still be avaded and attacks conducted by:
+  * Stack Canary leaking
+  * Stack canary bruteforcing - Guessing bytes of the canary one by one. Once the offset is known, we can start adding a single byte (00 to ff) and see which byte doesn't cause crash. THe byte that doesn't is the correct one. We can extend this for all bytes until the correct 64 bit number is known.
 *
 
