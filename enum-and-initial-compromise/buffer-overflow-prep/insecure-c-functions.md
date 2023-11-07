@@ -1,4 +1,4 @@
-# Intro to Buffer Overflow
+# Insecure C functions
 
 Some inherently insecure functions exist in various programming languages that might help an attacker conduct buffer overflow and read/write/execute to or from a memory location that originally didn't allow a user to interact.
 
