@@ -2,11 +2,11 @@
 
 The CTF challenge required answers to 3 questions like in Monty Python's bridge of death.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 Upon decompiling in Ghidra, we see the questions and conditions upon which flag would be returned:
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -16,7 +16,7 @@ As we can see, to get the flag (print\_flag()) we need to make sure that all thr
 
 Let's see question1:
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -24,17 +24,17 @@ Upon entering the string mentioned here, strcmp works and question 1 would be an
 
 Let's see question2:
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 Hmmm, 2 variables are input and func2 is called and variable 1 is assigned it's value. Function returns true when a is not equal to b. It returns false when a is equal to b. As in the main() we can see that the question2() must return 0.
 
-<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 So, to make question2 return 0, variable 1 and variable 2 in the function should be equal. Which means after func2() is done, variable 1 should remain the same.
 
 Let's see func2 now.
 
-<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 Inspect the three conditions here. When func2 is called from question2(), 3 parameters are sent: variable1, 0 and 0x14 which is 20 in decimal. So, the value of variable 1 and variable 2 must lie in \[0,20].
 
@@ -50,7 +50,7 @@ Finally, question3() should return 0 to continue execution and print flag.
 
 Here is what question 3 looked like:
 
-<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -91,23 +91,23 @@ Now, it is easy to provide b and c with inputs less than 0xff (255 in decimal) b
 
 Upon inspecting the array, we see this:
 
-<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
 It is an array of 65536 elements. At first, it seemed like all elements were 0x00, but when I copied it I started finding 0x01, 0x02,...0x09 indices:
 
-<figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
 Now, let's start with condition when i=1. a\*256+b must be equal to 53937 while a and b are in (0,255)
 
 To solve this I used z3 theorem prover in python and found the solution:
 
-<figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 
 I automated this using a python script and found all the solutions:
 
@@ -145,14 +145,14 @@ for key, number in number_dict.items():
 
 
 
-<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 Great! We have all the answers now. I created a small python script to help input all this data in the binary:
 
-<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
 Let's get the flag!
 
-<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
 Pretty nifty tool, z3 right? Here is a brief on theorem solvers: [https://hexisanoob.gitbook.io/hexisanoob/enum-and-initial-compromise/buffer-overflow-prep/theorem-proving](https://hexisanoob.gitbook.io/hexisanoob/enum-and-initial-compromise/buffer-overflow-prep/theorem-proving)
