@@ -47,11 +47,11 @@ If they are equal, then jump to the return address or else call "stack\_check\_f
     \
 
 
-    <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
 
 Now when we step to next intruction where fs is being assigned to rax, we can see the canary
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 See how it ends with 00? In little endian, when a program would read it, it would start backwards, so from 00 and the reading function would be terminated upon encountering the canary.
 

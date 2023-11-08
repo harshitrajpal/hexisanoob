@@ -88,7 +88,7 @@ Now, when we input data > 128 bytes, buffer gets overflowed
 
 <div align="left">
 
-<img src="../.gitbook/assets/image (20).png" alt="">
+<img src="../.gitbook/assets/image (20) (1).png" alt="">
 
 </div>
 

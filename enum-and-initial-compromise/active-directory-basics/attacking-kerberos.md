@@ -90,7 +90,7 @@ Download rubeus [here](https://github.com/GhostPack/Rubeus).
 
 <div align="left">
 
-<img src="../../.gitbook/assets/image (10) (1) (1) (1) (1).png" alt="">
+<img src="../../.gitbook/assets/image (10) (1) (1) (1) (1) (1).png" alt="">
 
 </div>
 
