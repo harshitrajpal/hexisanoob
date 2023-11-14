@@ -160,3 +160,12 @@ In short,
 
 printf@plt in disassembly of main -> stub (jumper function in PLT which is pointing to a value in got.plt) -> printf@got.plt on some address -> info symbol \<that address> -> linker info of the real printf function
 
+\-----------------------------------------------------------------------------------------------------
+
+Mitigations of Dynamic Linking:
+
+1. RELRO: Relocations Read-Only -> Full and Partial
+
+Partial RELRO does nothing against this exploit
+
+Full RELRO would resolve all the pointers before execution
