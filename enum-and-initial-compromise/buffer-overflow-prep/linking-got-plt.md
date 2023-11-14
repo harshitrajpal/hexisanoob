@@ -169,3 +169,7 @@ Mitigations of Dynamic Linking:
 Partial RELRO does nothing against this exploit
 
 Full RELRO would resolve all the pointers before execution
+
+\-----------------------------------------------------------------------------------------------------
+
+An example in CTF is given here: [https://hexisanoob.gitbook.io/hexisanoob/ctf-challenge-learnings/pwning/plt\_playit](https://hexisanoob.gitbook.io/hexisanoob/ctf-challenge-learnings/pwning/plt\_playit)
