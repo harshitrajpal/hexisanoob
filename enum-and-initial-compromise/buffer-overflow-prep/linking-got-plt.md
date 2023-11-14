@@ -146,3 +146,11 @@ breakpoint is hit. Let's set puts entry to system's entry as we saw above and co
 
 We have successfully changed GOT entry and made the binary execute a system command.
 
+
+
+\-----------------------------------------------------------------------------------------------------
+
+In short,
+
+printf@plt in disassembly of main -> stub (jumper function in PLT which is pointing to a value in got.plt) -> printf@got.plt on some address -> info symbol \<that address> -> linker info of the real printf function
+
