@@ -106,3 +106,4 @@
     * [CTF: Monty Python](reverse-engineering/ctf-monty-python.md)
   * [Pwning](pwning/README.md)
     * [Shoddy\_CMP](pwning/shoddy\_cmp.md)
+    * [PLT\_PlayIT](ctf-challenge-learnings/pwning/plt\_playit.md)
