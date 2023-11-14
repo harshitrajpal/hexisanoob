@@ -1,5 +1,9 @@
 # Linking - GOT,PLT
 
+Write What Where vulnerability -> You can write whatever you want, wherever you want. GOT has RW privileges. We can overwrite a GOT entry to execute whatever we want to be executed the next time that GOT entry is called
+
+\-----------------------------------------------------------------------------------------------------
+
 When we run a program what is the first thing that runs? main? NO.
 
 There is a bunch of stuff that needs to be setup before running the main function like the header files, global variables and such. This could be found by setting a break point at \_start function. This is the first function that executes and sets up the environment.
@@ -149,6 +153,8 @@ We have successfully changed GOT entry and made the binary execute a system comm
 
 
 \-----------------------------------------------------------------------------------------------------
+
+This example simulated write what where vulnerability in GDB
 
 In short,
 
