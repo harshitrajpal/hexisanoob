@@ -1,6 +1,6 @@
 # Linking - GOT,PLT
 
-Write What Where vulnerability -> You can write whatever you want, wherever you want. GOT has RW privileges. We can overwrite a GOT entry to execute whatever we want to be executed the next time that GOT entry is called
+Write What Where vulnerability -> Technically an exploit primitive (as in some ability that the program gives you as a result of another vulnerability) You can write whatever you want, wherever you want. GOT has RW privileges. We can overwrite a GOT entry to execute whatever we want to be executed the next time that GOT entry is called
 
 \-----------------------------------------------------------------------------------------------------
 
