@@ -36,6 +36,7 @@
     * [Insecure C functions](enum-and-initial-compromise/buffer-overflow-prep/insecure-c-functions.md)
     * [Stack Canaries](enum-and-initial-compromise/buffer-overflow-prep/stack-canaries.md)
     * [Linking - GOT,PLT](enum-and-initial-compromise/buffer-overflow-prep/linking-got-plt.md)
+    * [Return Oriented Programming](enum-and-initial-compromise/buffer-overflow-prep/return-oriented-programming.md)
   * [Active Directory - Basics](enum-and-initial-compromise/active-directory-basics/README.md)
     * [AD DS](enum-and-initial-compromise/active-directory-basics/ad-ds.md)
     * [Managing OUs](enum-and-initial-compromise/active-directory-basics/managing-ous.md)
