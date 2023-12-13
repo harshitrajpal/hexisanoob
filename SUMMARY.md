@@ -90,6 +90,8 @@
   * [Risk Management & Data Controls](cloud-security/risk-management-and-data-controls.md)
   * [IAM](cloud-security/iam.md)
 * [CTF Challenge Learnings](ctf-challenge-learnings/README.md)
+  * [Sunshine CTF](ctf-challenge-learnings/sunshine-ctf/README.md)
+    * [Knowledge Repository](ctf-challenge-learnings/sunshine-ctf/knowledge-repository.md)
   * [Amazon WiCys CTF](ctf-challenge-learnings/amazon-wicys-ctf/README.md)
     * [I am Lazy](ctf-challenge-learnings/amazon-wicys-ctf/i-am-lazy.md)
     * [Password Locker on the Web](ctf-challenge-learnings/amazon-wicys-ctf/password-locker-on-the-web.md)
