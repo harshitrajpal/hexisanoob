@@ -48,7 +48,7 @@ Upon deciphering it on an online tool [https://morsecode.world/international/dec
 
 <figure><img src="../../.gitbook/assets/image (276).png" alt=""><figcaption></figcaption></figure>
 
-Upon analyzing this in dcode.fr, I observeed that it is NATO encoded text.
+Upon analyzing this in dcode.fr, I observed that it is NATO encoded text.
 
 <figure><img src="../../.gitbook/assets/image (277).png" alt=""><figcaption></figcaption></figure>
 
@@ -56,7 +56,7 @@ Further, upon deciphering it, I noticed that it was english for "="
 
 <figure><img src="../../.gitbook/assets/image (278).png" alt=""><figcaption></figcaption></figure>
 
-Since, this is not at all a flag, there has to be more to it. Further, it can be speculated that "=" is the start or end of a base64 encoded string.
+Since, this is not at all a flag, there has to be more to it. Further, it can be speculated that "=" is the  end of a base64 or base32 encoded string.
 
 I examined the github repo a bit more and found out that a total of 3000+ commits were there.
 
@@ -313,5 +313,5 @@ This turned out to be a gz file. Then finally, I used gunzip to extract a text f
 
 <figure><img src="../../.gitbook/assets/image (296).png" alt=""><figcaption></figcaption></figure>
 
-Alternate: One can also use python based decoders like morse2ascii to do this. I tried it using that but a lot of the small length audio files were not being decoded correctly. Also, the same algorithm I devised can be done using md5 checksums of the files.
+Alternate: One can also use python based decoders like morse2ascii and wav2ascii to do this. I tried it using that but a lot of the small length audio files were not being decoded correctly. Also, the same algorithm I devised can be done using md5 checksums of the files.
 
