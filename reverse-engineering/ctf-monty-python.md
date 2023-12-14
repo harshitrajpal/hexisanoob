@@ -6,7 +6,7 @@ The CTF challenge required answers to 3 questions like in Monty Python's bridge 
 
 Upon decompiling in Ghidra, we see the questions and conditions upon which flag would be returned:
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 

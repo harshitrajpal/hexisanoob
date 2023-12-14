@@ -151,6 +151,8 @@ Putting this through wc would give me how many files have 4444 size.
 
 <figure><img src="../../.gitbook/assets/image (287).png" alt=""><figcaption></figcaption></figure>
 
+I wrote this small script  to replace files with size 4444 with the digit 6. The dictionary "size\_to\_code" can be extended for other files as well. But for testing I just tried to replace all the files with 4444 sizee first.
+
 ```
 import os
 
@@ -178,7 +180,7 @@ rename_files_in_directory(output_directory)
 
 <figure><img src="../../.gitbook/assets/image (288).png" alt=""><figcaption></figcaption></figure>
 
-I saw that a toal 94 files were renamed. I confirmed this in CLI too.
+I saw that a total 94 files were renamed. I confirmed this earlier in the CLI too. I then grepped and saw that all the files were renamed properly.
 
 <figure><img src="../../.gitbook/assets/image (289).png" alt=""><figcaption></figcaption></figure>
 
@@ -294,9 +296,20 @@ read_filenames_and_append_to_file(output_directory, output_txt)
 
 <figure><img src="../../.gitbook/assets/image (293).png" alt=""><figcaption></figcaption></figure>
 
+The script upon running gave an output.txt file. Since it starts with === sign, this gives me an idea that the base32 string is reversed.
+
 <figure><img src="../../.gitbook/assets/image (294).png" alt=""><figcaption></figcaption></figure>
 
-I then finally reversed this string and saved the output in a file called final. This turned out to be a gz file. Then finally, I used gunzip to extract a text file out of this archive and obtained the flag!
+So, to make it a proper base32 string, I then finally reversed this string and saved the output in a file called final.&#x20;
+
+```
+rev output.txt | base32 -d > final
+file final
+```
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+This turned out to be a gz file. Then finally, I used gunzip to extract a text file out of this archive and obtained the flag!
 
 <figure><img src="../../.gitbook/assets/image (296).png" alt=""><figcaption></figcaption></figure>
 

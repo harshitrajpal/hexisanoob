@@ -30,7 +30,7 @@ int main()
 
 When we compile this, we can see a bunch of readable function names in GDB like main, func.
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 **strip new\_basic**
 
