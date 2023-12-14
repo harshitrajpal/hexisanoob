@@ -1,4 +1,18 @@
+---
+description: 'Skills: Programming, cryptography, GitHub, steganography, forensics'
+---
+
 # Knowledge Repository
+
+Participation page: [https://sunshinectf.org/](https://sunshinectf.org/)
+
+Event weight on ctftime: 34
+
+START: 2023-10-07 14:00 UTC
+
+FINISH: 2023-10-09 14:00 UTC
+
+**Flag Format:** `sun{stuffs}`
 
 **Category: Miscellaneous**
 
