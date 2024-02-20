@@ -62,7 +62,7 @@ Solver.model() => Outputs the solution
 
 Another example for the same equations we provided:
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -121,11 +121,11 @@ def recurse(a,b):
 
 Using z3 this can be solved like:
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 So, at a=13 and b=37, we'll have c=16 and sum=116369
 
@@ -133,7 +133,7 @@ So, at a=13 and b=37, we'll have c=16 and sum=116369
 
 Rather than treating input as a concrete value, a symbolic execution refers to putting in a symbolic value (variable) and running through a program keeping track of what operations were done on the symbolic variable and trying to explore all possible paths on the program.
 
-<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 In the screenshot above, when z==12, fail() is called and when z!=12, OK is printed. So, a variable lambda (λ) is read and assigned to y.
 

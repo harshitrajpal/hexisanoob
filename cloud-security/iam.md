@@ -24,7 +24,7 @@ Oauth - Standard authorization protocol permitting user to share access to a spe
 
 1. CSRF -&#x20;
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 defense techniques: include user interaction, and other CSRF defence techniques talked about here: [https://hexisanoob.gitbook.io/hexisanoob/enum-and-initial-compromise/web-pentest/csrf-mitigation](https://hexisanoob.gitbook.io/hexisanoob/enum-and-initial-compromise/web-pentest/csrf-mitigation)
 

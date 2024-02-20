@@ -88,7 +88,7 @@
     * [Task 1 - Tamper strcmp logic](application-security-basics/gdb-basics/task-1-tamper-strcmp-logic.md)
   * [Linux 64-bit Assembly](application-security/linux-64-bit-assembly/README.md)
     * [Basic Hello World Program](application-security/linux-64-bit-assembly/basic-hello-world-program.md)
-    * [Page](application-security/linux-64-bit-assembly/page.md)
+    * [Reducing instructions and Removing NULL-> Optimizing memory in Assembly](application-security/linux-64-bit-assembly/reducing-instructions-and-removing-null-greater-than-optimizing-memory-in-assembly.md)
 * [Cloud Security](cloud-security/README.md)
   * [Foundational Technology](cloud-security/foundational-technology.md)
   * [Amazon S3](cloud-security/amazon-s3.md)

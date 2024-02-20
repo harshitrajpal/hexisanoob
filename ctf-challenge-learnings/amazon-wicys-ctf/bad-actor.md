@@ -12,7 +12,7 @@ I started by scouring major social media websites and I found the user on twitte
 
 As we can see, there is a coding username given as well. I immediately went to github and found this:
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Continued on Secret Server...
 
