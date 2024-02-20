@@ -84,6 +84,8 @@
   * [Sample Github Actions](application-security-basics/sample-github-actions.md)
   * [Basic Bugs in Demo Application](application-security-basics/basic-bugs-in-demo-application.md)
   * [Using AFL++](application-security-basics/using-afl++.md)
+  * [GDB Basics](application-security-basics/gdb-basics/README.md)
+    * [Task 1 - Tamper strcmp logic](application-security-basics/gdb-basics/task-1-tamper-strcmp-logic.md)
 * [Cloud Security](cloud-security/README.md)
   * [Foundational Technology](cloud-security/foundational-technology.md)
   * [Amazon S3](cloud-security/amazon-s3.md)
