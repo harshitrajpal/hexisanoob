@@ -55,3 +55,10 @@ ld hello.o -o hello
 ./hello
 
 <figure><img src="../../.gitbook/assets/image (300).png" alt=""><figcaption></figcaption></figure>
+
+Here, in .data section "db" is short for define bytes which initializes a string.  We can input enters in assembly by adding 0a at the end.
+
+P.S.  Semicolons in assembly are comments
+
+<figure><img src="../../.gitbook/assets/image (301).png" alt=""><figcaption></figcaption></figure>
+
