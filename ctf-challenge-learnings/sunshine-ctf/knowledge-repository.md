@@ -321,7 +321,7 @@ rev output.txt | base32 -d > final
 file final
 ```
 
-<figure><img src="../../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 This turned out to be a gz file. Then finally, I used gunzip to extract a text file out of this archive and obtained the flag!
 

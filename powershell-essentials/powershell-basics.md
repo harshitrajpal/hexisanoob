@@ -36,7 +36,7 @@ Running `Get-Command New-*` to view all the _cmdlets_ for the verb new displays 
 
 <div align="left">
 
-<img src="../.gitbook/assets/image (5) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt="">
+<img src="../.gitbook/assets/image (5) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt="">
 
 </div>
 

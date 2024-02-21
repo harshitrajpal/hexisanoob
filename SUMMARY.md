@@ -94,6 +94,7 @@
     * [Data Types](application-security/linux-64-bit-assembly/data-types.md)
     * [Endianness](application-security/linux-64-bit-assembly/endianness.md)
     * [Moving Data](application-security/linux-64-bit-assembly/moving-data.md)
+    * [push, pop, and the stack](application-security/linux-64-bit-assembly/push-pop-and-the-stack.md)
 * [Cloud Security](cloud-security/README.md)
   * [Foundational Technology](cloud-security/foundational-technology.md)
   * [Amazon S3](cloud-security/amazon-s3.md)
