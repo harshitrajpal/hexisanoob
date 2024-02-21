@@ -88,6 +88,7 @@
     * [GDB Basics](application-security-basics/gdb-basics/README.md)
       * [Task 1 - Tamper strcmp logic](application-security-basics/gdb-basics/task-1-tamper-strcmp-logic.md)
       * [Breakpoints](application-security/linux-64-bit-assembly/gdb-basics/breakpoints.md)
+      * [GDB TUI Mode](application-security/linux-64-bit-assembly/gdb-basics/gdb-tui-mode.md)
     * [Basic Hello World Program](application-security/linux-64-bit-assembly/basic-hello-world-program.md)
     * [Reducing instructions and Removing NULL-> Optimizing memory in Assembly](application-security/linux-64-bit-assembly/reducing-instructions-and-removing-null-greater-than-optimizing-memory-in-assembly.md)
     * [Data Types](application-security/linux-64-bit-assembly/data-types.md)
