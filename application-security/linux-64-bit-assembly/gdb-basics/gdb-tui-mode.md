@@ -18,3 +18,7 @@ All commands are shown under "help layout"
 
 <figure><img src="../../../.gitbook/assets/image (302).png" alt=""><figcaption></figcaption></figure>
 
+Then we can proceed and step through the program normally and see registers change in real time. This makes our life easier!
+
+<figure><img src="../../../.gitbook/assets/image (303).png" alt=""><figcaption></figcaption></figure>
+
