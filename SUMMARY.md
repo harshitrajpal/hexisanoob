@@ -90,6 +90,7 @@
     * [Basic Hello World Program](application-security/linux-64-bit-assembly/basic-hello-world-program.md)
     * [Reducing instructions and Removing NULL-> Optimizing memory in Assembly](application-security/linux-64-bit-assembly/reducing-instructions-and-removing-null-greater-than-optimizing-memory-in-assembly.md)
     * [Data Types](application-security/linux-64-bit-assembly/data-types.md)
+    * [Endianness](application-security/linux-64-bit-assembly/endianness.md)
 * [Cloud Security](cloud-security/README.md)
   * [Foundational Technology](cloud-security/foundational-technology.md)
   * [Amazon S3](cloud-security/amazon-s3.md)
