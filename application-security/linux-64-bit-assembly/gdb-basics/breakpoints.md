@@ -23,3 +23,11 @@ break \*$rip+42
 
 
 This would set a breakpoiint at 42nd offset from the starting point.
+
+
+
+Finally, if debugging symbols are ON in a binary, we can see the code using "list" command. So we can also set a breakpoint at an absolute line in the code. For example,
+
+break 10
+
+Sets a breakpoint at line 10 of the code (As seen on the last page where strcmp was there)
