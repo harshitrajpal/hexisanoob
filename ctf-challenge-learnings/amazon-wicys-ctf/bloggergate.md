@@ -8,7 +8,7 @@ The server seemed to be taking in a URL and the backend processes it. When I gav
 
 But going through the site, it was clear that I had to make server (admin) execute an HTTP request to my webhook and exfiltrate data there.
 
-<figure><img src="../../.gitbook/assets/image (10) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (10) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 I then used burpsuite to put "curl \<site>" instead but the sserver didn't process anything again.
 
