@@ -99,6 +99,7 @@
     * [Bitwise Logical Operations](application-security/linux-64-bit-assembly/bitwise-logical-operations.md)
     * [Bit-Shifting Operations](application-security/linux-64-bit-assembly/bit-shifting-operations.md)
     * [Control Instructions](application-security/linux-64-bit-assembly/control-instructions.md)
+    * [Loops](application-security/linux-64-bit-assembly/loops.md)
 * [Cloud Security](cloud-security/README.md)
   * [Foundational Technology](cloud-security/foundational-technology.md)
   * [Amazon S3](cloud-security/amazon-s3.md)
