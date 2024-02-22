@@ -6,7 +6,7 @@ CALL-> Instruction can be used. CALL Procedure\_Name
 
 In NASM, procedures are defined using labels.
 
-
+* Note: Arguments to a procedure can be passed via registers, stack or data structures in memory referenced by registers/ or on stack.
 
 Eg:
 
