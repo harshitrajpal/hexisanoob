@@ -96,6 +96,7 @@
     * [Moving Data](application-security/linux-64-bit-assembly/moving-data.md)
     * [push, pop, and the stack](application-security/linux-64-bit-assembly/push-pop-and-the-stack.md)
     * [Arithmetic Operations](application-security/linux-64-bit-assembly/arithmetic-operations.md)
+    * [Bitwise Logical Operations](application-security/linux-64-bit-assembly/bitwise-logical-operations.md)
 * [Cloud Security](cloud-security/README.md)
   * [Foundational Technology](cloud-security/foundational-technology.md)
   * [Amazon S3](cloud-security/amazon-s3.md)
