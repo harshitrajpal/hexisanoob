@@ -91,3 +91,5 @@ Using loop instruction, we are utilizing rcx, avoiding the risk of spoiling rax.
 
 
 
+Please note, if we don't preserve rcx here, after the write syscall, rcx will become all f's. This would become an infinite loop. So we have to preserve this value manually using a stack.
+
