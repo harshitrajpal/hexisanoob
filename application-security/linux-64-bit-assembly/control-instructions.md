@@ -79,15 +79,17 @@ But really the program is a small loop that will print the message "Hello World!
 
 <figure><img src="../../.gitbook/assets/image (356).png" alt=""><figcaption></figcaption></figure>
 
-Now, original value 5 is put on rax again using pop. Then decremented by 1 to make it 4. Then JNE is encountered which sends the control back to PrintHW label where push rax stores 4 on stack now. It becomes a loop to print hello world
+Now, original value 5 is put on rax again using pop. Then decremented by 1 to make it 4. Then JNZ is encountered which sends the control back to PrintHW label where push rax stores 4 on stack now. It becomes a loop to print hello world
 
 <figure><img src="../../.gitbook/assets/image (357).png" alt=""><figcaption></figcaption></figure>
 
 
 
-This is happening because we are utilizing the stack to store current rax value. Because the write operation is changing rax value, we are using stack to maintain state of  RAX. It decrements 5 times and then when it becomes 0, jne statement becomes false and the program exits. MAGIC!
+This is happening because we are utilizing the stack to store current rax value. Because the write operation is changing rax value, we are using stack to maintain state of  RAX. It decrements 5 times and then when it becomes 0, jnz statement becomes false and the program exits. MAGIC!
 
 <figure><img src="../../.gitbook/assets/image (358).png" alt=""><figcaption></figcaption></figure>
 
-
+Why JNZ?\
+\
+JNZ -> Jump if Noot  Zero. If the return value of the previous instruction is not zero, it jumps to the location given. Here, until "dec rax" becomes 0 it keeps jumping!
 
