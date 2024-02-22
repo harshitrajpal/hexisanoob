@@ -93,3 +93,8 @@ Using loop instruction, we are utilizing rcx, avoiding the risk of spoiling rax.
 
 Please note, if we don't preserve rcx here, after the write syscall, rcx will become all f's. This would become an infinite loop. So we have to preserve this value manually using a stack.
 
+
+
+
+
+There are some variations of loop as well: LOOPE, LOOPNE, LOOPNZ, LOOPZ Ref Page 652 of the intel manual ([https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-3c-part-3-manual.pdf](https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-3c-part-3-manual.pdf))
