@@ -2,7 +2,7 @@
 
 Upon entering some random data, an encrypted string was being printed out.
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Since, upon changing the string length, output string changed so I knew it wasn't a hash. It was definitely encryption.&#x20;
 

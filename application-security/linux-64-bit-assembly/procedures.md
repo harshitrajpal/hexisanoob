@@ -87,3 +87,4 @@ Again, when doing buffer overflows using ROP gadgets, we need instructions that 
 
 
 
+NOTE: CALL  and RET are equivalent of calling a function in C (proc();) and then the function returning back  to the  next statement after execution
