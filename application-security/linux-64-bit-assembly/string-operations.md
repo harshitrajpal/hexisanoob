@@ -169,14 +169,14 @@ _start:
 
         mov rax, 0x0123456789abcdef
         lea rdi, [var1]
-        stosq
+        stosq ; Moves rax's value to the memory address pointed by RDI
 
         ; lodsb/w/d/q
         ; Memory to Register
 
         xor rax, rax
         lea rsi, [var1]
-        lodsq
+        lodsq ; Moves var1 to RAX
 
         ; exit the program gracefully
 
@@ -229,9 +229,9 @@ This makes the program decrement addresses as it proceeds making it only copy "H
 
 This is happening because Direction Flag is forcing the decrement and the next byte after "H" is not reached at all.
 
-Next, STOS is used to copy from register RAX to memory 0x402017
+Next, STOS is used to copy from register RAX to memory address stored in RDI (0x402017)
 
 <figure><img src="../../.gitbook/assets/image (376).png" alt=""><figcaption></figcaption></figure>
 
-And the opposite with LODS.
+And the opposite with LODS. LODS stores value of data pointed by RSI in RAX
 
