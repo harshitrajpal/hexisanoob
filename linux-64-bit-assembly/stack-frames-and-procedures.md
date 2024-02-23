@@ -12,11 +12,11 @@ Also, debuggers often expect stack frames to be present, otherwise you can get i
 
 Here is an example. When I create a function in C to print something:
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 Upon inspecting the disassembly of main we will see a stack frame set up as the first two instructions and then always ends in instructions: leave and ret.
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 We would see in many assembly programs that the instructions:
 

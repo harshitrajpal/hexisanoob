@@ -2,11 +2,11 @@
 
 The CTF challenge required answers to 3 questions like in Monty Python's bridge of death.
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Upon decompiling in Ghidra, we see the questions and conditions upon which flag would be returned:
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -16,7 +16,7 @@ As we can see, to get the flag (print\_flag()) we need to make sure that all thr
 
 Let's see question1:
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -24,17 +24,17 @@ Upon entering the string mentioned here, strcmp works and question 1 would be an
 
 Let's see question2:
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Hmmm, 2 variables are input and func2 is called and variable 1 is assigned it's value. Function returns true when a is not equal to b. It returns false when a is equal to b. As in the main() we can see that the question2() must return 0.
 
-<figure><img src="../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 So, to make question2 return 0, variable 1 and variable 2 in the function should be equal. Which means after func2() is done, variable 1 should remain the same.
 
 Let's see func2 now.
 
-<figure><img src="../.gitbook/assets/image (5) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Inspect the three conditions here. When func2 is called from question2(), 3 parameters are sent: variable1, 0 and 0x14 which is 20 in decimal. So, the value of variable 1 and variable 2 must lie in \[0,20].
 
@@ -50,7 +50,7 @@ Finally, question3() should return 0 to continue execution and print flag.
 
 Here is what question 3 looked like:
 
-<figure><img src="../.gitbook/assets/image (6) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
