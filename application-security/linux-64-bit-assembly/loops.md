@@ -98,3 +98,7 @@ Please note, if we don't preserve rcx here, after the write syscall, rcx will be
 
 
 There are some variations of loop as well: LOOPE, LOOPNE, LOOPNZ, LOOPZ Ref Page 652 of the intel manual ([https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-3c-part-3-manual.pdf](https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-vol-3c-part-3-manual.pdf))
+
+
+
+Rep can also be used to loop through. Majorly used in string operations
