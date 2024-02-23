@@ -102,6 +102,7 @@
     * [Loops](application-security/linux-64-bit-assembly/loops.md)
     * [Procedures](application-security/linux-64-bit-assembly/procedures.md)
     * [Stack-Frames and Procedures](application-security/linux-64-bit-assembly/stack-frames-and-procedures.md)
+    * [String Operations](application-security/linux-64-bit-assembly/string-operations.md)
 * [Cloud Security](cloud-security/README.md)
   * [Foundational Technology](cloud-security/foundational-technology.md)
   * [Amazon S3](cloud-security/amazon-s3.md)
