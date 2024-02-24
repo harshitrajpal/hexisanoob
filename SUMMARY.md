@@ -133,3 +133,5 @@
   * [Pwning](pwning/README.md)
     * [Shoddy\_CMP](pwning/shoddy\_cmp.md)
     * [PLT\_PlayIT](ctf-challenge-learnings/pwning/plt\_playit.md)
+* [Applied Cryptography](applied-cryptography/README.md)
+  * [Linear Congruential Generator](applied-cryptography/linear-congruential-generator.md)
