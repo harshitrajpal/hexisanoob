@@ -8,9 +8,9 @@ When we run a program what is the first thing that runs? main? NO.
 
 There is a bunch of stuff that needs to be setup before running the main function like the header files, global variables and such. This could be found by setting a break point at \_start function. This is the first function that executes and sets up the environment.
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
-
 <figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 In stripped binary with symbols removed, decompiler like ghidra won't know where main is. It will start off at this \_start function and then we have to make sense of it and figure out where main is
 
@@ -41,7 +41,7 @@ DYNAMIC Linking:
 
 All the linked libraries in a binary can be seen using ldd command
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Here, libc.so.6 is the C standard library where printf lives. ld-linux-x86-64.so.2 is the runtime loader. It decides where the program should go in memory and how to resolve the name printf() in the address of the printf() function in libc. linux-vdso.so.1 is a Linux feature which allows certain system calls to be implemented without having to jump into the kernel. It improves performance so it is linked by default.
 
@@ -64,9 +64,9 @@ We can think of the GOT as a bunch of trampolines that are resolved (bounced to 
 
 Ghidra->window->memory map
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 In ghidra, we see a PLT (procedure linking table) for some function in binary. The stub is visible in the 2nd screenshot. It is just a jump instruction.
 
@@ -80,11 +80,11 @@ Let's disassemble and see in our hello binary where printf lives.
 
 **objdump -d hello -M intel**
 
-<figure><img src="../../.gitbook/assets/image (5) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 In main() where printf is, we see something written after printf. It is printf@plt which stands for procedure linkage table. Let's inspect the printf@plt function in objdump
 
-<figure><img src="../../.gitbook/assets/image (6) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 We can see that printf is just shown as a 3 instruction function while in reality it is much bigger than that. This printf@plt is a stub which is linking to the real printf function in GLIBC\_2.2.5
 
@@ -116,7 +116,7 @@ Goal: make system() execute whatever buffer is entered by replacing puts' GOT en
 
 In objdump, we can see puts@plt and then other symbols as well. The system function also exists and as we can see it is linked with the related library as well.
 
-<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (11) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now, we will set two breakpoints. One in main. Then run the program. Then set a breakpoint just before the second puts is called.
 

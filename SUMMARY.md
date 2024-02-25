@@ -107,6 +107,8 @@
   * [Shellcoding  basics](linux-64-bit-assembly/shellcoding-basics/README.md)
     * [Introduction and Common Rules](linux-64-bit-assembly/shellcoding-basics/introduction-and-common-rules.md)
     * [Basic Shellcodes->Exit](linux-64-bit-assembly/shellcoding-basics/basic-shellcodes-greater-than-exit.md)
+    * [Testing shellcode->Skeleton Code](linux-64-bit-assembly/shellcoding-basics/testing-shellcode-greater-than-skeleton-code.md)
+    * [Basic Shellcodes->Print](linux-64-bit-assembly/shellcoding-basics/basic-shellcodes-greater-than-print.md)
 * [Cloud Security](cloud-security/README.md)
   * [Foundational Technology](cloud-security/foundational-technology.md)
   * [Amazon S3](cloud-security/amazon-s3.md)
