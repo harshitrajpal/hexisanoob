@@ -2,7 +2,7 @@
 
 The website was simply accepting a name and generating a card.
 
-<figure><img src="../../.gitbook/assets/image (7) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 I tried to input HTML tags, it didn't work. Then I used command injections, again no luck.
 

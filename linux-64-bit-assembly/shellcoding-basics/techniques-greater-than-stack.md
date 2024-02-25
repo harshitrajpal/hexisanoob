@@ -23,13 +23,13 @@ In [5]: binascii.hexlify(message[::-1].encode())
 Out[5]: b'0a646c726f57206f6c6c6548'
 ```
 
-<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
 The hex equivalent in reverse for hello world is: 0a646c726f57206f6c6c6548
 
 I tried pushing the entire thing at once and got this error:
 
-<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 Since message is 12 bytes, we need to break it down to 8 bytes and 4 bytes. Move first 4 bytes first onto the stack and then use a register to move the last 8 bytes.
 

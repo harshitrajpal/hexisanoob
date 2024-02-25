@@ -22,7 +22,7 @@ afl-fuzz -i aflfuzz/inputs -o aflfuzz/outputs -- ./giftcardreader 1 @@
 
 Now I put all the testcases that I need to supply to the application in aflfuzz/inputs directory and create an empty directory aflfuzz/outputs in which AFL shall put its output testcases.
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (2) (3).png" alt=""><figcaption></figcaption></figure>
 
