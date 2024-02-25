@@ -110,6 +110,8 @@
     * [Testing shellcode->Skeleton Code](linux-64-bit-assembly/shellcoding-basics/testing-shellcode-greater-than-skeleton-code.md)
     * [Techniques-> JMP,CALL,POP](linux-64-bit-assembly/shellcoding-basics/techniques-greater-than-jmp-call-pop.md)
     * [Techniques-> Stack](linux-64-bit-assembly/shellcoding-basics/techniques-greater-than-stack.md)
+    * [Techniques-> (64-bit only) RIP Relative Addressing](linux-64-bit-assembly/shellcoding-basics/techniques-greater-than-64-bit-only-rip-relative-addressing.md)
+    * [Page](linux-64-bit-assembly/shellcoding-basics/page.md)
 * [Cloud Security](cloud-security/README.md)
   * [Foundational Technology](cloud-security/foundational-technology.md)
   * [Amazon S3](cloud-security/amazon-s3.md)
