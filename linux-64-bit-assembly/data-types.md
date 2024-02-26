@@ -48,7 +48,7 @@ After assembling and linking the code, we can dissect this in GDB and check what
 
 2. In GDB, we can use "x" to examine these. Use help x to display what commands can be used. So, x/x means examine in hex. Then add if you want to see bytes   or whatever in x/\<size>x\<keyword> REGISTER\_NAME format
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 3. We can also examine repeat\_buffer (that times initialized with 128 0xaa) and buffer that initializes 64 bytes unreserved (assembler by default assigns it with 0x00)
 

@@ -170,11 +170,11 @@ This is how we can create this small shellcode.
 
 In stack pointer, we can see it initialized by 0x000000..1 right now.
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Notice how rsp changes when call shellcode is performed. It stores the memory address of the hello\_world array in the call\_shellcode section on stack
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Further notice what happens to rsi when pop is called. The memory address of hello\_world is stored in RSI now.
 

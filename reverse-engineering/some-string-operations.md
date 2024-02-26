@@ -4,7 +4,7 @@ strops.bin
 
 Upon  opening it in Ghidra we see this:
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 I copied it into sublime and simplified it
 
@@ -50,7 +50,7 @@ Things learned from the code:
 
 I inspected setup() and nothing special is happening
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 So, line 17 must be the key. Let's understand what is happening in English
 
@@ -68,7 +68,7 @@ Another way to understand this translation: If (char)NOT flag\[i] ==input\[i], v
 
 So, let's inspect this flag array
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 This means, we have to pick up all these characters, bitwise NOT them and then input it in the program
 
@@ -108,7 +108,7 @@ int main() {
 }
 ```
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 Let's translate this hex in ASCII: [https://www.rapidtables.com/convert/number/hex-to-ascii.html](https://www.rapidtables.com/convert/number/hex-to-ascii.html)
 
