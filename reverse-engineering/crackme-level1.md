@@ -67,3 +67,23 @@ should crack the binary. Let's see
 
 
 <figure><img src="../.gitbook/assets/image (401).png" alt=""><figcaption></figcaption></figure>
+
+
+
+Note: \*\*argv in int main is conceptually a 2D array
+
+So, "./program Hello" command initializes two arrays
+
+argv\[0] -> ./program
+
+argv\[1] -> Hello
+
+In Assembly this goes in RSI.
+
+* `argc` (argument count) is passed in the `RDI` register.
+* `argv` (argument vector) is passed in the `RSI` register.
+
+`int main(int argc, char *argv[])`
+
+&#x20;
+
