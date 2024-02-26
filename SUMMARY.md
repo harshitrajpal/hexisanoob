@@ -124,6 +124,7 @@
   * [Address inputs](reverse-engineering/address-inputs.md)
   * [Recursive Function](reverse-engineering/recursive-function.md)
   * [Crackme: level1](reverse-engineering/crackme-level1.md)
+  * [Crackme: level2](reverse-engineering/crackme-level2.md)
   * [CTF: Memory Dereferencing](reverse-engineering/ctf-memory-dereferencing.md)
   * [CTF: Monty Python](reverse-engineering/ctf-monty-python.md)
 * [CTF Challenge Learnings](ctf-challenge-learnings/README.md)
