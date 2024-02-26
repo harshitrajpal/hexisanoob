@@ -121,6 +121,7 @@
 * [Reverse Engineering](reverse-engineering/README.md)
   * [Some string Operations](reverse-engineering/some-string-operations.md)
   * [Numbers and Inputs](reverse-engineering/numbers-and-inputs.md)
+  * [Address inputs](reverse-engineering/address-inputs.md)
   * [CTF: Memory Dereferencing](reverse-engineering/ctf-memory-dereferencing.md)
   * [CTF: Monty Python](reverse-engineering/ctf-monty-python.md)
 * [CTF Challenge Learnings](ctf-challenge-learnings/README.md)
