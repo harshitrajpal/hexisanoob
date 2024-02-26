@@ -119,6 +119,8 @@
   * [Risk Management & Data Controls](cloud-security/risk-management-and-data-controls.md)
   * [IAM](cloud-security/iam.md)
 * [Reverse Engineering](reverse-engineering/README.md)
+  * [Some string Operations](reverse-engineering/some-string-operations.md)
+  * [Numbers and Inputs](reverse-engineering/numbers-and-inputs.md)
   * [CTF: Memory Dereferencing](reverse-engineering/ctf-memory-dereferencing.md)
   * [CTF: Monty Python](reverse-engineering/ctf-monty-python.md)
 * [CTF Challenge Learnings](ctf-challenge-learnings/README.md)

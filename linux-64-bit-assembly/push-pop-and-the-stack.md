@@ -37,7 +37,7 @@ section .data
 
 Let's launch this code in GDB TUI mode and layout regs and asm. We'll step through and dissect this code to see what is happening to the registers as we step to the next instructions.
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now, we can't see the stack as of now. So we'll set up a hook stop. This is a special command which is executed after every step: [https://sourceware.org/gdb/current/onlinedocs/gdb.html/Hooks.html](https://sourceware.org/gdb/current/onlinedocs/gdb.html/Hooks.html)
 
@@ -49,19 +49,19 @@ I'm setting up a hook-stop to examine 4 giant words at the top of the stack (RSP
 
 As we can see, the stack is now visible after every next step we take in GDB.
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 We take two next steps and observe how stack is now updated
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 We can similarly see how pop is working now. The value on top of the stack is now popped and stored in r15.
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Similarly, other pops are working too
 
-<figure><img src="../.gitbook/assets/image (4) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Finally, the program exits.
 
