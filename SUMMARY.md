@@ -26,6 +26,7 @@
     * [CSP  bypass with JSONP](enum-and-initial-compromise/web-pentest/csp-bypass-with-jsonp.md)
     * [PHP Vulnerabilities](enum-and-initial-compromise/web-pentest/php-vulnerabilities.md)
     * [Python Serialization Vulnerabilities - Pickle](enum-and-initial-compromise/web-pentest/python-serialization-vulnerabilities-pickle.md)
+    * [SQL Injections](enum-and-initial-compromise/web-pentest/sql-injections.md)
   * [Buffer Overflow Prep](enum-and-initial-compromise/buffer-overflow-prep.md)
     * [Understanding CPUs](enum-and-initial-compromise/buffer-overflow-prep/understanding-cpus.md)
     * [Virtual Memory and Paging](enum-and-initial-compromise/buffer-overflow-prep/virtual-memory-and-paging.md)
