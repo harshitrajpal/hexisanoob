@@ -40,3 +40,15 @@ To test this, I added another symbol before \_yolo in .text
 
 <figure><img src="../.gitbook/assets/image (412).png" alt=""><figcaption></figcaption></figure>
 
+
+
+Finally, when I givee global _yolo as the directive but with_ bro section before that in .text, assembler still picks up \_bro as the start point
+
+<figure><img src="../.gitbook/assets/image (413).png" alt=""><figcaption></figcaption></figure>
+
+
+
+Conclusion: "global \__start" tells the assembler the entry point into the program. If "start" doesn't exist, it picks the first instruction in .text section as the entry point. If there are multiple labels in .text and global is given any other variable in text whose name is not "\__start" then it still defaults to using first label as the entry point.
+
+
+
