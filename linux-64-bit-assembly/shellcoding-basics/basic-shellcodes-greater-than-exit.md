@@ -20,11 +20,11 @@ _start:
         syscall
 ```
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 As we see above that mov rax has been converted to mov eax to optimize memory. But if we look at objdump, we'll still note many 0's after mov eax,0x3c instruction (in hex b8 3c after we see 3 bytes of 0s). Similarly after moving to RDI, we see 3 bytes of 0x again.
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 So, we remove the 0's by replacing these instructions with equivalent instructions that do not produce 0s. We know both of these mov instructions take 2  bytes and the number we are inputting (60 and 11 or 0x3c and 0xb in hex are also 1 byte each). So ideally we can use lower 1 byte of RAX and RDI to do this.
 

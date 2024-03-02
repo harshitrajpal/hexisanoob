@@ -6,11 +6,11 @@ Author: nima
 
 Decompiled:
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 initial run:&#x20;
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 I simplified this code:
 
@@ -56,7 +56,7 @@ Upon inspecting Ghidra, we observe these things mainly:
 6. Either var\[3] or var\[4] or var\[5] or var\[6] should meet condition. Let's make var\[6] true. So program name now becomes ./levea1
 7. Finally it reaches test()
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 As it happens, this is already true because our first argument starts with "@"
 

@@ -16,7 +16,7 @@ Here is an example. When I create a function in C to print something:
 
 Upon inspecting the disassembly of main we will see a stack frame set up as the first two instructions and then always ends in instructions: leave and ret.
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 We would see in many assembly programs that the instructions:
 
