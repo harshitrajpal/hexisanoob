@@ -59,3 +59,17 @@ Then a new terminal:
 `set architecture i386:x86-64`
 
 `target remote localhost:1234`
+
+
+
+## Entry Point
+
+Often, main is not the entry point. Sometimes it can be "\_start" as well. Using info files, one can find the entry point.
+
+```
+info files
+```
+
+<figure><img src="../../.gitbook/assets/image (408).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (409).png" alt=""><figcaption></figcaption></figure>

@@ -94,6 +94,7 @@
     * [Always starting with intel flavor](linux-64-bit-assembly/gdb-basics/always-starting-with-intel-flavor.md)
     * [GDB TUI Mode](linux-64-bit-assembly/gdb-basics/gdb-tui-mode.md)
   * [Basic Hello World Program](linux-64-bit-assembly/basic-hello-world-program.md)
+  * [global directive](linux-64-bit-assembly/global-directive.md)
   * [Reducing instructions and Removing NULL-> Optimizing memory in Assembly](linux-64-bit-assembly/reducing-instructions-and-removing-null-greater-than-optimizing-memory-in-assembly.md)
   * [Data Types](linux-64-bit-assembly/data-types.md)
   * [Endianness](linux-64-bit-assembly/endianness.md)
