@@ -28,6 +28,16 @@ Eg: LEA RAX, \[var1]
 
 Where var1 is the label given to any data type (talked in data type article here: [https://hexisanoob.gitbook.io/hexisanoob/application-security/linux-64-bit-assembly/data-types](https://hexisanoob.gitbook.io/hexisanoob/application-security/linux-64-bit-assembly/data-types))
 
+
+
+Please note that, these two instructions essentially mean the same thing:
+
+mov rax, sample
+
+lea rax,\[sample]
+
+
+
 ### XCHG
 
 Swaps values in between:
@@ -118,57 +128,57 @@ Note at the end we are exiting by giving  rax a value 0x3c which is hex equivale
 
 Instruction 1: Rule A applies
 
-<figure><img src="../../.gitbook/assets/image (304).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (304).png" alt=""><figcaption></figcaption></figure>
 
 Instruction 2: Note how a 32 bit value output zeros out the upper 32 bits of the register. 3rd instruction resets RAX.
 
-<figure><img src="../../.gitbook/assets/image (305).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (305).png" alt=""><figcaption></figcaption></figure>
 
 Instruction 4:  Rule C applies and the remaining 30 bits are unaffected
 
-<figure><img src="../../.gitbook/assets/image (306).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (306).png" alt=""><figcaption></figcaption></figure>
 
 Instruction  9: Moves rax into rbp
 
-<figure><img src="../../.gitbook/assets/image (307).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (307).png" alt=""><figcaption></figcaption></figure>
 
 Instruction 14: This instruction assigns value of sample2 variable in RSI.
 
-<figure><img src="../../.gitbook/assets/image (308).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (308).png" alt=""><figcaption></figcaption></figure>
 
 On stepi we'll see the change
 
-<figure><img src="../../.gitbook/assets/image (309).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (309).png" alt=""><figcaption></figcaption></figure>
 
 Instruction 19: Changes sample variables 1 byte with that of al.&#x20;
 
-<figure><img src="../../.gitbook/assets/image (310).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (310).png" alt=""><figcaption></figcaption></figure>
 
 Notice al has 88 right now and sample starts with 0xaa. This gets overwritten
 
-<figure><img src="../../.gitbook/assets/image (311).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (311).png" alt=""><figcaption></figcaption></figure>
 
 Instruction 23: LEA would load 0x402000 intro RAX. Note that this is the memory address of sample variable.
 
-<figure><img src="../../.gitbook/assets/image (312).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (312).png" alt=""><figcaption></figcaption></figure>
 
 Upon stepi or si, we see RAX being overwritten with the address of sample
 
-<figure><img src="../../.gitbook/assets/image (313).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (313).png" alt=""><figcaption></figcaption></figure>
 
 Instruction 24: This instruction (lea rbx, \[rax]) essentially loads the value in RAX into RBX
 
-<figure><img src="../../.gitbook/assets/image (315).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (315).png" alt=""><figcaption></figcaption></figure>
 
 Instruction 27: This instruction would exchange RAX and RBX. Notice how rax and rbx have been overwritten first by 64 bit absolute values
 
-<figure><img src="../../.gitbook/assets/image (316).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (316).png" alt=""><figcaption></figcaption></figure>
 
 One more stepi
 
-<figure><img src="../../.gitbook/assets/image (317).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (317).png" alt=""><figcaption></figcaption></figure>
 
 Finally, we exit the program using 0x3c (hex value for 60->syscall number for exit()) with rdi as 0 for error code.
 
-<figure><img src="../../.gitbook/assets/image (318).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (318).png" alt=""><figcaption></figcaption></figure>
 
