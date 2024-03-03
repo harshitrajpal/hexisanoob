@@ -49,7 +49,7 @@ I'm setting up a hook-stop to examine 4 giant words at the top of the stack (RSP
 
 As we can see, the stack is now visible after every next step we take in GDB.
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 We take two next steps and observe how stack is now updated
 

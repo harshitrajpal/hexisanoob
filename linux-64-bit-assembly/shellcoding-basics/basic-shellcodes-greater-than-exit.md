@@ -20,7 +20,7 @@ _start:
         syscall
 ```
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 As we see above that mov rax has been converted to mov eax to optimize memory. But if we look at objdump, we'll still note many 0's after mov eax,0x3c instruction (in hex b8 3c after we see 3 bytes of 0s). Similarly after moving to RDI, we see 3 bytes of 0x again.
 

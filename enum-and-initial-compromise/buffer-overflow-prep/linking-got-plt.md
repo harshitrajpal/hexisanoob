@@ -8,9 +8,9 @@ When we run a program what is the first thing that runs? main? NO.
 
 There is a bunch of stuff that needs to be setup before running the main function like the header files, global variables and such. This could be found by setting a break point at \_start function. This is the first function that executes and sets up the environment.
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
-
 <figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 In stripped binary with symbols removed, decompiler like ghidra won't know where main is. It will start off at this \_start function and then we have to make sense of it and figure out where main is
 

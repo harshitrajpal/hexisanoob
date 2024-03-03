@@ -28,7 +28,7 @@ When I compile this and run, this happens:
 
 This is always bound to happen using modern systems. I tried identifying the problem and here is a guess.  The shellcode lands in the .data section in the assembly after the assembler works. This .data segment is essentially non-executable.
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 So, to test the shellcode properly using a skeleton, we have to resort to keeping the code in a memory section that is executable. After som suggestions, using mmap() to allocate a page of memory which is executable makes sense. So the skeleton code is:
 

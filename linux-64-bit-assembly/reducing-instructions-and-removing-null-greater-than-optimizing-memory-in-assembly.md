@@ -8,7 +8,7 @@ In line 1,  we can see even though assembler has optimized my rax assignment of 
 
 &#x20;
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Changing RAX to AL still produces the same output but as we can see in objdump, memory used is reduced from 5 to 2 bytes.
 

@@ -50,7 +50,7 @@ Things learned from the code:
 
 I inspected setup() and nothing special is happening
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 So, line 17 must be the key. Let's understand what is happening in English
 

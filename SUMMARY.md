@@ -101,6 +101,7 @@
   * [Endianness](linux-64-bit-assembly/endianness.md)
   * [Moving Data](linux-64-bit-assembly/moving-data.md)
   * [push, pop, and the stack](linux-64-bit-assembly/push-pop-and-the-stack.md)
+  * [Analysis - Writing data on memory location and referencing](linux-64-bit-assembly/analysis-writing-data-on-memory-location-and-referencing.md)
   * [Arithmetic Operations](linux-64-bit-assembly/arithmetic-operations.md)
   * [Bitwise Logical Operations](linux-64-bit-assembly/bitwise-logical-operations.md)
   * [Bit-Shifting Operations](linux-64-bit-assembly/bit-shifting-operations.md)
