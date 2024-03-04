@@ -119,6 +119,7 @@
     * [Techniques-> (64-bit only) RIP Relative Addressing](linux-64-bit-assembly/shellcoding-basics/techniques-greater-than-64-bit-only-rip-relative-addressing.md)
     * [Shellcode 1 -> execve(/bin/sh) STACK PUSH](linux-64-bit-assembly/shellcoding-basics/shellcode-1-greater-than-execve-bin-sh-stack-push.md)
     * [Shellcode 1 -> execve(/bin/sh) JMP CALL POP](linux-64-bit-assembly/shellcoding-basics/shellcode-1-greater-than-execve-bin-sh-jmp-call-pop.md)
+    * [Xor-Encoder Shellcode](linux-64-bit-assembly/shellcoding-basics/xor-encoder-shellcode.md)
 * [Cloud Security](cloud-security/README.md)
   * [Foundational Technology](cloud-security/foundational-technology.md)
   * [Amazon S3](cloud-security/amazon-s3.md)
