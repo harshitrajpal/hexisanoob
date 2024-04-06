@@ -8,9 +8,9 @@ When we run a program what is the first thing that runs? main? NO.
 
 There is a bunch of stuff that needs to be setup before running the main function like the header files, global variables and such. This could be found by setting a break point at \_start function. This is the first function that executes and sets up the environment.
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
-
 <figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 In stripped binary with symbols removed, decompiler like ghidra won't know where main is. It will start off at this \_start function and then we have to make sense of it and figure out where main is
 
@@ -41,7 +41,7 @@ DYNAMIC Linking:
 
 All the linked libraries in a binary can be seen using ldd command
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Here, libc.so.6 is the C standard library where printf lives. ld-linux-x86-64.so.2 is the runtime loader. It decides where the program should go in memory and how to resolve the name printf() in the address of the printf() function in libc. linux-vdso.so.1 is a Linux feature which allows certain system calls to be implemented without having to jump into the kernel. It improves performance so it is linked by default.
 
@@ -64,9 +64,9 @@ We can think of the GOT as a bunch of trampolines that are resolved (bounced to 
 
 Ghidra->window->memory map
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 In ghidra, we see a PLT (procedure linking table) for some function in binary. The stub is visible in the 2nd screenshot. It is just a jump instruction.
 
@@ -80,11 +80,11 @@ Let's disassemble and see in our hello binary where printf lives.
 
 **objdump -d hello -M intel**
 
-<figure><img src="../../.gitbook/assets/image (5) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 In main() where printf is, we see something written after printf. It is printf@plt which stands for procedure linkage table. Let's inspect the printf@plt function in objdump
 
-<figure><img src="../../.gitbook/assets/image (6) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 We can see that printf is just shown as a 3 instruction function while in reality it is much bigger than that. This printf@plt is a stub which is linking to the real printf function in GLIBC\_2.2.5
 
@@ -110,43 +110,43 @@ Goal: make system() execute whatever buffer is entered by replacing puts' GOT en
 
 
 
-<figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
 In objdump, we can see puts@plt and then other symbols as well. The system function also exists and as we can see it is linked with the related library as well.
 
-<figure><img src="../../.gitbook/assets/image (11) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (11) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now, we will set two breakpoints. One in main. Then run the program. Then set a breakpoint just before the second puts is called.
 
-<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (13) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now, when this break point is hit after continuing, let's observe the GOT mappings using x/xg
 
-<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (14) (1).png" alt=""><figcaption></figcaption></figure>
 
 GOT mappings for puts and fgets are visible here. Let's see for system as well. These hex values represent GOT entries (just pointers!) With info symbol command we can see which GOT entry belongs to which function. Here, puts in section .text.... signifies that puts() is linked with the library libc
 
-<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (16) (1).png" alt=""><figcaption></figcaption></figure>
 
 Let's try to manually change this puts mapping with system mapping
 
-<figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (17) (1).png" alt=""><figcaption></figcaption></figure>
 
 So now, system will be called with puts() arguments and whatever buffer I pass will be executed. What's a fun command to run? Hmm. Let's see /etc/passwd! Let's start the process again in one smooth flow.
 
 1. set main breakpoint
 2. set breakpoint just before the second puts
 
-<figure><img src="../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (18) (1).png" alt=""><figcaption></figcaption></figure>
 
 3. When breakpoint is hit, examine GOT entries. Replace puts@got.plt with system@got.plt
 4. Continue execution to see system() executed with the buffer input in fgets which was supposed to be executed by puts but is now executed by system()
 
 breakpoint is hit. Let's set puts entry to system's entry as we saw above and continue execution!
 
-<figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (19) (1).png" alt=""><figcaption></figcaption></figure>
 
 We have successfully changed GOT entry and made the binary execute a system command.
 
