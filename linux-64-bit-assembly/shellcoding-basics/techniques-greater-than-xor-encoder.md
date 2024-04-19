@@ -1,6 +1,0 @@
-# Xor-Encoder Shellcode
-
-
-
-
-
