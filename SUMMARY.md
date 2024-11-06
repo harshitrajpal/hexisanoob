@@ -15,6 +15,7 @@
     * [Quick SMB cheatsheet](enum-and-initial-compromise/network-pentest/quick-smb-cheatsheet.md)
     * [SSH keypair basics](enum-and-initial-compromise/network-pentest/ssh-keypair-basics.md)
     * [Compromise using SSH Key](enum-and-initial-compromise/network-pentest/compromise-using-ssh-key.md)
+    * [Networking fundamentals Interview topics](enum-and-initial-compromise/network-pentest/networking-fundamentals-interview-topics.md)
   * [Web Pentest](enum-and-initial-compromise/web-pentest/README.md)
     * [Web Pentest Interview top topics](enum-and-initial-compromise/web-pentest/owasp-top-10-master-pentest-guide.md)
     * [Wordpress Exploitation](enum-and-initial-compromise/web-pentest/wordpress-exploitation.md)
