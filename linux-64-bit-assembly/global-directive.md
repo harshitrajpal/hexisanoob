@@ -48,7 +48,7 @@ Finally, when I givee global _yolo as the directive but with_ bro section before
 
 
 
-Conclusion: "global \__start" tells the assembler the entry point into the program. If "start" doesn't exist, it picks the first instruction in .text section as the entry point. If there are multiple labels in .text and global is given any other variable in text whose name is not "\__start" then it still defaults to using first label as the entry point.
+Conclusion: "global \__start" tells the assembler the entry point into the program. If "start" doesn't exist, it picks the first instruction in .text section as the entry point. If there are multiple labels in .text and global is given any other variable in text whose name is not "\__&#x73;tart" then it still defaults to using first label as the entry point.
 
 
 

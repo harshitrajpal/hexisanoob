@@ -8,7 +8,7 @@
 * These will automatically be known to the router on your network. Many Internet Service Providers (ISPs) maintain their own recursive servers, but companies such as Google and OpenDNS also control recursive servers. (eg: 8.8.8.8 is for google.com)
 * This is how your computer automatically knows where to send the request for information: details for a recursive DNS server are stored in your router. This server will also maintain a cache of results for popular domains; however, if the website you've requested isn't stored in the cache, the recursive server will pass the request on to a _root name_ server.
 * Before 2004 there were precisely 13 root name DNS servers in the world.The root name servers essentially keep track of the DNS servers in the next level down, choosing an appropriate one to redirect your request to. These lower level servers are called _Top-Level_ _Domain_ servers.
-* Top-Level Domain (TLD) servers are split up into extensions. So, for example, if you were searching for tryhackme**.com** your request would be redirected to a TLD server that handled `.com` domains. If you were searching for bbc**.co.uk** your request would be redirected to a TLD server that handles `.co.uk` domains.
+* Top-Level Domain (TLD) servers are split up into extensions. So, for example, if you were searching for tryhackm&#x65;**.com** your request would be redirected to a TLD server that handled `.com` domains. If you were searching for bb&#x63;**.co.uk** your request would be redirected to a TLD server that handles `.co.uk` domains.
 * As with root name servers, TLD servers keep track of the next level down: _Authoritative name servers_. When a TLD server receives your request for information, the server passes it down to an appropriate Authoritative name server.
 * Authoritative name servers are used to store DNS records for domains directly. In other words, every domain in the world will have its DNS records stored on an Authoritative name server somewhere or another; they are the source of the information. When your request reaches the authoritative name server for the domain you're querying, it will send the relevant information back to you, allowing your computer to connect to the IP address behind the domain you requested.
 
@@ -34,11 +34,7 @@ eg: if we want to query google.com with our custom recursive server we do dig \<
 
 **`dig google.com @1.1.1.1`**
 
-<div align="left">
-
-<img src="../.gitbook/assets/image (108).png" alt="">
-
-</div>
+<div align="left"><img src="../.gitbook/assets/image (108).png" alt=""></div>
 
 **`TTL =>`** Another interesting piece of information that dig gives us is the TTL (**T**ime **T**o **L**ive) of the queried DNS record. As mentioned previously, when your computer queries a domain name, it stores the results in its local cache. The TTL of the record tells your computer when to stop considering the record as being valid -- i.e. when it should request the data again, rather than relying on the cached copy.
 
@@ -49,29 +45,17 @@ eg: if we want to query google.com with our custom recursive server we do dig \<
 * Digging IP address: dig google.com
 * Digging for short answers: dig google.com +short
 
-<div align="left">
-
-<img src="../.gitbook/assets/image (54).png" alt="">
-
-</div>
+<div align="left"><img src="../.gitbook/assets/image (54).png" alt=""></div>
 
 * Reverse IP lookup: dig -x 142.250.206.174\
 
 
-<div align="left">
-
-<img src="../.gitbook/assets/image (31).png" alt="">
-
-</div>
+<div align="left"><img src="../.gitbook/assets/image (31).png" alt=""></div>
 
 * Query any DNS record: dig google.com ANY\
 
 
-<div align="left">
-
-<img src="../.gitbook/assets/image (140).png" alt="">
-
-</div>
+<div align="left"><img src="../.gitbook/assets/image (140).png" alt=""></div>
 
 * dig for particular records: \
   dig hostinger.com txt (Query TXT record)\
@@ -79,20 +63,12 @@ eg: if we want to query google.com with our custom recursive server we do dig \<
   dig hostinger.com ns (Query NS record)\
   dig hostinger.com A (Query A record)
 
-<div align="left">
-
-<img src="../.gitbook/assets/image (85).png" alt="">
-
-</div>
+<div align="left"><img src="../.gitbook/assets/image (85).png" alt=""></div>
 
 * Trace DNS path: dig hostinger.com +trace (It will query the name servers starting from the root and subsequently traverses down the namespace tree using iterative queries)\
 
 
-<div align="left">
-
-<img src="../.gitbook/assets/image (15) (1) (1) (1) (1).png" alt="">
-
-</div>
+<div align="left"><img src="../.gitbook/assets/image (15) (1) (1) (1) (1).png" alt=""></div>
 
 ## DNS Zone Transfer
 
@@ -107,11 +83,7 @@ You can use different mechanisms for DNS zone transfer but the simplest one is A
 dig +short ns zonetransfer.me\
 dig axfr zonetransfer.me @nsztm1.digi.ninja
 
-<div align="left">
-
-<img src="../.gitbook/assets/image (118).png" alt="">
-
-</div>
+<div align="left"><img src="../.gitbook/assets/image (118).png" alt=""></div>
 
 **AXFR Vulnerability =>** AXFR offers no authentication, so any client can ask a DNS server for a copy of the entire zone. This means that unless some kind of protection is introduced, an attacker can get a list of all hosts for a domain, which gives them a lot of potential attack vectors.
 

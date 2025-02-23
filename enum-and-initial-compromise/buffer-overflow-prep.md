@@ -16,11 +16,7 @@ Stack supports two operations push and pop.\
 
 Stack can be visualised as:
 
-<div align="left">
-
-<img src="../.gitbook/assets/Screenshot_2.png" alt="">
-
-</div>
+<div align="left"><img src="../.gitbook/assets/Screenshot_2.png" alt=""></div>
 
 **Text:** Contains program code to be executed.\
 **Data:** Contains global information for program.\
@@ -62,11 +58,7 @@ int main (int argc, char **argv)
 }
 ```
 
-<div align="left">
-
-<img src="../.gitbook/assets/image (53).png" alt="">
-
-</div>
+<div align="left"><img src="../.gitbook/assets/image (53).png" alt=""></div>
 
 In programming, Prologue is what happens at the beginning of a function. Its responsibility is to set up the _stack frame_ of the called function. "Machine" allocates multiple blocks to a thread and assigns pointer to ensure flow. Let's call it the execution model.
 
@@ -78,19 +70,11 @@ In programming, Prologue is what happens at the beginning of a function. Its res
 
 When strcpy() runs, it starts writing data downwards like this:
 
-<div align="left">
-
-<img src="../.gitbook/assets/image (117).png" alt="">
-
-</div>
+<div align="left"><img src="../.gitbook/assets/image (117).png" alt=""></div>
 
 Now, when we input data > 128 bytes, buffer gets overflowed
 
-<div align="left">
-
-<img src="../.gitbook/assets/image (20) (1) (1).png" alt="">
-
-</div>
+<div align="left"><img src="../.gitbook/assets/image (20) (1) (1).png" alt=""></div>
 
 **VERY IMPORTANT**: The prologue is what happens at the beginning of a function. Its responsibility is to set up the _stack frame_ of the called function. The epilogue is the exact opposite: it is what happens last in a function, and its purpose is to restore the stack frame of the calling (parent) function.
 
@@ -118,4 +102,4 @@ BONUS: In recent GCC compilers, there is a default protection mechanism for buff
 
 
 Here, C program's name is overflow.c and output binary is bufferoverflow\
-**`gcc -g -fno-stack-protector -z execstack -o bufferoverflow overflow.c`**
+&#xNAN;**`gcc -g -fno-stack-protector -z execstack -o bufferoverflow overflow.c`**
