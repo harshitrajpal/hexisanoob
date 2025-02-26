@@ -68,7 +68,7 @@ eg: if we want to query google.com with our custom recursive server we do dig \<
 * Trace DNS path: dig hostinger.com +trace (It will query the name servers starting from the root and subsequently traverses down the namespace tree using iterative queries)\
 
 
-<div align="left"><img src="../.gitbook/assets/image (15) (1) (1) (1) (1).png" alt=""></div>
+<div align="left"><img src="../.gitbook/assets/image (15) (1) (1) (1) (1) (1).png" alt=""></div>
 
 ## DNS Zone Transfer
 

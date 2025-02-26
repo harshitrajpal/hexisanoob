@@ -130,6 +130,7 @@
     * [S3 - Enum Basics - PwnedLabs](cloud-security/enumeration/s3-enum-basics-pwnedlabs.md)
     * [S3 - Identify the AWS Account ID from a Public S3 Bucket](cloud-security/enumeration/s3-identify-the-aws-account-id-from-a-public-s3-bucket.md)
     * [EBS - Loot Public EBS Volumes](cloud-security/enumeration/ebs-loot-public-ebs-volumes.md)
+    * [S3- Exploit Weak Bucket Policies for Privileged Access](cloud-security/enumeration/s3-exploit-weak-bucket-policies-for-privileged-access.md)
 * [Reverse Engineering](reverse-engineering/README.md)
   * [Some string Operations](reverse-engineering/some-string-operations.md)
   * [Numbers and Inputs](reverse-engineering/numbers-and-inputs.md)
