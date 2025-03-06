@@ -30,6 +30,45 @@
 
 
 
+## Playgrounds
+
+1. OWASP Juice Shop - Modern web app based on node.js, angular etc with OWASP Top 10: [https://owasp.org/www-project-juice-shop/](https://owasp.org/www-project-juice-shop/)
+2. DVWA - Damn Vulnerable Web Application - Older web app for legacy attacks: [https://github.com/digininja/DVWA](https://github.com/digininja/DVWA)
+3. Metasploitable3 - Upgraded metasploitable2 version: [https://github.com/rapid7/metasploitable3](https://github.com/rapid7/metasploitable3)
+4. Portswigger web academy - [https://portswigger.net/web-security](https://portswigger.net/web-security)
+5. Under and Over the wire - For Linux command line and windows powershell mastery [https://underthewire.tech/wargames](https://underthewire.tech/wargames)\
+   [https://overthewire.org/wargames/](https://overthewire.org/wargames/)
+
+
+
+## Terminal improvements (coz, eh, default— eh!)
+
+1. tmux - [https://github.com/tmux/tmux](https://github.com/tmux/tmux)
+   1. Small tmux cheatsheet -
+   2. CTRL + B (Hereby referred to as the prefix)
+   3. prefix + shift + % (Open a new terminal vertically side by side)
+   4. prefix + shift + " (Open a new terminal horizontally downwards)
+   5. prefix + arrow buttons \<up/down/left/right> (interact with a specific terminal window)
+   6. prefix + c (new terminal tab)
+   7. prefix + \<number> (go to a particular terminal tab)
+   8. prefix + shift + \<number> (Create a new terminal \<tab number> and send a terminal window to a particular terminal tab)
+
+<figure><img src=".gitbook/assets/image (450).png" alt=""><figcaption></figcaption></figure>
+
+## Videos/Channels I refer to
+
+1. Old retired HTb boxes - Ippsec
+
+{% embed url="https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA?themeRefresh=1" %}
+
+2. John Hammond
+
+{% embed url="https://www.youtube.com/@_JohnHammond" %}
+
+3. Rana Khalil - Portswigger videos explanation
+
+{% embed url="https://www.youtube.com/@RanaKhalil101" %}
+
 
 
 
