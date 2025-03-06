@@ -185,3 +185,4 @@
     * [PLT\_PlayIT](ctf-challenge-learnings/pwning/plt_playit.md)
 * [Applied Cryptography](applied-cryptography/README.md)
   * [Linear Congruential Generator](applied-cryptography/linear-congruential-generator.md)
+* [Tools for everything](tools-for-everything.md)
