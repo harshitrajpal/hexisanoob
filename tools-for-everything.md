@@ -13,6 +13,33 @@
 1. Payload all the things (Web and API pentest) : [https://swisskyrepo.github.io/PayloadsAllTheThings/](https://swisskyrepo.github.io/PayloadsAllTheThings/)
 2. Internet all the things (Cheetsheets for internal and AD pentest):  [https://swisskyrepo.github.io/InternalAllTheThings/](https://swisskyrepo.github.io/InternalAllTheThings/)
 
+## Enumeration
+
+1.  subdomain finder - [https://crt.sh/](https://crt.sh/)\
+    Can be invoked using curl:\
+
+
+    ```shell-session
+    curl -s https://crt.sh/\?q\=inlanefreight.com\&output\=json | jq .
+    ```
+
+    \
+    To sort out unique subdomains:\
+
+
+    ```shell-session
+    curl -s https://crt.sh/\?q\=inlanefreight.com\&output\=json | jq . | grep name | cut -d":" -f2 | grep -v "CN=" | cut -d'"' -f2 | awk '{gsub(/\\n/,"\n");}1;' | sort -u
+    ```
+2.
+
+
+
+
+
+
+
+
+
 ## Privilege Escalation
 
 1. Linux:
