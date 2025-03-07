@@ -8,6 +8,7 @@
 * [Security Basics Notes](security-basics-notes/README.md)
   * [Identification, Authentication and Authorization](security-basics-notes/identification-authentication-and-authorization.md)
 * [Enumeration and Initial Compromise](enum-and-initial-compromise/README.md)
+  * [Methodology](enum-and-initial-compromise/methodology.md)
   * [Nifty One Liners](enum-and-initial-compromise/nifty-one-liners.md)
   * [Brute-Force Web Pages](enum-and-initial-compromise/brute-force-web-pages/README.md)
     * [Hydra](enum-and-initial-compromise/brute-force-web-pages/hydra.md)
