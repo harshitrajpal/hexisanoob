@@ -16,6 +16,7 @@
     * [DNS](enum-and-initial-compromise/network-protocols/dns.md)
     * [NFS](enum-and-initial-compromise/network-protocols/nfs.md)
     * [SMTP](enum-and-initial-compromise/network-protocols/smtp.md)
+    * [IMAP/POP3](enum-and-initial-compromise/network-protocols/imap-pop3.md)
   * [Nifty One Liners](enum-and-initial-compromise/nifty-one-liners.md)
   * [Brute-Force Web Pages](enum-and-initial-compromise/brute-force-web-pages/README.md)
     * [Hydra](enum-and-initial-compromise/brute-force-web-pages/hydra.md)
