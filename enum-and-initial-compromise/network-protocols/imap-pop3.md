@@ -301,3 +301,37 @@ Once we have successfully initiated a connection and logged in to the target mai
 In the SMTP section, we have found the user `robin`. Another member of our team was able to find out that the user also uses his username as a password (`robin`:`robin`). We can use these credentials and try them to interact with the IMAP/POP3 services.
 
 \
+\---------------------------------------------------------------------------------------------------------------------
+
+**pop3s commands**
+
+`openssl s_client -connect 10.129.216.201:pop3s`
+
+`USER robin\r\n`
+
+`PASS robin\r\n`
+
+
+
+**imaps commands**
+
+`openssl s_client -connect 10.129.216.201:imaps`
+
+`1 LOGIN robin robin`
+
+->Enumerating all emails
+
+
+
+`1 LIST ""*`
+
+`1 SELECT DEV.DEPARTMENT.INT`
+
+`1 fetch 1 all`
+
+
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+
+
