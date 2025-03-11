@@ -1,6 +1,6 @@
 # IMAP/POP3
 
-
+[https://www.atmail.com/blog/imap-commands/?source=post\_page-----5e5c99547f8a---------------------------------------](https://www.atmail.com/blog/imap-commands/?source=post_page-----5e5c99547f8a---------------------------------------)
 
 
 
@@ -331,7 +331,31 @@ In the SMTP section, we have found the user `robin`. Another member of our team 
 
 
 
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+Read particular fields in an email body
+
+1 fetch 1 body\[\<field name>]
+
+field names:
+
+* ALL: Macro equivalent to: (FLAGS INTERNALDATE RFC822.SIZE ENVELOPE)
+* FAST: Macro equivalent to: (FLAGS INTERNALDATE RFC822.SIZE)
+* FULL: Macro equivalent to: (FLAGS INTERNALDATE RFC822.SIZE ENVELOPE BODY)
+* BODY: Non-extensible form of BODYSTRUCTURE.
+* BODY\[\<section>]<\<partial>>: The text of a particular body section. The section specification is a set of zero or more part specifiers delimited by periods. A part specifier is either a part number or one of the following: HEADER, HEADER.FIELDS, HEADER.FIELDS.NOT, MIME, and TEXT. An empty section specification refers to the entire message, including the header. You may even select only parts of a multipart MIME message and even specific octets within that part, see [RFC 3501#section-6.4.5](https://tools.ietf.org/html/rfc3501#section-6.4.5) for more details.
+* BODY.PEEK\[\<section>]<\<partial>>: An alternate form of BODY\[\<section>] that does not implicitly set the \Seen flag.
+* BODYSTRUCTURE: The MIME body structure of the message. This is computed by the server by parsing the MIME header fields in the header and body MIME headers.
+* ENVELOPE: The envelope structure of the message. This is computed by the server by parsing the message header into the component parts, defaulting various fields as necessary.
+* FLAGS: The flags that are set for this message.
+* INTERNALDATE: The internal date of the message.
+* RFC822: Functionally equivalent to BODY\[], differing in the syntax of the resulting untagged FETCH data in that the full RFC822 message is returned.
+* RFC822.HEADER: Functionally equivalent to BODY.PEEK\[HEADER], with RFC822 header syntax returned.
+* RFC822.SIZE: The size of the message.
+* RFC822.TEXT: Functionally equivalent to BODY\[TEXT], differing in the syntax of the resulting untagged FETCH data as RFC822.TEXT is returned.
+* UID: The unique identifier for the message.
+
+So, 1 fetch 1 body\[text] would read the content of the email
+
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
-
-
 
