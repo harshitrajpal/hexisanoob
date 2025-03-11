@@ -20,6 +20,8 @@
     * [SNMP](enum-and-initial-compromise/network-protocols/snmp.md)
     * [MySQL](enum-and-initial-compromise/network-protocols/mysql.md)
     * [MSSQL](enum-and-initial-compromise/network-protocols/mssql.md)
+    * [Oracle TNS](enum-and-initial-compromise/network-protocols/oracle-tns.md)
+    * [IPMI](enum-and-initial-compromise/network-protocols/ipmi.md)
   * [Nifty One Liners](enum-and-initial-compromise/nifty-one-liners.md)
   * [Brute-Force Web Pages](enum-and-initial-compromise/brute-force-web-pages/README.md)
     * [Hydra](enum-and-initial-compromise/brute-force-web-pages/hydra.md)
