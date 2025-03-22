@@ -1,4 +1,10 @@
-# IAM Primer
+# IAM Essentials
+
+
+
+{% embed url="https://www.youtube.com/watch?ab_channel=LinuxAcademy&index=7&list=PLv2a_5pNAko0Mijc6mnv04xeOut443Wnk&v=4ngYrnJb7F8" %}
+
+
 
 Federation identity - Concept where you don't have to create multiple credentials for multiple different services. Eg: Active Directory. One account can be used for all applications within an organization. Eg: SSO (sign in with google, logiin with facebook etc). SAML and OAUTH2 are used in SSO.
 
