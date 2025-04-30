@@ -441,7 +441,7 @@ Zone Transfer in action
 
 Note: Here ns IP was 127.0.0.1 so we put the target IP in etc hosts.
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
