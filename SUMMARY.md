@@ -82,6 +82,7 @@
     * [SUID - man](post-exploitation/linux-privilege-escalation/suid-man.md)
     * [NFS no\_root\_squash](post-exploitation/linux-privilege-escalation/nfs-no_root_squash.md)
     * [SUID - pkexec](post-exploitation/linux-privilege-escalation/suid-pkexec.md)
+    * [Capabilities](post-exploitation/linux-privilege-escalation/capabilities.md)
     * [Bad permissions](post-exploitation/linux-privilege-escalation/bad-permissions.md)
   * [Windows Privilege Escalation](post-exploitation/windows-privilege-escalation/README.md)
     * [SeImpersonatePrivilege Token Impersonation](post-exploitation/windows-privilege-escalation/seimpersonateprivilege-token-impersonation.md)
