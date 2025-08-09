@@ -205,3 +205,7 @@
 * [Applied Cryptography](applied-cryptography/README.md)
   * [Linear Congruential Generator](applied-cryptography/linear-congruential-generator.md)
 * [Tools for everything](tools-for-everything.md)
+* [Openssl](openssl/README.md)
+  * [Spoofed SSL, sign with AWS Private CA, launch on Kube](openssl/spoofed-ssl-sign-with-aws-private-ca-launch-on-kube.md)
+  * [View cert details online](openssl/view-cert-details-online.md)
+  * [View cert details offline cert](openssl/view-cert-details-offline-cert.md)
