@@ -209,3 +209,4 @@
   * [Spoofed SSL, sign with AWS Private CA, launch on Kube](openssl/spoofed-ssl-sign-with-aws-private-ca-launch-on-kube.md)
   * [View cert details online](openssl/view-cert-details-online.md)
   * [View cert details offline cert](openssl/view-cert-details-offline-cert.md)
+  * [Creating own CA and producing a self signed cert](openssl/creating-own-ca-and-producing-a-self-signed-cert.md)
