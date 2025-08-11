@@ -40,7 +40,8 @@ DNS.3 = localhost
 IP.1 = 127.0.0.1
 ```
 
-4. Using this csr.conf, create a new certificate signing request (CSR). `my-ca.csr`
+4. Here I am using the private key generated earlier to also sign cert. This is like master key. But can use a new one too.
+5. Using this csr.conf, create a new certificate signing request (CSR). `my-ca.csr`
 
 `openssl req -new -key my-ca.key -out my-ca.csr -config csr.conf`
 
