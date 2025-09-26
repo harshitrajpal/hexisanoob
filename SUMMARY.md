@@ -210,3 +210,4 @@
   * [View cert details online](openssl/view-cert-details-online.md)
   * [View cert details offline cert](openssl/view-cert-details-offline-cert.md)
   * [Creating own CA and producing a self signed cert](openssl/creating-own-ca-and-producing-a-self-signed-cert.md)
+* [LLM Automated Security Analysis](llm-automated-security-analysis.md)
