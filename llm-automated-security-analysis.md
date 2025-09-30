@@ -162,7 +162,7 @@ Let's say you only want specific tests like prompt injections. You can use "gara
 
 **Reading the report**
 
-```python
+```
 #!/usr/bin/env python3
 import json, csv, gzip, io, os, sys, argparse, re
 from typing import Any, Dict, Iterable, Tuple, Union, List
@@ -182,7 +182,7 @@ def flatten_json(obj: Any, parent_key: str = "", sep: str = ".",
                  list_join: str = "; ", max_list_elems: int = 0) -> Dict[str, str]:
     """
     Flatten nested dicts into dotted keys. Lists are joined with list_join.
-    - max_list_elems=0 means join all elements; if >0, truncate and append " â€¦" marker.
+    - max_list_elems=0 means join all elements; if >0, truncate and append " …" marker.
     Scalar values are converted to strings (except None -> "").
     """
     out: Dict[str, str] = {}
@@ -210,7 +210,7 @@ def flatten_json(obj: Any, parent_key: str = "", sep: str = ".",
             for i in range(limit):
                 items.append(_stringify(x[i]))
             if max_list_elems > 0 and len(x) > max_list_elems:
-                items.append("â€¦")
+                items.append("…")
             out[prefix] = list_join.join(items)
         else:
             out[prefix] = _stringify(x)
@@ -294,7 +294,7 @@ def _iterate_wild(obj, parts):
                 nxt = obj[head]
             else:
                 # allow sloppy key variants like spaces vs underscores
-                alt = head.replace(" ", "") if " " in head else head.replace("", " ")
+                alt = head.replace(" ", "_") if " " in head else head.replace("_", " ")
                 if alt in obj:
                     nxt = obj[alt]
         elif isinstance(obj, list):
@@ -312,7 +312,7 @@ def extract_path(obj, path: str, joiner: str = "; "):
     """
     Extract value(s) from obj by a dot path with '*' wildcard.
     Returns a string (joined if multiple). If nothing is found, returns ''.
-    Example paths: 'uuid', 'probe_classname', 'prompt.turns..content.text', 'outputs..text'
+    Example paths: 'uuid', 'probe_classname', 'prompt.turns.*.content.text', 'outputs.*.text'
     """
     parts = path.split(".") if path else []
     vals = list(_iterate_wild(obj, parts))
@@ -346,9 +346,9 @@ def main(argv: List[str] = None) -> int:
     p.add_argument("--sep", default=".", help="Key separator for nested objects (default: '.')")
     p.add_argument("--list-join", default="; ", help="Join string used for list values")
     p.add_argument("--max-list-elems", type=int, default=0,
-                   help="If >0, truncate lists to this many elements and append 'â€¦'")
+                   help="If >0, truncate lists to this many elements and append '…'")
     p.add_argument("--encoding", default="utf-8", help="Text encoding for input/output (default utf-8)")
-    p.add_argument("--fields", nargs="", help="Dot paths to extract (supports '' to collect from lists)")
+    p.add_argument("--fields", nargs="*", help="Dot paths to extract (supports '*' to collect from lists)")
     p.add_argument("--join-list", dest="wildcard_join", default="; ", help="Join string used when a path collects multiple values via '*' (default '; ')")
 
     args = p.parse_args(argv)
@@ -366,9 +366,8 @@ def main(argv: List[str] = None) -> int:
     print(f"Wrote {rows} rows to {args.output}")
     return 0
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     raise SystemExit(main())
+
 ```
-
-
 
