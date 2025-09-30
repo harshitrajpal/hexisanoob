@@ -178,7 +178,7 @@ jq -r '
       ((.outputs       // []) | map(.text // (.content?.text // "")) | join(" | "))
     ]
   | @csv
-' data.jsonl >> out.csv
+' data-output-report.jsonl >> out.csv
 
 ```
 
