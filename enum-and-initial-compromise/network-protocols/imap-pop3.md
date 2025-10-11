@@ -331,7 +331,7 @@ In the SMTP section, we have found the user `robin`. Another member of our team 
 
 
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 Read particular fields in an email body
 
@@ -357,5 +357,5 @@ field names:
 
 So, 1 fetch 1 body\[text] would read the content of the email
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (4).png" alt=""><figcaption></figcaption></figure>
 
