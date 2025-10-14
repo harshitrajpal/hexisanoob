@@ -42,7 +42,7 @@ To find the S3 bucket region we can use another trick, this time with cURL.
 curl -I https://mega-big-tech.s3.amazonaws.com
 ```
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>us-east-1 is the bucker region in the header as we can see</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>us-east-1 is the bucker region in the header as we can see</p></figcaption></figure>
 
 From the account ID and region we can now go to the amazon console in personal account and go to EC2 and look for public snapshots.
 
