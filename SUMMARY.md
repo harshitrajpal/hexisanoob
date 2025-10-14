@@ -6,7 +6,7 @@
 * [Paper Reviews](paper-reviews/README.md)
   * [Imperfect Forward Secrecy: How Diffie-Hellman Fails in Practice](paper-reviews/imperfect-forward-secrecy-how-diffie-hellman-fails-in-practice.md)
 * [Large Language Models](large-language-models/README.md)
-  * [🧠 Masterguide to Using NVIDIA Garak for LLM Vulnerability Testing](large-language-models/masterguide-to-using-nvidia-garak-for-llm-vulnerability-testing.md)
+  * [🧠 Master Guide to Using NVIDIA Garak for LLM Vulnerability Testing](large-language-models/master-guide-to-using-nvidia-garak-for-llm-vulnerability-testing.md)
 * [Security Basics Notes](security-basics-notes/README.md)
   * [Identification, Authentication and Authorization](security-basics-notes/identification-authentication-and-authorization.md)
 * [Enumeration and Initial Compromise](enum-and-initial-compromise/README.md)
