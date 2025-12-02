@@ -49,11 +49,11 @@ Functions aren’t really a “thing” in x86…&#x20;
 
 x86 only _kind of_ understands functions. What it really understands is the "call stack"
 
-\->call and ret instructions push and pop to the callstack, for instance&#x20;
+->call and ret instructions push and pop to the callstack, for instance&#x20;
 
 ● What does the ret instruction really do?
 
-\->pop rip&#x20;
+->pop rip&#x20;
 
 ○ If we control the stack, we control what it pops. That means we can control multiple returns, each one making small changes
 
@@ -96,8 +96,7 @@ Well, from the website: [https://filippo.io/linux-syscall-table/](https://filipp
 Now, interesting thing about POP is that it basically sets a register.&#x20;
 
 * "pop" removes the last value pushed onto the stack, and stores it in a register.
-*   For example, this loads 3 into rax and returns.  It's a kinda roundabout way to return a 3, but between the push and the pop you could use rax for something else until you need it.\
-
+*   For example, this loads 3 into rax and returns.  It's a kinda roundabout way to return a 3, but between the push and the pop you could use rax for something else until you need it.<br>
 
     ```
     push 3
@@ -105,7 +104,7 @@ Now, interesting thing about POP is that it basically sets a register.&#x20;
     ret
     ```
 
-Reference: [https://www.cs.uaf.edu/2017/fall/cs301/lecture/09\_08\_stack.html](https://www.cs.uaf.edu/2017/fall/cs301/lecture/09\_08\_stack.html)
+Reference: [https://www.cs.uaf.edu/2017/fall/cs301/lecture/09\_08\_stack.html](https://www.cs.uaf.edu/2017/fall/cs301/lecture/09_08_stack.html)
 
 So essentially by lining up Gadgets with addresses to different pop instructions we can make our own ROP shellcode.
 

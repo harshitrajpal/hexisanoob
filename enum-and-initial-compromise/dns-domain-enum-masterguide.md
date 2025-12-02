@@ -47,13 +47,11 @@ eg: if we want to query google.com with our custom recursive server we do dig \<
 
 <div align="left"><img src="../.gitbook/assets/image (54).png" alt=""></div>
 
-* Reverse IP lookup: dig -x 142.250.206.174\
-
+* Reverse IP lookup: dig -x 142.250.206.174<br>
 
 <div align="left"><img src="../.gitbook/assets/image (31).png" alt=""></div>
 
-* Query any DNS record: dig google.com ANY\
-
+* Query any DNS record: dig google.com ANY<br>
 
 <div align="left"><img src="../.gitbook/assets/image (140).png" alt=""></div>
 
@@ -65,8 +63,7 @@ eg: if we want to query google.com with our custom recursive server we do dig \<
 
 <div align="left"><img src="../.gitbook/assets/image (85).png" alt=""></div>
 
-* Trace DNS path: dig hostinger.com +trace (It will query the name servers starting from the root and subsequently traverses down the namespace tree using iterative queries)\
-
+* Trace DNS path: dig hostinger.com +trace (It will query the name servers starting from the root and subsequently traverses down the namespace tree using iterative queries)<br>
 
 <div align="left"><img src="../.gitbook/assets/image (15) (1) (1) (1) (1) (1).png" alt=""></div>
 

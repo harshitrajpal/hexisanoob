@@ -98,8 +98,7 @@ Now, practical demonstration can be found here:
 
 {% embed url="https://www.youtube.com/watch?t=265s&v=1S0aBV-Waeo" %}
 
-BONUS: In recent GCC compilers, there is a default protection mechanism for buffer overflows hence, to compile your vulnerable binary use this command:\
-
+BONUS: In recent GCC compilers, there is a default protection mechanism for buffer overflows hence, to compile your vulnerable binary use this command:<br>
 
 Here, C program's name is overflow.c and output binary is bufferoverflow\
 &#xNAN;**`gcc -g -fno-stack-protector -z execstack -o bufferoverflow overflow.c`**

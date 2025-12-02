@@ -7,18 +7,17 @@ Every file on the Linux filesystem starts with a single hard link. The _link_ is
 \
 $ ln link\_test /tmp/link\_new\
 \[tcarrigan@server demo]$ ls -l link\_test /tmp/link\_new \
-\-rw-rw-r--. 2 tcarrigan tcarrigan 12 Aug 29 14:27 link\_test \
-\-rw-rw-r--. 2 tcarrigan tcarrigan 12 Aug 29 14:27 /tmp/link\_new
+-rw-rw-r--. 2 tcarrigan tcarrigan 12 Aug 29 14:27 link\_test \
+-rw-rw-r--. 2 tcarrigan tcarrigan 12 Aug 29 14:27 /tmp/link\_new
 
 
 
-**Soft Links**: Commonly referred to as _symbolic links_, soft links link together non-regular and regular files. They can also span multiple filesystems. By definition, a soft link is not a standard file, but a special file that points to an existing file.\
-
+**Soft Links**: Commonly referred to as _symbolic links_, soft links link together non-regular and regular files. They can also span multiple filesystems. By definition, a soft link is not a standard file, but a special file that points to an existing file.<br>
 
 ln -s /home/tcarrigan/demo/soft\_link\_test /tmp/soft\_link\_new&#x20;
 
 \[tcarrigan@server demo]$ ls -l soft\_link\_test /tmp/soft\_link\_new \
-&#x20;\-rw-rw-r--. 1 tcarrigan tcarrigan 17 Aug 30 11:59 soft\_link\_test \
+&#x20;-rw-rw-r--. 1 tcarrigan tcarrigan 17 Aug 30 11:59 soft\_link\_test \
 lrwxrwxrwx. 1 tcarrigan tcarrigan 35 Aug 30 12:09 /tmp/soft\_link\_new -> /home/tcarrigan/demo/soft\_link\_test
 
 

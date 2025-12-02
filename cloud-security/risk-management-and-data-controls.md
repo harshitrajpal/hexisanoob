@@ -150,7 +150,7 @@ CIS AWS Foundations Benchmark standard
 
 Other good frameworks:
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Risk Management in Cloud Environments
 
@@ -168,14 +168,11 @@ Other good frameworks:
 
 ## Risk Assessment
 
-• Assessment: measures the impact of an event, and the probability of an event (threat agent exploiting a vulnerability) \
+• Assessment: measures the impact of an event, and the probability of an event (threat agent exploiting a vulnerability) <br>
 
+• Quantitative (objective) and Qualitative (subjective) approaches both used. <br>
 
-• Quantitative (objective) and Qualitative (subjective) approaches both used. \
-
-
-• Quantitative approach: • Compute expected monetary value (impact) of loss for all “events” • Compute the probability of each type of expected loss \
-
+• Quantitative approach: • Compute expected monetary value (impact) of loss for all “events” • Compute the probability of each type of expected loss <br>
 
 • Qualitative approach: use Low, Medium, High; ratings; other categorical scales
 

@@ -16,16 +16,14 @@
 ## Enumeration
 
 1.  subdomain finder - [https://crt.sh/](https://crt.sh/)\
-    Can be invoked using curl:\
-
+    Can be invoked using curl:<br>
 
     ```shell-session
     curl -s https://crt.sh/\?q\=inlanefreight.com\&output\=json | jq .
     ```
 
     \
-    To sort out unique subdomains:\
-
+    To sort out unique subdomains:<br>
 
     ```shell-session
     curl -s https://crt.sh/\?q\=inlanefreight.com\&output\=json | jq . | grep name | cut -d":" -f2 | grep -v "CN=" | cut -d'"' -f2 | awk '{gsub(/\\n/,"\n");}1;' | sort -u

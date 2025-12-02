@@ -4,8 +4,7 @@
 2. No Execution bit turned on. Makes stack non executable. Can be bypassed using ROP Gadgets technique. ROP Gadget are small operations that end in return calls. Read about ROP (return oriented programming): [https://codearcana.com/posts/2013/05/28/introduction-to-return-oriented-programming-rop.html](https://codearcana.com/posts/2013/05/28/introduction-to-return-oriented-programming-rop.html)\
    A tool called ROPGadgets on github can be used to find these ROP Gadgets in a binary.
 3.  Random Canary = here, a random value is inserted by a compiler at the end of every stack frame in a program. It verifies canary before returning function. If an attacker tries to overflow it, when program returns, the function detects that the random value is now changed and quits execution. Canary is added by the compiler as a prevention mechanism against BufOF in the code. **To Still make it work, attacker needs to learn this random string.** Enabled by default in modern compilers!!\
-    Drawbacks: Can not prevent integer overflow, heap overflow.\
-
+    Drawbacks: Can not prevent integer overflow, heap overflow.<br>
 
     <figure><img src="../.gitbook/assets/image (1) (1) (2).png" alt=""><figcaption></figcaption></figure>
 
@@ -31,7 +30,6 @@ This can continue until return address is hit to extract full canary
 
 4. Stack Guard -> For buffer overflow
 5. PointGuard -> For heap overflow
-6.  ASAN -> Detects use after free (like double free) attacks.\
-
+6.  ASAN -> Detects use after free (like double free) attacks.<br>
 
     <figure><img src="../.gitbook/assets/image (2) (2).png" alt=""><figcaption></figcaption></figure>

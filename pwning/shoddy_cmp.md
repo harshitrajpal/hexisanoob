@@ -21,15 +21,13 @@ Let's do a quick due dilligence first. checksec tells us that there is no stack 
 <figure><img src="../.gitbook/assets/image (232).png" alt=""><figcaption></figcaption></figure>
 
 get\_time is at this memory address:\
-\
-
+<br>
 
 <figure><img src="../.gitbook/assets/image (233).png" alt=""><figcaption></figcaption></figure>
 
 Next, I figured out the rip offset which was 40 (by hitting and trying bytes one by one after 32)
 
-I had some fun and attached GDB using pwntools:\
-
+I had some fun and attached GDB using pwntools:<br>
 
 <figure><img src="../.gitbook/assets/image (234).png" alt=""><figcaption></figcaption></figure>
 
