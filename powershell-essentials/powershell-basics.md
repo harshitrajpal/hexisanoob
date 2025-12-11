@@ -30,7 +30,7 @@ Get-Command gets all the _cmdlets_ installed on the current Computer. The great 
 
 Running `Get-Command New-*` to view all the _cmdlets_ for the verb new displays the following
 
-<div align="left"><img src="../.gitbook/assets/image (5) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""></div>
+<div align="left"><img src="../.gitbook/assets/image (5) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""></div>
 
 The Pipeline(|) is used to pass output from one _cmdlet_ to another. A major difference compared to other shells is that instead of passing text or string to the command after the pipe, powershell passes an object to the next cmdlet
 
