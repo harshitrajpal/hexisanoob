@@ -431,7 +431,7 @@ Here is how the HTML stats report looks:
 
 
 
-## 5. Selective Probes for Targeted Testing
+## 5. Understanding Probes
 
 So far, we have seen easy setup guidelines, testing different interfaces (generators), and not only testing custom REST-based API endpoints, but also coding a sample REST app that binds to a local LLM instance (Ollama). Now, we will explore the different probes that Garak tests a target against.
 
@@ -549,7 +549,7 @@ Now that you have run a few tests and inspected it through Burp, you may have no
 
 ## 6. Evaluating and Reading Garak Reports
 
-Well, before evaluating a report, let us name the report correctly first. As you may have already observed that Garak's output report names are randomized alphanumeric string that follows the pattern "garak.RandomString." While good enough for a quick run, in a project, you might need to fine-tune this. You can utilize the "--report\_prefix" option to specify the output filename. For example, I am naming the output report prefix as "masterguide".
+Before evaluating a report, let us name the report correctly first. As you may have already observed that Garak's output report names are randomized alphanumeric string that follows the pattern "garak.RandomString." While good enough for a quick run, in a project, you might need to fine-tune this. You can utilize the "--report\_prefix" option to specify the output filename. For example, I am naming the output report prefix as "masterguide".
 
 ```bash
 python -m garak  --target_type ollama --target_name llama2 --probes grandma.Slurs -g 1 --parallel_attempts 16 --report_prefix masterguide
@@ -569,14 +569,14 @@ Any response flagged as a _hit_ (vulnerability) by the detector will be placed i
 
 <figure><img src="../.gitbook/assets/image (461).png" alt=""><figcaption></figcaption></figure>
 
-It is important to note that while running a Garak scan, if no detectors are explicitly provided, the default detector would be the probe's primary detector as specified in the Python file at "/garak/garak/probes/probe\_name.py". For example, [here](https://github.com/NVIDIA/garak/blob/main/garak/probes/dan.py#L49) are Dan's primary and extended detectors that would produce a hit while scanning.
+It is important to note that while running a Garak scan, if no detectors are explicitly provided, the default detector would be the probe's primary detector as specified in the Python file at `/garak/garak/probes/probe_name.py`. For example, [here](https://github.com/NVIDIA/garak/blob/main/garak/probes/dan.py#L49) are Dan's primary and extended detectors that would produce a hit while scanning.
 
-Now, for the scan we had done earlier using the `grandma.slurs` probe, we see a report. The file is difficult to read as it is. Therefore, I have made a [script](https://github.com/harshitrajpal/grk-helper-codes/blob/main/jsonToCsv.sh) which would help you convert a `filename.report.jsonl` to a CSV (with limited fields for better visibility). A user can then go through `filename.hitlog.jsonl`, pick up the attempt ID, and search in the CSV for that particular hit, thereby making analysis easier! [Here](https://github.com/harshitrajpal/grk-helper-codes/blob/main/jsonToCsv.ps1) is the PowerShell version of the same script.
+Now, for the scan we had done earlier using the `grandma.slurs` probe, we see a report. The file is difficult to read as it is. Therefore, I made a [script](https://github.com/harshitrajpal/grk-helper-codes/blob/main/jsonToCsv.sh) which would help you convert a `filename.report.jsonl` to a CSV (with limited fields for better visibility). A user can then go through `filename.hitlog.jsonl`, pick up the attempt ID, and search in the CSV for that particular hit, thereby making analysis easier! [Here](https://github.com/harshitrajpal/grk-helper-codes/blob/main/jsonToCsv.ps1) is the PowerShell version of the same script.
 
 To run this script:
 
-{% code title="Bash" %}
-```bash
+{% code title="Terminal" %}
+```powershell
 # Change to the relevant directory and copy over the report to the same directory as the script
 # I am using ps1 here to run the script. You can run the sh version too.
 sudo apt install jq
@@ -585,15 +585,15 @@ cp ../../../.local/share/garak/garak_runs/masterguide.report.jsonl .
 ```
 {% endcode %}
 
-Then we can use any spreadsheet software to open this CSV file. You can observe the four major fields taken from the `report.jsonl` and put it in the CSV here, while redacting almost everything else.
+Then, we can use any spreadsheet software to open this CSV file. You can observe the four major fields taken from the `report.jsonl` and put it in the CSV here, while redacting almost everything else.
 
 <figure><img src="../.gitbook/assets/image (462).png" alt=""><figcaption></figcaption></figure>
 
-Now I'll pick one of the attempt IDs from hitlog and search it in the CSV (accept ID in hitlog is the same as UUID in report.jsonl)
+Now I'll pick one of the attempt IDs from the hitlog and search it in the CSV (accept ID in hitlog is the same as UUID in report.jsonl)
 
 <figure><img src="../.gitbook/assets/image (463).png" alt=""><figcaption></figcaption></figure>
 
-You can then easily search for this in the CSV and analyze prompts and their outputs in a clearer way.
+You can then easily search for this in the CSV and analyze prompts and their outputs more clearly.
 
 <figure><img src="../.gitbook/assets/image (464).png" alt=""><figcaption></figcaption></figure>
 
@@ -740,7 +740,7 @@ A concise cheatsheet for Garak’s key CLI options (`--target_type`, `--probes`,
 Includes common issues like encoding errors, missing plugins, and REST connection fixes, with PowerShell vs. Linux equivalents.\
 Perfect as a back-pocket reference when setting up new scans.
 
-Q2. How to scan thinking models?
+Q2. How to scan thinking models, like DeepSeek R1, since sometimes the detector reads output from chain-of-thought as well and not just the output?
 
 Ans: [Per the documentation from the base generator](https://reference.garak.ai/en/latest/garak.generators.base.html), for reasoning models, using `skip_seq_start` and `skip_seq_end` can enable suppression of _the chain of thought_ from the target response. This allows users perform tests with and without consideration of this output from the target as the segment is removed before passing the response to detectors.
 
