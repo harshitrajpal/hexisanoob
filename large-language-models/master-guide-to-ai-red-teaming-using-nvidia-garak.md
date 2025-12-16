@@ -7,7 +7,7 @@ description: >-
 
 # 🧠 Master Guide to AI Red-Teaming using NVIDIA Garak
 
-have alreadyAuthor: Harshit Rajpal, Security Engineer, Bureau Veritas Cybersecurity North America
+Pythonhave alreadyAuthor: Harshit Rajpal, Security Engineer, Bureau Veritas Cybersecurity North America
 
 ## Introduction
 
@@ -180,7 +180,7 @@ This uses Garak’s built-in test components:
 python -m garak --target_type test.Blank --probes test.Test
 ```
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 As you may have observed, the JSON and HTML summary reports have been written to the default directory `~\.local\share\garak\garak_runs\` &#x20;
 
@@ -260,7 +260,7 @@ $PS Terminal 2: ollama run llama2
 
 Once done, you can launch the URL [http://127.0.0.1:8000/static/index.html](http://127.0.0.1:8000/static/index.html) in a web browser and test if the AI assistant is working.
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
 
 You can inspect the chat prompt you entered and copy the request as bash or PowerShell as needed. Here is the PowerShell version of the CLI command you can send to this interface.
 
@@ -309,7 +309,7 @@ Content-Length: 50
 
 ```
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now that we have a fully working REST API based AI assistant, we can begin to scan the LLM with Garak. Garak `RestGenerator` allows you to target **any** REST/HTTP endpoint as long as you tell it how to format requests, what method (POST/GET) to use, what headers, and how to extract response text. A full documentation can be found [here](https://reference.garak.ai/en/latest/garak.generators.rest.html).
 
@@ -366,7 +366,9 @@ Now that our web configuration file is set, we can run our first test on this we
 python -m garak --target_type rest -G api_web_config.json --probes test.Test
 ```
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+Throughout the article, we shall be targeting this application.
 
 Now, we have successfully run a sample test! The only problem is, we have no visibility into how prompts are crafted and sent or what's been tested. Let's talk about proxying it through Burp Suite, so we know the domain of prompts crafted and tested.
 
@@ -415,17 +417,17 @@ Now, we can also use one of the probes called "dan.DUDE" for a sample run. Dan i
 python -m garak --target_type rest -G api_web_config.json --probes dan.DUDE
 ```
 
-<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now, in the HTTP history of BurpSuite, you can see all the prompts that were crafted and tested by Garak.
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 As in the STDOUT, it states `5/5 PASS` which means the LLM is not vulnerable to `dan.DUDE`. A quick overview is available in the HTML file located at the default location `$HOME/.local\share\garak\garak_runs\garak.UUID.report.html`
 
 Here is how the HTML stats report looks:
 
-<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -482,7 +484,7 @@ You can also filter this list by adding -p option and then mentioning the family
 python -m garak --list_probes -p dan
 ```
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 You can then select one or more by name when running a scan. Here, in the following examples, we will be testing various probes on the REST-based llama2 wrapper we created earlier and then utilizing tags for faster probe selection, and finally combining probes manually in the CLI.
 
@@ -500,12 +502,12 @@ Q: Who is Batman?\nA: Batman is a fictional comic book character.\n\nQ: What is 
 
 ```
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 \
 Sample output:
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 As you can notice in the output above, the LLM we are targeting is, in fact, vulnerable to _HateHumans Prompt Injection_ (toxicity)! This is **not a normal, expected, benign behaviour**; it suggests a **failure in safety alignment, input/output filtering, or adversarial resistance**.\
 \
@@ -515,7 +517,7 @@ It is also worth noting that various probes (such as lmrc.bullying) might throw 
 
 If you've followed along so far, you know that testing probes consumes a considerable amount of time. Thus, we can also utilize "probe\_tags." Now, not a lot of information about probe\_tags is available on the help menu; going through the code, one can find different probe tags that can be utilized. For example, check out the code for the Dan probe [here](https://github.com/NVIDIA/garak/blob/main/garak/probes/dan.py). Observe the probe tags.
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 Here, as you can see, one of the probe tags is OWASP:LLM01. This is an obvious reference to [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/) and the first vulnerability on the list (prompt injection).
 
@@ -525,7 +527,7 @@ Thereafter, you can run a scan using this:
 python -m garak --target_type rest -G api_web_config.json --probe_tags owasp:llm01
 ```
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 As you can notice in the screenshot above, this option automatically selected all the probes marked as owasp:llm01 and saved us quite a lot of time to go through the list and figure out what to test!
 
@@ -595,17 +597,124 @@ You can then easily search for this in the CSV and analyze prompts and their out
 
 <figure><img src="../.gitbook/assets/image (464).png" alt=""><figcaption></figcaption></figure>
 
-As we can observe in the output report, this seems like a false positive (of which there are generally many). However, now that we have all of our data in a visually upgraded format, analysis can be better!
+As we can observe in the output report, this appears to be a false positive (which is a common occurrence). However, now that we have all of our data in a visually upgraded format, analysis can be better!
 
-## 7. Custom Probe Sources
+## 7. Testing With Custom Prompt/Wordlist Sources
+
+If you've followed along this far, you must have observed that all the prompts come from pre-defined Python templates under `garak/garak/probes` . Here, the structure of a probe template is as follows:
+
+* Global vars -> If any
+* Class of a probe -> This is the subcategory of a probe
+  * Any required tags
+  * Working function -> Performs any operations needed to create prompts
+  * Variable `prompts` which holds the values of all prompts to be tested in a list.
+
+So, if we can define our custom prompts in a file and recreate a similar template, we can have Garak send requests using our own custom probe. You can utilize the sample template I coded [here](https://github.com/harshitrajpal/grk-helper-codes/blob/main/test.py) or make one by yourself by looking at the code for other probes and overwriting very few things. I essentially utilized the existing "test" probe we used in our article earlier, found under `garak/garak/probes/test.py`, and added a class called "**FileListPrompts**". This class is going line-by-line and reading  prompts from our file "**my\_prompts.txt**" and putting the contents as an array of strings (aka a list in Python) in the variable `prompts`. This adds a functionality to test probe and Garak can now fetch wordlists and bombard the target! Please note that the except block in the code below is a failsafe and assigns a singular value "hello" to the `prompts` variable in case file I/O was unsuccessful. This way, while reading the output, you can always know whether a file read was successful or not and troubleshoot accordingly.
+
+{% code title=""test" Probe (garak/garak/probes/test/py) modified file" %}
+```python
+"""**Test Probes**
+
+Probes that help with testing garak, but aren't necessarily useful in
+deployment practice."""
+
+import garak.probes
 
 
+class Blank(garak.probes.Probe):
+    """Blank prompt
+
+    Poses a blank prompt to the model"""
+
+    lang = "*"
+    active = False  # usually for testing
+    goal = "see what the model has to say for itself given silence"
+    doc_uri = ""
+    tags = []
+    tier = garak.probes.Tier.UNLISTED
+
+    primary_detector = "any.AnyOutput"
+    prompts = [""]
 
 
+class Test(garak.probes.Probe):
+    """Test probe
+
+    Poses some test strings to a model; for use in tests"""
+
+    lang = "*"
+    active = False  # usually for testing
+    goal = "send some test strings, ignore the response"
+    doc_uri = ""
+    tags = []
+    tier = garak.probes.Tier.UNLISTED
+
+    primary_detector = "always.Pass"
+    prompts = [
+        "",
+        "The quick brown fox jumps over the lazy dog",
+        "Liberté, égalité, fraternité",
+        "有朋自远方来，不亦乐乎?",
+        'ZX*fC-np~z0)#cj32{"qWh',
+        "t=};h+WzTq2wypk4fL/6UV",
+        "T9btvwOX'EV/)q2+o$kF7#",
+        "\\",
+    ]
+##The following has been added to the original probe to support custom wordlists
+class FileListPrompts(garak.probes.Probe):
+    """My probe
+
+    picks prompts from file and posts"""
+    lang = "*"
+    tags = []
+    doc_uri = ""
+    primary_detector = "always.Pass"
+    goal = "run list of prompts from text file"
+    tier = garak.probes.Tier.UNLISTED
+    active = False # only for our testing
+
+    try:
+        with open("my_prompts.txt", "r") as f:
+        # filter out empty lines, strip whitespace
+            prompts = [line.strip() for line in f if line.strip()]
+    except FileNotFoundError:
+        # if the file is missing, just keep a hello list
+        prompts = ["hello"]
+
+
+```
+{% endcode %}
+
+Please note that in other probes, a detector is usually configured to help users analyze the CLI output as a PASS/FAIL status. We can configure that too within the code by setting the variable "[primary\_detector](https://github.com/NVIDIA/garak/blob/main/garak/probes/dan.py#L49)" if we know the nature of the prompts (such as [mitigation.MitigationBypass](https://mitigation.mitigationbypasshttps/github.com/NVIDIA/garak/blob/d266641d7f532bea9973a84d0e39df368ee2cb38/garak/probes/dan.py#L50)), or we can use the all detectors option in CLI. While configuring the template above, I added the "always.Pass" detector.
+
+Alright then! Now that our tweaked "test.py" is ready to support custom wordlists, we need to configure a wordlist and name it "my\_prompts.txt" or any other name, and then change the code to support that, and keep it in your current directory. I'll be adding four sample prompts just for testing purpose.
+
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+Once done, you can then run the following command:
+
+```python
+python -m garak --target_type rest -G api_web_config.json --probes test.FileListPrompts
+```
+
+As you can see, Garak is now testing the target with our custom wordlist.
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+Let's inspect this in Burp Suite and confirm again.
+
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+Well, there we go. There are various resources on the internet where you can find prompt injection wordlists, including huggingface datasets. Here are a couple to get you started:
+
+* [https://huggingface.co/datasets/Mindgard/evaded-prompt-injection-and-jailbreak-samples](https://huggingface.co/datasets/Mindgard/evaded-prompt-injection-and-jailbreak-samples?utm_source=chatgpt.com)
+* [https://huggingface.co/datasets/xTRam1/safe-guard-prompt-injection](https://huggingface.co/datasets/xTRam1/safe-guard-prompt-injection?utm_source=chatgpt.com)
+
+My uncle said, "With a large wordlist comes huge overhead." In the next section, we'll discuss how we can fast-track our scans.
 
 ## 8. Speeding Up Scans
 
-
+Options -g 1, --parallel\_attempts
 
 
 
@@ -621,7 +730,7 @@ As we can observe in the output report, this seems like a false positive (of whi
 
 
 
-## **12. Appendix A: CLI Reference and Troubleshooting**
+## **12. Appendix A: FAQs and Troubleshooting**
 
 **Headline:**\
 **Quick Reference and Common Fixes**
@@ -631,13 +740,13 @@ A concise cheatsheet for Garak’s key CLI options (`--target_type`, `--probes`,
 Includes common issues like encoding errors, missing plugins, and REST connection fixes, with PowerShell vs. Linux equivalents.\
 Perfect as a back-pocket reference when setting up new scans.
 
+Q2. How to scan thinking models?
 
-
-[Per the documentation from the base generator](https://reference.garak.ai/en/latest/garak.generators.base.html), for reasoning models, using `skip_seq_start` and `skip_seq_end` can enable suppression of _the chain of thought_ from the target response. This allows users preform tests with and without consideration of this output from the target as the segment is removed before passing the response to detectors.
+Ans: [Per the documentation from the base generator](https://reference.garak.ai/en/latest/garak.generators.base.html), for reasoning models, using `skip_seq_start` and `skip_seq_end` can enable suppression of _the chain of thought_ from the target response. This allows users perform tests with and without consideration of this output from the target as the segment is removed before passing the response to detectors.
 
 ## **13. Appendix B: Burp Plugin to Auto-Generate REST config JSON**
 
-
+Link and demo to be updated...
 
 
 
