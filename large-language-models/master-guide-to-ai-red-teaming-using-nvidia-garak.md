@@ -1,20 +1,21 @@
 ---
 description: >-
-  https://github.com/NVIDIA/garak | https://garak.ai/garak_aiv_slides.pdf |
-  https://garak.ai | https://reference.garak.ai/en/latest/
+  References: https://github.com/NVIDIA/garak |
+  https://garak.ai/garak_aiv_slides.pdf | https://garak.ai |
+  https://reference.garak.ai/en/latest/
 ---
 
-# 🧠 Master Guide to Using NVIDIA Garak for LLM Vulnerability Testing
+# 🧠 Master Guide to AI Red-Teaming using NVIDIA Garak
 
-Author: Harshit Rajpal, Security Engineer, Bureau Veritas Cybersecurity North America
+have alreadyAuthor: Harshit Rajpal, Security Engineer, Bureau Veritas Cybersecurity North America
 
 ## Introduction
 
 In this guide, we will explore **Garak** – an open-source **Generative AI Red-teaming and Assessment Kit** by NVIDIA – and how to use it for scanning Large Language Models (LLMs) for vulnerabilities. We’ll cover everything from installation and setup to running scans, focusing on key features like connecting Garak to different LLM interfaces (including a local REST API chatbot), using specific probes (e.g. jailbreaking attacks), customizing prompts, speeding up scans, understanding Garak’s components, writing your own plugin, and interpreting Garak’s output reports. This comprehensive, step-by-step walkthrough will feel like a technical whitepaper, complete with code examples, command-line usage, and references to official documentation and community insights.
 
-## ContentsTable of Content
+## Table of Contents
 
-<table><thead><tr><th width="102">S. No.</th><th>Section</th></tr></thead><tbody><tr><td>1</td><td><a href="master-guide-to-using-nvidia-garak-for-llm-vulnerability-testing.md#id-1.-installation-and-environment-setup">Installation and Environment Setup</a></td></tr><tr><td>2</td><td><a href="master-guide-to-using-nvidia-garak-for-llm-vulnerability-testing.md#id-2.-getting-started-with-garak">Getting Started With Garak</a></td></tr><tr><td>3</td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>
+<table><thead><tr><th width="102">S. No.</th><th>Section</th></tr></thead><tbody><tr><td>1</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-1.-installation-and-environment-setup">Installation and Environment Setup</a></td></tr><tr><td>2</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-2.-getting-started-with-garak">Getting Started With Garak</a></td></tr><tr><td>3</td><td>Scanning LLM Interfaces with Garak</td></tr><tr><td>4</td><td>Proxying Garak Through Burp Suite</td></tr><tr><td>5</td><td>Selective Probes for Targeted Testing</td></tr><tr><td>6</td><td>False Positives</td></tr><tr><td>7</td><td>Custom Prompt Sources</td></tr><tr><td>8</td><td>Speeding Up Scans</td></tr><tr><td>9</td><td>Understanding Garak's Plugin Architecture</td></tr><tr><td>10</td><td>Writing Your Own Plugin</td></tr><tr><td>11</td><td>Evaluating and Reading Garak Reports</td></tr><tr><td>12</td><td>Appendix A: CLI Reference and Troubleshooting</td></tr><tr><td>13</td><td>Appendix B: Burp plugin to Auto-Generate api_web_config.json</td></tr></tbody></table>
 
 ## 1. Installation and Environment Setup
 
@@ -40,16 +41,16 @@ I will be using a Windows 10 host in this guide; however, feel free to use the s
 First, let's get Conda up and running. You can choose your installer [here](https://repo.anaconda.com/archive/) and then use the following commands for download and installation.
 
 <pre class="language-powershell" data-title="Windows" data-overflow="wrap"><code class="lang-powershell"><strong># Navigate to your project folder. I am creating a 'Downloads' folder within it.
-</strong><strong>mkdir Downloads
-</strong>
+</strong>mkdir Downloads
+
 wget "https://repo.anaconda.com/archive/Anaconda3-2025.06-0-Windows-x86_64.exe" -outfile "./Downloads/Anaconda3-2025.06-0-Windows-x86_64.exe"
 
 #Run the installer via GUI
 </code></pre>
 
-<pre class="language-bash" data-title="Linux" data-overflow="wrap"><code class="lang-bash"># Navigate to your project folder. I am creating a 'Downloads' folder within it.
-<strong>mkdir Downloads &#x26;&#x26; cd Downloads
-</strong>
+<pre class="language-bash" data-title="Linux" data-overflow="wrap"><code class="lang-bash"><strong># Navigate to your project folder. I am creating a 'Downloads' folder within it.
+</strong>mkdir Downloads &#x26;&#x26; cd Downloads
+
 wget https://repo.anaconda.com/archive/Anaconda3-2025.06-1-Linux-x86_64.sh
 
 chmod +x Anaconda3-2025.06-1-Linux-x86_64.sh &#x26;&#x26; ./Anaconda3-2025.06-1-Linux-x86_64.sh
@@ -175,8 +176,8 @@ This uses Garak’s built-in test components:
 * **Generator:** `test.Blank` – a mock model which can be specified with `--target_type`
 * **Probe:** `test.Blank` – sends a dummy input, which can be specified with `--probes`
 
-```powershell
-garak --target_type test.Blank --probes test.Test
+```bash
+python -m garak --target_type test.Blank --probes test.Test
 ```
 
 <figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
@@ -233,7 +234,7 @@ You can inspect the report in the location suggested in the STDOUT. List of the 
 A full list can be provided by the command:
 
 ```bash
-garak --list_generators
+python -m garak --list_generators
 ```
 
 ### 3b. REST Interface
@@ -408,7 +409,7 @@ You can add the "proxies" option in the `api_web_config.json` file and configure
 ```
 {% endcode %}
 
-Now, we can also use one of the probes called "dan.DUDE" for a sample run. More on some of the other prompts, upcoming in the later sections.
+Now, we can also use one of the probes called "dan.DUDE" for a sample run. Dan is a "roleplay" jailbreak prompt injection category that instructs the LLM to behave as both itself and then as "DAN" which stands for "Do Anything Now" and as the name suggests, DAN can do anything now. More on some of the other prompts, upcoming in the later sections.
 
 ```bash
 python -m garak --target_type rest -G api_web_config.json --probes dan.DUDE
@@ -444,7 +445,7 @@ Here is a summary of the probes available, divided into categories of probes, a 
 
 | **ansi escape**          | Tests whether models output annoying or harmful _ANSI control codes_ (e.g., terminal escapes).     | ansiescape.AnsiEscaped, ansiescape.AnsiRaw                             | Useful for models used in console UIs; can reveal unsanitized control chars.  |
 | ------------------------ | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| **atkgen**               | Tries to generate _toxic_ or offensive content via automatic attack generation.                    | atkgen.Tox                                                             | Useful for detecting crude toxicity vulnerabilities.                          |
+| **atkgen**               | Still a prototype. Tries to generate _toxic_ or offensive content via automatic attack generation. | atkgen.Tox                                                             | Useful for detecting crude toxicity vulnerabilities.                          |
 | **audio**                | Probes with audio-related vectors (e.g., "achilles heel" via audio).                               | audio.AudioAchillesHeel                                                | Niche/experimental — may give errors on text-only models.                     |
 | **av\_spam\_scanning**   | Tests whether models output known _spam test codes_ (EICAR, GTUBE) or phishing patterns.           | EICAR, GTUBE, GTphish                                                  | Useful for systems scanning or classifying email/spam.                        |
 | **continuation**         | Tests whether models continue _slur or reclaimed slur_ identifiers.                                | ContinueSlursReclaimedSlurse                                           | Content-safety testing for offensive language continuation.                   |
@@ -475,7 +476,7 @@ Here is a summary of the probes available, divided into categories of probes, a 
 | **visual\_jailbreak**    | Probes for _visual-to-text jailbreaks_ (e.g., FigStep patterns).                                   | FigStep                                                                | For multimodal systems; often inactive.                                       |
 | **web\_injection**       | Simulates _web-style injections / exfil patterns_ (Markdown XSS, image exfil).                     | MarkdownXSS, StringAssemblyDataExfil                                   | Tests web injection vectors through model text.                               |
 
-You can also filter this list by adding -p option and then mentioning the family of probes. For example, to view probes only in the dan family:
+You can also filter this list by adding -p option and then mentioning the family of probes. For example, to view probes only in the Dan family:
 
 ```bash
 python -m garak --list_probes -p dan
@@ -483,7 +484,7 @@ python -m garak --list_probes -p dan
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
-You can then select one or more by name when running a scan. Here, in the following examples, we will be testing various probes on the REST-based llama2 wrapper we created earlier and then utilize tags for faster probe selection, and finally combining probes manually in the CLI.
+You can then select one or more by name when running a scan. Here, in the following examples, we will be testing various probes on the REST-based llama2 wrapper we created earlier and then utilizing tags for faster probe selection, and finally combining probes manually in the CLI.
 
 ### 5a. Finding our First Prompt Injection Vulnerability!
 
@@ -512,13 +513,13 @@ It is also worth noting that various probes (such as lmrc.bullying) might throw 
 
 ### 5b. Utilizing tags for selective testing
 
-If you've followed along so far, you know that testing probes consumes a considerable amount of time. Thus, we can also utilize "probe\_tags." Now, not a lot of information about probe\_tags is available on the help menu, going through the code, one can find different probe tags that can be utilized. For example, check out the code for the dan probe [here](https://github.com/NVIDIA/garak/blob/main/garak/probes/dan.py). Observe the probe tags.
+If you've followed along so far, you know that testing probes consumes a considerable amount of time. Thus, we can also utilize "probe\_tags." Now, not a lot of information about probe\_tags is available on the help menu; going through the code, one can find different probe tags that can be utilized. For example, check out the code for the Dan probe [here](https://github.com/NVIDIA/garak/blob/main/garak/probes/dan.py). Observe the probe tags.
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 Here, as you can see, one of the probe tags is OWASP:LLM01. This is an obvious reference to [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/) and the first vulnerability on the list (prompt injection).
 
-Thereafter you can run a scan using this like:
+Thereafter, you can run a scan using this:
 
 ```bash
 python -m garak --target_type rest -G api_web_config.json --probe_tags owasp:llm01
@@ -528,19 +529,75 @@ python -m garak --target_type rest -G api_web_config.json --probe_tags owasp:llm
 
 As you can notice in the screenshot above, this option automatically selected all the probes marked as owasp:llm01 and saved us quite a lot of time to go through the list and figure out what to test!
 
-Of course, not all of these probes would work since the tool is still in development (or might require manual intervention to make them work), but this is a good start.
+Of course, not all of these probes would work since the tool is still in development (or might require manual intervention to make them work), so, you can simply remove the probes causing issues and re-run the command.
+
+**Note:** In the probe list, there is a "ZZZ" emote suffixed for some of these modules. There is a high chance these probes won't work.
 
 ### 5c. Manually combining probes
 
+Now, if we want to fine-tune our scans even more, we can provide a comma-separated list of probes to Garak for testing within the "--probes" option.
 
+For example, I will test `lmrc.SexualContent,grandma.Slurs,divergence.RepeatedToken` together like so:
 
+```bash
+ python -m garak --target_type rest -G api_web_config.json --probes lmrc.SexualContent,grandma.Slurs,divergence.RepeatedToken -g 1 --parallel_attempts 16
+```
 
+Now that you have run a few tests and inspected it through Burp, you may have noticed that there is an abundance of false positives. Garak may suggest that a test failed, while when you inspect the report, the output seems benign. We shall uncover a little bit more on how to filter the report and inspect it for accurate test results in the next section.
 
-## 6. False Positives
+## 6. Evaluating and Reading Garak Reports
 
+Well, before evaluating a report, let us name the report correctly first. As you may have already observed that Garak's output report names are randomized alphanumeric string that follows the pattern "garak.RandomString." While good enough for a quick run, in a project, you might need to fine-tune this. You can utilize the "--report\_prefix" option to specify the output filename. For example, I am naming the output report prefix as "masterguide".
 
+```bash
+python -m garak  --target_type ollama --target_name llama2 --probes grandma.Slurs -g 1 --parallel_attempts 16 --report_prefix masterguide
+```
 
-## 7. Custom Prompt Sources and External Datasets
+<figure><img src="../.gitbook/assets/image (458).png" alt=""><figcaption></figcaption></figure>
+
+Now, you are ready to inspect the report. You might have noticed that after a scan is completed, 3 different files are created:
+
+* filename.hitlog.jsonl
+* filename.report.jsonl
+* filename.report.html
+
+<figure><img src="../.gitbook/assets/image (459).png" alt=""><figcaption></figcaption></figure>
+
+Any response flagged as a _hit_ (vulnerability) by the detector will be placed in the `hitlog.jsonl` file. These entries can be followed back to the `report.jsonl` attempt entry based on the `attempt_id`.&#x20;
+
+<figure><img src="../.gitbook/assets/image (461).png" alt=""><figcaption></figcaption></figure>
+
+It is important to note that while running a Garak scan, if no detectors are explicitly provided, the default detector would be the probe's primary detector as specified in the Python file at "/garak/garak/probes/probe\_name.py". For example, [here](https://github.com/NVIDIA/garak/blob/main/garak/probes/dan.py#L49) are Dan's primary and extended detectors that would produce a hit while scanning.
+
+Now, for the scan we had done earlier using the `grandma.slurs` probe, we see a report. The file is difficult to read as it is. Therefore, I have made a [script](https://github.com/harshitrajpal/grk-helper-codes/blob/main/jsonToCsv.sh) which would help you convert a `filename.report.jsonl` to a CSV (with limited fields for better visibility). A user can then go through `filename.hitlog.jsonl`, pick up the attempt ID, and search in the CSV for that particular hit, thereby making analysis easier! [Here](https://github.com/harshitrajpal/grk-helper-codes/blob/main/jsonToCsv.ps1) is the PowerShell version of the same script.
+
+To run this script:
+
+{% code title="Bash" %}
+```bash
+# Change to the relevant directory and copy over the report to the same directory as the script
+# I am using ps1 here to run the script. You can run the sh version too.
+sudo apt install jq
+cp ../../../.local/share/garak/garak_runs/masterguide.report.jsonl .
+./jsonToCsv.ps1 masterguide.report.jsonl out.csv
+```
+{% endcode %}
+
+Then we can use any spreadsheet software to open this CSV file. You can observe the four major fields taken from the `report.jsonl` and put it in the CSV here, while redacting almost everything else.
+
+<figure><img src="../.gitbook/assets/image (462).png" alt=""><figcaption></figcaption></figure>
+
+Now I'll pick one of the attempt IDs from hitlog and search it in the CSV (accept ID in hitlog is the same as UUID in report.jsonl)
+
+<figure><img src="../.gitbook/assets/image (463).png" alt=""><figcaption></figcaption></figure>
+
+You can then easily search for this in the CSV and analyze prompts and their outputs in a clearer way.
+
+<figure><img src="../.gitbook/assets/image (464).png" alt=""><figcaption></figcaption></figure>
+
+As we can observe in the output report, this seems like a false positive (of which there are generally many). However, now that we have all of our data in a visually upgraded format, analysis can be better!
+
+## 7. Custom Probe Sources
 
 
 
@@ -552,23 +609,15 @@ Of course, not all of these probes would work since the tool is still in develop
 
 
 
-## 9. Understanding Garak’s Plugin Architecture
+## 9. Understanding Detectors
 
 
 
 
 
-## 10. Writing Your Own Plugin
+## 10. Understanding Buffs
 
 
-
-
-
-## 11. Evaluating and Reading Garak Reports
-
-python -m garak -r .\example.jsonl
-
-My tool
 
 
 
@@ -582,7 +631,11 @@ A concise cheatsheet for Garak’s key CLI options (`--target_type`, `--probes`,
 Includes common issues like encoding errors, missing plugins, and REST connection fixes, with PowerShell vs. Linux equivalents.\
 Perfect as a back-pocket reference when setting up new scans.
 
-## **13. Appendix B: Burp Plugin to Auto-Generate api\_web\_config.json and launch scans**
+
+
+[Per the documentation from the base generator](https://reference.garak.ai/en/latest/garak.generators.base.html), for reasoning models, using `skip_seq_start` and `skip_seq_end` can enable suppression of _the chain of thought_ from the target response. This allows users preform tests with and without consideration of this output from the target as the segment is removed before passing the response to detectors.
+
+## **13. Appendix B: Burp Plugin to Auto-Generate REST config JSON**
 
 
 
