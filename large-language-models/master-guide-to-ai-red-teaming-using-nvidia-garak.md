@@ -599,6 +599,24 @@ You can then easily search for this in the CSV and analyze prompts and their out
 
 As we can observe in the output report, this appears to be a false positive (which is a common occurrence). However, now that we have all of our data in a visually upgraded format, analysis can be better!
 
+### 6a. Aggregation
+
+There’s a tool for merging garak reports. This means that multiple garak runs can execute independently and then the output can be compiled into one report. Being able to do this affords parallelization, for example on SLURM/OCI clusters where an entire executable job has to be specified. The tool is "aggregate\_reports.py" and it runs from the command line. The directory is `garak/garak/analyze/aggregate_reports.py` . You can get help by running:
+
+```python
+python aggregate_reports.py
+```
+
+<figure><img src="../.gitbook/assets/image (465).png" alt=""><figcaption></figcaption></figure>
+
+As of the time of writing this article, the tool is currently bugged (does not support multiple infiles) and requires an update. However, the general working code would look like:
+
+```
+python aggregate_reports_fixed.py -o combined.jsonl garak.61419e60-0234-4c38-8161-d8d564a2ee13.report.jsonl garak.6e86a1a2-da9a-4f8b-9361-d701795f445d.report.jsonl garak.80fbac4d-83a6-487c-939a-3b7293744a4b.report.jsonl
+```
+
+This would combine all the outputs into one report. So, ideally, one can individually run probes and later combine the output in a single report, thus eliminating the need to delete and re-run the scan once it fails due to an error with the probe.
+
 ## 7. Testing With Custom Prompt/Wordlist Sources
 
 If you've followed along this far, you must have observed that all the prompts come from pre-defined Python templates under `garak/garak/probes` . Here, the structure of a probe template is as follows:
@@ -609,7 +627,7 @@ If you've followed along this far, you must have observed that all the prompts c
   * Working function -> Performs any operations needed to create prompts
   * Variable `prompts` which holds the values of all prompts to be tested in a list.
 
-So, if we can define our custom prompts in a file and recreate a similar template, we can have Garak send requests using our own custom probe. You can utilize the sample template I coded [here](https://github.com/harshitrajpal/grk-helper-codes/blob/main/test.py) or make one by yourself by looking at the code for other probes and overwriting very few things. I essentially utilized the existing "test" probe we used in our article earlier, found under `garak/garak/probes/test.py`, and added a class called "**FileListPrompts**". This class is going line-by-line and reading  prompts from our file "**my\_prompts.txt**" and putting the contents as an array of strings (aka a list in Python) in the variable `prompts`. This adds a functionality to test probe and Garak can now fetch wordlists and bombard the target! Please note that the except block in the code below is a failsafe and assigns a singular value "hello" to the `prompts` variable in case file I/O was unsuccessful. This way, while reading the output, you can always know whether a file read was successful or not and troubleshoot accordingly.
+So, if we can define our custom prompts in a file and recreate a similar template, we can have Garak send requests using our own custom probe. You can utilize the sample template I coded [here](https://github.com/harshitrajpal/grk-helper-codes/blob/main/test.py) or make one yourself by looking at the code for other probes and overwriting very few things. I essentially utilized the existing "test" probe we used in our article earlier, found under `garak/garak/probes/test.py`, and added a class called "**FileListPrompts**". This class is going line-by-line and reading  prompts from our file "**my\_prompts.txt**" and putting the contents as an array of strings (aka a list in Python) in the variable `prompts`. This adds functionality to the test probe, and Garak can now fetch wordlists and bombard the target! Please note that the except block in the code below is a failsafe and assigns a singular value "hello" to the `prompts` variable in case file I/O was unsuccessful. This way, while reading the output, you can always know whether a file read was successful or not and troubleshoot accordingly.
 
 {% code title=""test" Probe (garak/garak/probes/test/py) modified file" %}
 ```python
@@ -687,14 +705,14 @@ class FileListPrompts(garak.probes.Probe):
 
 Please note that in other probes, a detector is usually configured to help users analyze the CLI output as a PASS/FAIL status. We can configure that too within the code by setting the variable "[primary\_detector](https://github.com/NVIDIA/garak/blob/main/garak/probes/dan.py#L49)" if we know the nature of the prompts (such as [mitigation.MitigationBypass](https://mitigation.mitigationbypasshttps/github.com/NVIDIA/garak/blob/d266641d7f532bea9973a84d0e39df368ee2cb38/garak/probes/dan.py#L50)), or we can use the all detectors option in CLI. While configuring the template above, I added the "always.Pass" detector.
 
-Alright then! Now that our tweaked "test.py" is ready to support custom wordlists, we need to configure a wordlist and name it "my\_prompts.txt" or any other name, and then change the code to support that, and keep it in your current directory. I'll be adding four sample prompts just for testing purpose.
+Alright then! Now that our tweaked "test.py" is ready to support custom wordlists, we need to configure a wordlist and name it "my\_prompts.txt" or any other name, and then change the code to support that, and keep it in your current directory. I'll be adding four sample prompts just for testing purposes.
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 Once done, you can then run the following command:
 
 ```python
-python -m garak --target_type rest -G api_web_config.json --probes test.FileListPrompts
+python -m garak --target_type rest -G api_web_config.json --probes test.FileListPrompts -g 1 --parallel_attempts 16
 ```
 
 As you can see, Garak is now testing the target with our custom wordlist.
@@ -714,37 +732,157 @@ My uncle said, "With a large wordlist comes huge overhead." In the next section,
 
 ## 8. Speeding Up Scans
 
-Options -g 1, --parallel\_attempts
+Did you observe something in the garak command we ran in section 7? A "-g" and "--parallel\_attempts" option was sneaked into the command. These options drastically increase Garak's run-time speed.
+
+Garak is by design sequential and stochastic-friendly in nature. That means prompts are tested one by one, in a sequence, redundantly, unless specified otherwise. In this section, we'll look at some of the options or ways through which scan speeds can be juiced up.
+
+### **8a. -g (--generations)**
+
+Defines the number of times Garak sends LLM the same prompt. The default value is 5.
+
+Why number of generations matter:
+
+* Many vulnerabilities (hallucinations, harmful completions, bypasses, jailbreaks) occur stochastically.
+* A model might refuse harmful content once, but answer dangerously on the next try.
+* So increasing `-g` increases thoroughness, but also increases the total scans proportionally.
 
 
 
-## 9. Understanding Detectors
+<figure><img src="../.gitbook/assets/image (466).png" alt=""><figcaption></figcaption></figure>
+
+Now, depending upon the model you want to test with the probes you want to test, this option can be throttled. Here is a brief comparison of similar scans (8 prompt cases) with different number of generations per prompt.
+
+* `python -m garak --target_type rest -G api_web_config.json --probes test.Test -g 1`
+
+Run-time: 42.92 seconds  &#x20;
+
+<figure><img src="../.gitbook/assets/image (469).png" alt=""><figcaption></figcaption></figure>
+
+* `python -m garak --target_type rest -G api_web_config.json --probes test.Test -g 3`
+
+Run-time: 106.53 seconds
+
+<figure><img src="../.gitbook/assets/image (470).png" alt=""><figcaption></figcaption></figure>
+
+* `python -m garak --target_type rest -G api_web_config.json --probes test.Test -g 5`
+
+Run-time: 172.12 seconds
+
+<figure><img src="../.gitbook/assets/image (471).png" alt=""><figcaption></figcaption></figure>
+
+
+
+### **8b. --parallel\_attempts**
+
+Defines the probe attempts Garak should run at the same time. Also known as parallelism. The default value is 1. The maximum value depends on how fast the target is and the compute. The recommended value for this option is 32 as per the [guide](https://reference.garak.ai/en/latest/faster.html).
+
+Running inference in serial is slow and often takes days, sometimes weeks. During probing, Garak can marshal all the prompts it knows it’s going to pose, and parallelize these attempts. Multiple parallel attempts should definitely be used until the bottleneck, especially with REST/OpenAI/high-latency endpoints. It should not be used with CPU-only local models, or it may drastically slow down the scan since the CPU doesn't support handling of multiple concurrent requests.
+
+Here is a brief comparison of the run-time of two similar scans with and without `--parallel_attempts` option set.
+
+* `python -m garak --target_type rest -G api_web_config.json --probes test.Test`
+
+Run-time: 225.36 seconds
+
+<figure><img src="../.gitbook/assets/image (467).png" alt=""><figcaption></figcaption></figure>
+
+* `python -m garak --target_type rest -G api_web_config.json --probes test.Test --parallel_attempts 32`
+
+Run-time: 83.39 seconds
+
+<figure><img src="../.gitbook/assets/image (468).png" alt=""><figcaption></figcaption></figure>
+
+
+
+### 8c. --parallel\_requests
+
+This option runs multiple generations per prompt in parallel. It only matters when the number of generations (-g/--generations) is greater than 1. So, if I want to create 3 generations per prompt and launch those 3 requests concurrently, I can:
+
+`garak -g 3 --parallel_requests 3`
+
+The option can be utilized when targeting a strong API backend (OpenAI, Anthropic, HF Inference) or when probing for stochastic vulnerabilities (jailbreaks, toxicity). It can be avoided when backend does not allow concurrent requests
+
+
+
+### 8d. Reducing Detectors
+
+Detectors run _after_ attempts to classify outputs (Toxicity, MitigationBypass, ProductKey, etc.). If you don’t specify `--detectors`, Garak uses the probe’s default detector(s). Some probes also use many extended detectors, which slows down processing. For example, look at the code [here](https://github.com/NVIDIA/garak/blob/main/garak/probes/dan.py#L50). I'll launch two scans - one with default detectors and one with a low-compute detector, such as "always.Pass"
+
+* Default detector: `python -m garak --target_type rest -G api_web_config.json --probes dan.AutoDANCached -g 1 --parallel_attempts 3`
+* Low-compute detector: `python -m garak --target_type rest -G api_web_config.json --probes dan.AutoDANCached -g 1 --parallel_attempts 3 --detectors always.Pass`
+
+<figure><img src="../.gitbook/assets/image (472).png" alt=""><figcaption></figcaption></figure>
+
+As you can observe, we bumped the speed of just a 3-prompt test by 2 seconds. However, this should only be used in cases where no summary report of failed tests is required on the CLI.
+
+
+
+### 8e. Choosing Specific Probes
+
+By choosing certain probes, scan time can be sped up significantly. A fully detailed coverage of how to choose the probes has been covered in section 5.
+
+
+
+### 8f. Soft-Capping number of prompts using YAML config file
+
+Garak can input a scan configuration YAML file as well. Here, we can define runtime behaviors, probe configurations, concurrency settings, fuzzing, overrides, and more. We shall discuss this in detail in the next section.
+
+We can speed up our scans by limiting the number of prompts our probes will be sending out. This would be uniformly applied to all the probes in a scan where the `--config` option is specified. Specific probes can be skipped by scanning the target with them separately.
+
+To apply a `soft-cap` on the number of prompts, paste the following in a `garak_fast.yaml` file.
+
+```yaml
+run:
+  soft_probe_prompt_cap: 100   # Limit each probe to 100 prompts
+```
+
+Once done, you can include the `--config garak_fast.yaml` option in your scan. This would limit the number of probes to 100 for fast scanning. For example,&#x20;
+
+`python -m garak --target_type rest -G api_web_config.json --probes dan.DanInTheWild -g 1 --parallel_attempts 32 --config garak_fast.yaml`
+
+<figure><img src="../.gitbook/assets/image (474).png" alt=""><figcaption></figcaption></figure>
+
+This would drastically speed up your scans but would omit certain prompts as well. Soft-cap can be applied for smell testing and in scenarios where a full scan might not necessarily be required.
+
+
+
+## 9. Understanding Buffs and Detectors
 
 
 
 
 
-## 10. Understanding Buffs
+## 10. Garak Config YAML files
 
 
 
 
 
-## **12. Appendix A: FAQs and Troubleshooting**
+## **11. Appendix A: FAQs and Troubleshooting**
 
-**Headline:**\
-**Quick Reference and Common Fixes**
+Q1. I used a custom probe list/tags, but the scan keeps exiting, throwing various errors, including encoding and assertion errors. What to do about it?
 
-**Main Content:**\
-A concise cheatsheet for Garak’s key CLI options (`--target_type`, `--probes`, `--detectors`, `--evaluators`, `--parallel_runs`).\
-Includes common issues like encoding errors, missing plugins, and REST connection fixes, with PowerShell vs. Linux equivalents.\
-Perfect as a back-pocket reference when setting up new scans.
+Ans: As the tool is currently under development, such errors are common. As a quick fix, when such errors are observed, you can identify which probe is causing the error and remove it from the list of probes being tested. Otherwise, the errors need to be identified and fixed manually under `garak/garak/probes/probenamegivingerror.py`
 
-Q2. How to scan thinking models, like DeepSeek R1, since sometimes the detector reads output from chain-of-thought as well and not just the output?
 
-Ans: [Per the documentation from the base generator](https://reference.garak.ai/en/latest/garak.generators.base.html), for reasoning models, using `skip_seq_start` and `skip_seq_end` can enable suppression of _the chain of thought_ from the target response. This allows users perform tests with and without consideration of this output from the target as the segment is removed before passing the response to detectors.
 
-## **13. Appendix B: Burp Plugin to Auto-Generate REST config JSON**
+Q2. How to scan thinking models, like DeepSeek R1, since sometimes the detector reads output from the chain-of-thought as well, and not just the output?
+
+Ans: [Per the documentation from the base generator](https://reference.garak.ai/en/latest/garak.generators.base.html), for reasoning models, using `skip_seq_start` and `skip_seq_end` can enable suppression of _the chain of thought_ from the target response. This allows users to perform tests with and without consideration of this output from the target, as the segment is removed before passing the response to detectors.
+
+
+
+Q3. The scan stops completely if a probe fails. Is there any way to prevent that from happening?
+
+Ans: Sadly, no. Currently, a user would have to identify a failing probe, remove that from the list of probes to be tested, and re-run the scan. However, a user can individually run probes and later combine all the output reports using the aggregation method as suggested in section 6a.
+
+
+
+Q4. Can a scan be resumed if it fails?
+
+Ans: Not currently. However, a PR ([https://github.com/NVIDIA/garak/pull/1531](https://github.com/NVIDIA/garak/pull/1531)) is ongoing at the time of writing this article and shall be updated within this guide once the functionality is launched.
+
+## **12. Appendix B: Burp Plugin to Auto-Generate REST config JSON**
 
 Link and demo to be updated...
 
