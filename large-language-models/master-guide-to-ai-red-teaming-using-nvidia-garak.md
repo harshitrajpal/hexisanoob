@@ -1003,11 +1003,16 @@ python -m garak --target_type rest -G api_web_config.json --probes grandma.Slurs
 
 The above combination would now send lowercase prompts and encoded base64 prompts both.
 
-By this point, we have covered a majority of the existing features in Garak. In our next and final section, we will take a look at different configuration options we have while initiating a scan.
+By this point, we have covered a majority of the existing features in Garak. In our next and final section, we will take a look at the different configuration options we have while initiating a scan.
 
 
 
 ## 10. Garak Config YAML files
+
+Garak supports an optional but powerful configuration mechanism using YAML files.\
+A `config.yaml` file lets you control generators, probes, detectors, buffs, parallelism, seed, taxonomy, and more without writing extremely long command-line arguments every time you run a scan.
+
+In section 8f, we covered scanning with a very basic configuration file to speed up our scans by soft-capping the number of prompts sent to the application for testing. Let's dig a little deeper into defining configurations.
 
 
 
@@ -1090,7 +1095,7 @@ Once conda is installed, proceed with garak installation
 `cd garak`\
 `python -m pip install -e .`
 
-Once installed, confirm installation with
+Once installed, confirm the installation with
 
 `garak -h`
 
