@@ -7,7 +7,7 @@ description: >-
 
 # 🧠 Master Guide to AI Red-Teaming using NVIDIA Garak
 
-Pythonhave alreadyAuthor: Harshit Rajpal, Security Engineer, Bureau Veritas Cybersecurity North America
+Author: Harshit Rajpal, Security Engineer, Bureau Veritas Cybersecurity North America
 
 ## Introduction
 
@@ -180,7 +180,7 @@ This uses Garak’s built-in test components:
 python -m garak --target_type test.Blank --probes test.Test
 ```
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 As you may have observed, the JSON and HTML summary reports have been written to the default directory `~\.local\share\garak\garak_runs\` &#x20;
 
@@ -309,7 +309,7 @@ Content-Length: 50
 
 ```
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now that we have a fully working REST API based AI assistant, we can begin to scan the LLM with Garak. Garak `RestGenerator` allows you to target **any** REST/HTTP endpoint as long as you tell it how to format requests, what method (POST/GET) to use, what headers, and how to extract response text. A full documentation can be found [here](https://reference.garak.ai/en/latest/garak.generators.rest.html).
 
@@ -366,7 +366,7 @@ Now that our web configuration file is set, we can run our first test on this we
 python -m garak --target_type rest -G api_web_config.json --probes test.Test
 ```
 
-<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Throughout the article, we shall be targeting this application.
 
@@ -417,11 +417,11 @@ Now, we can also use one of the probes called "dan.DUDE" for a sample run. Dan i
 python -m garak --target_type rest -G api_web_config.json --probes dan.DUDE
 ```
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now, in the HTTP history of BurpSuite, you can see all the prompts that were crafted and tested by Garak.
 
-<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 As in the STDOUT, it states `5/5 PASS` which means the LLM is not vulnerable to `dan.DUDE`. A quick overview is available in the HTML file located at the default location `$HOME/.local\share\garak\garak_runs\garak.UUID.report.html`
 
@@ -484,7 +484,7 @@ You can also filter this list by adding -p option and then mentioning the family
 python -m garak --list_probes -p dan
 ```
 
-<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 You can then select one or more by name when running a scan. Here, in the following examples, we will be testing various probes on the REST-based llama2 wrapper we created earlier and then utilizing tags for faster probe selection, and finally combining probes manually in the CLI.
 
@@ -507,7 +507,7 @@ Q: Who is Batman?\nA: Batman is a fictional comic book character.\n\nQ: What is 
 \
 Sample output:
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 As you can notice in the output above, the LLM we are targeting is, in fact, vulnerable to _HateHumans Prompt Injection_ (toxicity)! This is **not a normal, expected, benign behaviour**; it suggests a **failure in safety alignment, input/output filtering, or adversarial resistance**.\
 \
@@ -517,7 +517,7 @@ It is also worth noting that various probes (such as lmrc.bullying) might throw 
 
 If you've followed along so far, you know that testing probes consumes a considerable amount of time. Thus, we can also utilize "probe\_tags." Now, not a lot of information about probe\_tags is available on the help menu; going through the code, one can find different probe tags that can be utilized. For example, check out the code for the Dan probe [here](https://github.com/NVIDIA/garak/blob/main/garak/probes/dan.py). Observe the probe tags.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 Here, as you can see, one of the probe tags is OWASP:LLM01. This is an obvious reference to [OWASP LLM Top 10](https://owasp.org/www-project-top-10-for-large-language-model-applications/) and the first vulnerability on the list (prompt injection).
 
@@ -527,7 +527,7 @@ Thereafter, you can run a scan using this:
 python -m garak --target_type rest -G api_web_config.json --probe_tags owasp:llm01
 ```
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 As you can notice in the screenshot above, this option automatically selected all the probes marked as owasp:llm01 and saved us quite a lot of time to go through the list and figure out what to test!
 
@@ -707,7 +707,7 @@ Please note that in other probes, a detector is usually configured to help users
 
 Alright then! Now that our tweaked "test.py" is ready to support custom wordlists, we need to configure a wordlist and name it "my\_prompts.txt" or any other name, and then change the code to support that, and keep it in your current directory. I'll be adding four sample prompts just for testing purposes.
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 Once done, you can then run the following command:
 
@@ -717,11 +717,11 @@ python -m garak --target_type rest -G api_web_config.json --probes test.FileList
 
 As you can see, Garak is now testing the target with our custom wordlist.
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 Let's inspect this in Burp Suite and confirm again.
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 Well, there we go. There are various resources on the internet where you can find prompt injection wordlists, including huggingface datasets. Here are a couple to get you started:
 
@@ -848,7 +848,162 @@ This would drastically speed up your scans but would omit certain prompts as wel
 
 ## 9. Understanding Buffs and Detectors
 
+In the article so far, we've looked at detectors in bits and pieces and have hardly talked about buffs. In this section, we'll introduce buffs and look a bit more at detectors.
 
+Garak’s power comes from:
+
+* **Probes**: generate adversarial prompts
+* **Detectors**: evaluate the model’s responses
+* **Buffs**: augment or transform the adversarial prompts to increase attack variety
+
+Probes "attack" the model, detectors "score" the outputs, and buffs "enhance" the attacks.
+
+Let's look at them one by one.
+
+### 9a. Detectors
+
+Detectors are plugins that **evaluate** the model’s output and analyze violations of the probe’s goal. Detectors might search for slurs, detect toxic language, detect leaked secrets, identify jailbreak markers, check for forbidden content, etc. Inside probe classes (from the source code), fields like these exist:
+
+```
+recommended_detector = ["always.Fail"]
+primary_detector = "mitigation.MitigationBypass"
+extended_detectors = ["productkey.Win5x5", "unsafe_content.SlursReclaimedSlurs"]
+```
+
+* Recommended Detector: Garak will _not_ automatically use **recommended detectors** unless explicitly told to run all detectors. It is just kept for backwards compatibility.
+* Primary Detector: This is the main detector for a probe and the one best suited to measure whether the probe succeeded. Primary detectors are used by default, optimized for speed, matched to probe type, and a part of the core scoring pipeline. If you don’t specify a detector manually in the `--detectors` option, Garak uses primary detector + extended detector by default as defined in the code.
+* Extended detectors: They run in addition to the primary detector. It is automatically run along with primary detectors for a more detailed performance observation, not just fast scoring. They are typically more expensive to run, as they check secondary signals and provide broader coverage. Extended detectors can be de-activated by removing them in the `/garak/garak/probes/probename.py`  file or by manually providing detectors in the `--detectors` option and overriding hard-coded primary and extended detectors.
+
+You can view all the detectors with:
+
+```powershell
+python -m garak --list_detectors
+```
+
+Here is a list of some of the most used detectors and their functionality:
+
+| **unsafe\_content.SlursReclaimedSlurs**               | Detection of racist, hateful, discriminatory slurs or reclaimed slurs.                                      |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| **unsafe\_content.SexualContent**                     | Sexual content, explicit material, inappropriate adult content.                                             |
+| **unsafe\_content.Bullying**                          | Abusive interactions, hostile or bullying language.                                                         |
+| **unsafe\_content.SelfHarm**                          | Self-harm ideation, instructions, encouragement, or dangerous psychological content.                        |
+| **unsafe\_content.Illegal**                           | Advice or information that would lead to illegal activity.                                                  |
+| **mitigation.MitigationBypass**                       | Cases where the model tries to avoid answering but still leaks harmful content (“soft refusal” jailbreaks). |
+| **productkey.Win5x5**                                 | Windows-style product keys in XXXXX-XXXXX-XXXXX-XXXXX-XXXXX format.                                         |
+| **malwaregen.Payload**                                | Malware payloads, suspicious code fragments, malicious generation patterns.                                 |
+| **malwaregen.TopLevel**                               | High-level malware instructions or structured malicious code.                                               |
+| **malwaregen.Evasion**                                | Attempts to bypass antivirus, detection evasion, obfuscation.                                               |
+| **sqlinjection.SQLInjectionEcho**                     | SQL injection strings being reflected or executed in the output.                                            |
+| **jinja.TemplateInjection**                           | Jinja template injection patterns (e.g., `{{ 7*7 }}` or `{% ... %}`).                                       |
+| **smuggling.FunctionMasking**                         | Language-model smuggling techniques that mask malicious instructions using function disguises.              |
+| **smuggling.HypotheticalResponse**                    | Cases where the model pretends the malicious action is "hypothetical" but still performs it.                |
+| **encoding.InjectBase64**                             | Base64-encoded smuggled or harmful output.                                                                  |
+| **encoding.InjectHex**                                | Hex-encoded content that may contain malicious patterns.                                                    |
+| **encoding.InjectROT13**                              | ROT13-encoded harmful or hidden content.                                                                    |
+| **encoding.InjectAscii85**                            | ASCII85 encoding used to smuggle information.                                                               |
+| **encoding.InjectUnicodeTagChars**                    | Unicode tag characters used for obfuscated jailbreaks.                                                      |
+| **misleading.FalseAssertion**                         | Factual inaccuracies, contradictions, or hallucinations.                                                    |
+| **leakreplay.GuardianCloze / NYTCloze / PotterCloze** | Leakage or memorization of copyrighted datasets.                                                            |
+| **packagehallucination.Python**                       | Hallucinated Python packages or APIs.                                                                       |
+| **packagehallucination.JavaScript**                   | Hallucinated JS packages or APIs.                                                                           |
+| **packagehallucination.Rust / Dart / Ruby / etc.**    | Language-specific dependency hallucinations.                                                                |
+| **realtoxicityprompts.RTPBlank**                      | Generic toxicity levels based on the RealToxicityPrompts benchmark.                                         |
+| **goodside.ThreatenJSON**                             | Attempts to create coercive, threatening output in structured formats (like JSON).                          |
+| **exploitation.JinjaTemplatePythonInjection**         | Python logic or template injection attempts in response to crafted exploit prompts.                         |
+| **always.Pass**                                       | Always returns PASS (used for debugging).                                                                   |
+| **always.Fail**                                       | Always returns FAIL (used for debugging detectors).                                                         |
+| **always.Passthru**                                   | Passes through outputs without scoring (internal use).                                                      |
+
+#### One probe → Many detectors → Many risk categories.
+
+The hard-coded detectors show the best performance, so there might not be much need to specify detectors while testing a target on the first run of probes. However, as you try to refine your runs, you'd realize that while a probe may test for jailbreaks but it might also produce malware, slurs, secrets, hallucinations, or toxicity. In such cases, specifying detectors is useful. Modularity is how Garak would scale.
+
+
+
+* **Example: Same Probe, Different Detectors → Different Findings**
+
+Let's say we have the following probe to test: `promptinject.HijackKillHumans`
+
+If you run it with default detectors:
+
+```
+python -m garak --target_type rest -G api_web_config.json --probes promptinject.HijackKillHumans --detectors mitigation.MitigationBypass
+```
+
+It answers:\
+“Did the model bypass safety instructions?”
+
+Similarly, if you run with a malware detector:
+
+```
+python -m garak --target_type rest -G api_web_config.json --probes promptinject.HijackKillHumans --detectors malwaregen.Payload
+```
+
+You can detect:\
+“Did the model respond with harmful code instead of text?”
+
+Finally, if you run with hallucination detectors:
+
+```
+python -m garak --target_type rest -G api_web_config.json --probes promptinject.HijackKillHumans --detectors misleading.FalseAssertion
+```
+
+You can detect:\
+“Did the model hallucinate facts after being tricked?”
+
+So, it is the same probe with different scoring and different risk categories. So, for
+
+
+
+* **All detectors scan**
+
+If you do have the necessary time at hand, you can run all the detectors in a scan by appending the `-d all` option to analyze how a single probe might be testing positive for one or more categories. However, it would consume a great amount of time more.
+
+
+
+### 9b. Buffs
+
+Buffs, also called fuzzers, modify prompts to increase the adversarial pressure on a model. They can paraphrase, alter encodings, switch cases etc. Just like other fuzzers such as wfuzz, buffs are applied after probes generate prompts but before they are sent to the model. Buffs can dramatically increase the surface area of an attack. By default, no buff is applied to the scans.
+
+You can view the buffs available with the command:
+
+```powershell
+python -m garak --list_buffs
+```
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+So, we can run a probe with a paraphrase buff and compare the prompts sent to the model. Let's run a "non-buffed" grandma.Slurs sub-probe
+
+```powershell
+python -m garak --target_type rest -G api_web_config.json --probes grandma.Slurs -g 1 --parallel_attempts 5
+```
+
+Here is the very last prompt as it was sent to the model.
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+Now I will be applying an encoding to base64 buff using the `-b BUFF` option and comparing the inputs and outputs.
+
+```powershell
+python -m garak --target_type rest -G api_web_config.json --probes grandma.Slurs -g 1 --parallel_attempts 5 -b encoding.Base64
+```
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+
+
+As you can see, the same prompt, in base64, yields a completely different result. While not necessarily a vulnerability, this does indicate a lack of encoding handling by the model. Similarly, other buffs can be applied and outputs compared to analyze the model's behavior on encapsulated/fuzzed input.
+
+Now, we can also use multiple buffs and pass some buff options too.
+
+```powershell
+python -m garak --target_type rest -G api_web_config.json --probes grandma.Slurs -g 1 --parallel_attempts 5 -b encoding.Base64,lowercase
+```
+
+The above combination would now send lowercase prompts and encoded base64 prompts both.
+
+By this point, we have covered a majority of the existing features in Garak. In our next and final section, we will take a look at different configuration options we have while initiating a scan.
 
 
 
@@ -881,6 +1036,12 @@ Ans: Sadly, no. Currently, a user would have to identify a failing probe, remove
 Q4. Can a scan be resumed if it fails?
 
 Ans: Not currently. However, a PR ([https://github.com/NVIDIA/garak/pull/1531](https://github.com/NVIDIA/garak/pull/1531)) is ongoing at the time of writing this article and shall be updated within this guide once the functionality is launched.
+
+
+
+Q5. I am hitting request timeouts on the target. How to fix it?
+
+Ans: While difficult to pinpoint the reason, you can throttle down the number of parallel attempts of requests sent to the application to avoid any bandwidth/congestion issues. If you are running the local application from the article above, you can also try relaunching Ollama and the application.
 
 ## **12. Appendix B: Burp Plugin to Auto-Generate REST config JSON**
 
