@@ -15,7 +15,7 @@ In this guide, we will explore **Garak** – an open-source **Generative AI Red-
 
 ## Table of Contents
 
-<table><thead><tr><th width="102">S. No.</th><th>Section</th></tr></thead><tbody><tr><td>1</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-1.-installation-and-environment-setup">Installation and Environment Setup</a></td></tr><tr><td>2</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-2.-getting-started-with-garak">Getting Started With Garak</a></td></tr><tr><td>3</td><td>Scanning LLM Interfaces with Garak</td></tr><tr><td>4</td><td>Proxying Garak Through Burp Suite</td></tr><tr><td>5</td><td>Selective Probes for Targeted Testing</td></tr><tr><td>6</td><td>False Positives</td></tr><tr><td>7</td><td>Custom Prompt Sources</td></tr><tr><td>8</td><td>Speeding Up Scans</td></tr><tr><td>9</td><td>Understanding Garak's Plugin Architecture</td></tr><tr><td>10</td><td>Writing Your Own Plugin</td></tr><tr><td>11</td><td>Evaluating and Reading Garak Reports</td></tr><tr><td>12</td><td>Appendix A: CLI Reference and Troubleshooting</td></tr><tr><td>13</td><td>Appendix B: Burp plugin to Auto-Generate api_web_config.json</td></tr></tbody></table>
+<table><thead><tr><th width="102">S. No.</th><th>Section</th></tr></thead><tbody><tr><td>1</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-1.-installation-and-environment-setup">Installation and Environment Setup</a></td></tr><tr><td>2</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-2.-getting-started-with-garak">Getting Started With Garak</a></td></tr><tr><td>3</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-3.-scanning-llm-interfaces-with-garak">Scanning LLM Interfaces with Garak</a></td></tr><tr><td>4</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-4.-proxying-garak-through-burp-suite">Proxying Garak Through Burp Suite</a></td></tr><tr><td>5</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-5.-understanding-probes">Understanding Probes</a></td></tr><tr><td>6</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-6.-evaluating-and-reading-garak-reports">Evaluating and Reading Garak Reports</a></td></tr><tr><td>7</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-7.-testing-with-custom-prompt-wordlist-sources">Testing With Custom Prompt/Wordlist Sources</a></td></tr><tr><td>8</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-8.-speeding-up-scans">Speeding Up Scans</a></td></tr><tr><td>9</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-9.-understanding-buffs-and-detectors">Understanding Buffs and Detectors</a></td></tr><tr><td>10</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-10.-garak-config-yaml-files">Garak Config YAML Files</a></td></tr><tr><td>11</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-11.-conclusion">Conclusion</a></td></tr><tr><td>12</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-12.-appendix-a-faqs-and-troubleshooting">Appendix A: FAQs and Troubleshooting</a></td></tr><tr><td>13</td><td><a href="master-guide-to-ai-red-teaming-using-nvidia-garak.md#id-13.-appendix-b-burp-plugin-to-auto-generate-rest-config-json">Appendix B: Burp plugin to Auto-Generate REST config JSON</a></td></tr></tbody></table>
 
 ## 1. Installation and Environment Setup
 
@@ -443,6 +443,8 @@ To see all probes available in your Garak installation:
 python -m garak --list_probes
 ```
 
+In the output, you'd observe various probes marked with "ZZZ" emoji. These are inactive probes and may not work in your scans. Probes not marked with "ZZZ" are active probes.
+
 Here is a summary of the probes available, divided into categories of probes, a few important sub-probes, and when to use them (or what exactly they test):
 
 | **ansi escape**          | Tests whether models output annoying or harmful _ANSI control codes_ (e.g., terminal escapes).     | ansiescape.AnsiEscaped, ansiescape.AnsiRaw                             | Useful for models used in console UIs; can reveal unsanitized control chars.  |
@@ -617,14 +619,36 @@ python aggregate_reports_fixed.py -o combined.jsonl garak.61419e60-0234-4c38-816
 
 This would combine all the outputs into one report. So, ideally, one can individually run probes and later combine the output in a single report, thus eliminating the need to delete and re-run the scan once it fails due to an error with the probe.
 
+
+
+### 6b. Taxonomy
+
+The `--taxonomy` option helps you categorize the HTML report output in OWASP/AVID Risk categories. First, here is how the HTML report looks like:
+
+<figure><img src="../.gitbook/assets/image (477).png" alt=""><figcaption></figcaption></figure>
+
+So, the report shows a risk score and the rate of hit. Here, 100% prompts were marked as secure by our detector.
+
+However, here is another scan that I ran with `--taxonomy owasp` set.
+
+```powershell
+python -m garak --target_type rest -G api_web_config.json --probes grandma.Slurs,dan.DUDE,exploitation.SQLInjectionEcho -g 1 --parallel_attempts 5 --taxonomy owasp
+```
+
+Here is what the report looks like for this scan
+
+<figure><img src="../.gitbook/assets/image (478).png" alt=""><figcaption></figcaption></figure>
+
+As you can observe, the prompts tested are now categorized as per OWASP LLM Top 10, and a risk score is given. We can see around 20% failure in the LLM02 and LLM06 categories. There is an uncategorized section too for prompts that didn't fit in any of the top 10 categories. This way of utilizing taxonomy makes it a little easier to understand, on a higher level, the risk associated with the target LLM. We can now visit the hitlog and assess the output further.
+
 ## 7. Testing With Custom Prompt/Wordlist Sources
 
 If you've followed along this far, you must have observed that all the prompts come from pre-defined Python templates under `garak/garak/probes` . Here, the structure of a probe template is as follows:
 
-* Global vars -> If any
-* Class of a probe -> This is the subcategory of a probe
+* Global vars - If any
+* Class of a probe - This is the subcategory of a probe and contains:
   * Any required tags
-  * Working function -> Performs any operations needed to create prompts
+  * Working function - Performs any operations needed to create prompts
   * Variable `prompts` which holds the values of all prompts to be tested in a list.
 
 So, if we can define our custom prompts in a file and recreate a similar template, we can have Garak send requests using our own custom probe. You can utilize the sample template I coded [here](https://github.com/harshitrajpal/grk-helper-codes/blob/main/test.py) or make one yourself by looking at the code for other probes and overwriting very few things. I essentially utilized the existing "test" probe we used in our article earlier, found under `garak/garak/probes/test.py`, and added a class called "**FileListPrompts**". This class is going line-by-line and reading  prompts from our file "**my\_prompts.txt**" and putting the contents as an array of strings (aka a list in Python) in the variable `prompts`. This adds functionality to the test probe, and Garak can now fetch wordlists and bombard the target! Please note that the except block in the code below is a failsafe and assigns a singular value "hello" to the `prompts` variable in case file I/O was unsuccessful. This way, while reading the output, you can always know whether a file read was successful or not and troubleshoot accordingly.
@@ -874,6 +898,8 @@ extended_detectors = ["productkey.Win5x5", "unsafe_content.SlursReclaimedSlurs"]
 * Primary Detector: This is the main detector for a probe and the one best suited to measure whether the probe succeeded. Primary detectors are used by default, optimized for speed, matched to probe type, and a part of the core scoring pipeline. If you don’t specify a detector manually in the `--detectors` option, Garak uses primary detector + extended detector by default as defined in the code.
 * Extended detectors: They run in addition to the primary detector. It is automatically run along with primary detectors for a more detailed performance observation, not just fast scoring. They are typically more expensive to run, as they check secondary signals and provide broader coverage. Extended detectors can be de-activated by removing them in the `/garak/garak/probes/probename.py`  file or by manually providing detectors in the `--detectors` option and overriding hard-coded primary and extended detectors.
 
+Detectors evaluate the output based on an internal scoring system. The range lies from 0..1, and an attack is considered a hit if a score is 1, and a no hit at a score of 0. You can change this scoring with the `--eval_threshold` option which defines the point in the 0..1 range output where a result counts as a successful attack/hit.
+
 You can view all the detectors with:
 
 ```powershell
@@ -1007,18 +1033,281 @@ By this point, we have covered a majority of the existing features in Garak. In 
 
 
 
-## 10. Garak Config YAML files
+## 10. Garak Config YAML Files
 
 Garak supports an optional but powerful configuration mechanism using YAML files.\
 A `config.yaml` file lets you control generators, probes, detectors, buffs, parallelism, seed, taxonomy, and more without writing extremely long command-line arguments every time you run a scan.
 
-In section 8f, we covered scanning with a very basic configuration file to speed up our scans by soft-capping the number of prompts sent to the application for testing. Let's dig a little deeper into defining configurations.
+In section 8f, we introduced a very basic configuration file to speed up our scans by soft-capping the number of prompts sent to the application for testing. Let's dig a little deeper into defining configurations.
+
+Below are the major sections you can define inside a Garak YAML config. Each section maps to internal config categories:
+
+```yaml
+system:
+  ...             # system-wide settings
+
+run:
+  ...             # run-specific options
+
+plugins:
+  ...             # plugin (probes/detectors/generators/buffs) config options
+
+reporting:
+  ...             # report output settings
+```
+
+*   System-Wide settings: The `system:` block controls how Garak runs at a lower level, especially performance and CLI behavior.<br>
+
+    | Option                | Meaning                                                               |
+    | --------------------- | --------------------------------------------------------------------- |
+    | `verbose`             | Level of console/log verbosity                                        |
+    | `narrow_output`       | Use narrow CLI output formatting                                      |
+    | `parallel_requests`   | Number of parallel requests per prompt                                |
+    | `parallel_attempts`   | Number of probe attempts executed in parallel                         |
+    | `lite`                | Display a caution that run might be less thorough                     |
+    | `show_z`              | Display z-scores in CLI output                                        |
+    | `enable_experimental` | Enable experimental CLI flags (not recommended for stable production) |
+    | `max_workers`         | Cap on parallel worker threads/processes                              |
+
+    <br>
+*   Run settings: The `run:` block contains settings that define the run itself. It describes how prompts are sent to the model, thresholds, and general behavior.\
+    <br>
+
+    | Option                  | Meaning                                                                                                                                               |
+    | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `system_prompt`         | If given and not overriden by the probe itself, probes will pass the specified system prompt when possible for generators that support chat modality. |
+    | `seed`                  | A random seed for reproducible selections                                                                                                             |
+    | `deprefix`              | Remove the prompt from the start of the output (some models return the prompt as part of their output)                                                |
+    | `eval_threshold`        | Threshold at which a detector considers output a ‘hit’                                                                                                |
+    | `generations`           | How many times to generate per prompt                                                                                                                 |
+    | `probe_tags`            | Filter probes by tag (e.g., `owasp:llm01`)                                                                                                            |
+    | `user_agent`            | HTTP user agent for network requests                                                                                                                  |
+    | `soft_probe_prompt_cap` | Limit on how many prompts a probe will generate                                                                                                       |
+    | `target_lang`           | Target language for translation support                                                                                                               |
+    | `langproviders`         | List of language provider configs for translation                                                                                                     |
 
 
 
+*   Plugins config options: The `plugins:` block lets you configure all aspects of Garak’s plugin system.\
+    <br>
+
+    | Option                          | Meaning                                                                                                                         |
+    | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+    | `target_type`                   | The type of target generator, e.g., `nim`, `rest`, or `huggingface`.                                                            |
+    | `target_name`                   | The specific name/identifier of the target to be used. Optional — blank means a type-specific default is used.                  |
+    | `probe_spec`                    | Comma-separated list of probe modules or `module.classname` entries. Modules select only active probes. Equivalent to CLI `-p`. |
+    | `detector_spec`                 | Optional override list of detectors to use instead of probe default detectors. Enables pxd harness. Equivalent to CLI `-d`.     |
+    | `extended_detectors`            | Whether to run only primary detectors (fast) or include extended detectors (more thorough).                                     |
+    | `buff_spec`                     | Comma-separated list of buff modules or individual buff classnames, same format as `probe_spec`.                                |
+    | `buffs_include_original_prompt` | Whether the un-buffed prompt should also be included alongside buffed prompts.                                                  |
+    | `buff_max`                      | Maximum number of buffed variations allowed per prompt.                                                                         |
+    | `detectors`                     | Root configuration node for detector plugins.                                                                                   |
+    | `generators`                    | Root configuration node for generator plugins.                                                                                  |
+    | `buffs`                         | Root configuration node for buff plugins.                                                                                       |
+    | `harnesses`                     | Root configuration node for harness plugin configs.                                                                             |
+    | `probes`                        | Root configuration node for probe plugin configs.                                                                               |
 
 
-## **11. Appendix A: FAQs and Troubleshooting**
+
+*   Reporting config options: The `reporting:` block lets you shape how results are stored and presented.\
+    <br>
+
+    | Option                       | Meaning                                                       |
+    | ---------------------------- | ------------------------------------------------------------- |
+    | `report_dir`                 | Output directory for reports                                  |
+    | `report_prefix`              | Prefix for report file names                                  |
+    | `taxonomy`                   | Group probes by taxonomy category                             |
+    | `show_100_pass_modules`      | Whether to include modules with 100% pass scores in output    |
+    | `group_aggregation_function` | Function to aggregate group scores (e.g. `minimum`, `median`) |
+    | `show_top_group_score`       | Display aggregated group scores at top of HTML report         |
+
+We will discuss some of these options in section 10b and discuss how to configure a custom YAML file. First, let's see some ready made configs that Garak is shipped with.
+
+### 10a. Quick Configs
+
+Garak comes bundled with some quick configs that can be loaded directly using `--config`. These don’t need the `.yaml` extension when being requested from CLI. These are great, ready-made configs to get an idea of how Garak YAML configs can work. Quick configs are stored under `garak/garak/configs/`.&#x20;
+
+| Bundled Config    | Description                                                          |
+| ----------------- | -------------------------------------------------------------------- |
+| `broad`           | Run all active probes once for a wide scan, includes paraphrase buff |
+| `fast`            | Light scan, skips extended detectors                                 |
+| `full`            | More thorough, includes paraphrase buffs                             |
+| `long_attack_gen` | Focus on attack generation (higher generations)                      |
+| `notox`           | Skip toxicity-inducing probes                                        |
+| `tox_and_buffs`   | Run toxicity probes with paraphrase buff                             |
+
+So, for example, we can run a scan with broad config like:
+
+```powershell
+python -m garak --target_type rest -G api_web_config.json --config broad --parallel_attempts 32
+```
+
+<figure><img src="../.gitbook/assets/image (475).png" alt=""><figcaption></figcaption></figure>
+
+Let's take a look at this configuration file and what it is doing out of the box -
+
+* Instructs Garak not to run in lite mode. Lite mode disables large/expensive probes & features for quick scans.
+* Instructs garak to run only 1 generations per probe (equal to the `-g 1` option)
+* Instructs garak to run extended detectors
+* Via `probe_spec: all` instructs garak to run every active probe
+* Via `buff_spec: paraphrase.Fast` instructs garak to apply the paraphrase buff
+* Via `probes.encoding.payloads` override, encoding probes will specifically test encoding + XSS + slur injection attempts
+
+{% code title="broad.yaml" %}
+```yaml
+# SPDX-FileCopyrightText: Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+#
+#
+#
+# run all active probes, just once each, for a rapid broad test
+---
+system:
+  lite: false
+
+run:
+  generations: 1
+
+plugins:
+  extended_detectors: true
+  probe_spec: all
+  buff_spec: paraphrase.Fast
+  probes:
+    encoding:
+      payloads:
+        - default,xss,slur_terms  
+```
+{% endcode %}
+
+You can try out other quick configs as well. Let's take a look at how custom config files can be created.
+
+
+
+### 10b. Custom Configs
+
+When no additional options are attached, here is how the core configuration of Garak looks like:
+
+```yaml
+---
+system:
+    verbose: 0
+    narrow_output: false
+    parallel_requests: false
+    parallel_attempts: false
+    lite: true
+    show_z: false
+    enable_experimental: false
+    max_workers: 500
+
+run:
+    system_prompt: "You are an AI model and this is a system prompt"
+    seed:
+    deprefix: true
+    eval_threshold: 0.5
+    generations: 5
+    probe_tags:
+    user_agent: "garak/{version} (LLM vulnerability scanner https://garak.ai)"
+    
+
+
+plugins:
+    target_type:
+    target_name:
+    probe_spec: all
+    detector_spec: auto
+    extended_detectors: false
+    buff_spec:
+    buffs_include_original_prompt: false
+    buff_max:
+    detectors: {}
+    generators: {}
+    buffs: {}
+    harnesses: {}
+    probes:
+        encoding:
+            payloads:
+                - default
+
+reporting:
+    report_prefix:
+    taxonomy:
+    report_dir: garak_runs
+    show_100_pass_modules: true
+    group_aggregation_function: minimum
+```
+
+Now, based on this file and the tabular explanation of all the different options available, we can create our custom config YAML files. After we have created this, we can point to it through CLI (`--config name.yaml` option) and override the default options. Let's walk through various examples below.
+
+* Example 1 - Speedier latentinjection prompts with only 1 generation per prompt, soft-cap of 10 prompts per sub-probe, non-verbose output, and 5 parallel attempts for more speed.
+
+```yaml
+system:
+    verbose: 0
+    narrow_output: false
+    parallel_attempts: 5
+    
+run:
+    generations: 1
+    soft_probe_prompt_cap: 10
+
+plugins:
+    probe_spec: latentinjection
+```
+
+We can save this as latentinjection.yaml and run a scan like so:
+
+```bash
+python -m garak --target_type rest -G api_web_config.json --config latentinjection.yaml
+```
+
+<figure><img src="../.gitbook/assets/image (476).png" alt=""><figcaption></figcaption></figure>
+
+* Example 2 - Thorough OWASP LLM01 testing with 10 parallel attempts, lower eval threshold for more sensitivity while detecting a hit, 3 generations per prompt, report grouping by OWASP Taxonomy, and a paraphrase buff applied.
+
+```yaml
+system:
+  verbose: 1
+  parallel_attempts: 10
+
+run:
+  generations: 3         # more output variation increases probe hit chances
+  eval_threshold: 0.50   # lowers the scoring to 0.5 for detectors making them more sensitive
+
+plugins:
+  probe_tags: owasp:llm01
+  taxonomy: owasp        # group the report by owasp taxonomy
+  buff_spec: paraphrase.All    # fuzz via paraphrasing
+  buffs_include_original_prompt: true
+
+```
+
+* Example 3 - Dan and Grandma probe testing on paid gpt 4o mini model with limited concurrency, soft cap of 5 prompts per sub-probe, no extended detectors, compact CLI output, and no buffs to avoid bloating.
+
+```yaml
+system:
+  verbose: 0
+  parallel_attempts: 1       # remote APIs = limited concurrency
+  narrow_output: true        # compact CLI output
+
+run:
+  generations: 1             # cost control
+  soft_probe_prompt_cap: 5   # limit num of prompts per probe
+
+plugins:
+  target_type: openai
+  target_name: gpt-4o-mini
+  probe_spec: dan,grandma
+  extended_detectors: false
+  buff_spec: none
+```
+
+
+
+## 11. Conclusion
+
+AI testing tools like Garak are crucial because modern LLMs can unintentionally reveal sensitive data, generate harmful content, or be manipulated through prompt injection, making systematic vulnerability assessment essential. By proactively scanning models for jailbreaks, misinformation, bias, and safety gaps, these tools help developers understand risks early and build more secure, trustworthy, and compliant AI systems before deployment. In this article, we took a deep dive into the key features and inner workings of NVIDIA’s Garak AI Red-Teaming framework. We learnt how to launch scans, play with different modules such as probes, detectors, and buffs, as well as analyze reports, handle different targets, make custom configuration files, and speed up scans. As the tool is still in development, facing errors in running different modules or observing non-uniform behavior is perfectly fine. We hope you enjoyed the read.
+
+## **12. Appendix A: FAQs and Troubleshooting**
 
 Q1. I used a custom probe list/tags, but the scan keeps exiting, throwing various errors, including encoding and assertion errors. What to do about it?
 
@@ -1048,192 +1337,6 @@ Q5. I am hitting request timeouts on the target. How to fix it?
 
 Ans: While difficult to pinpoint the reason, you can throttle down the number of parallel attempts of requests sent to the application to avoid any bandwidth/congestion issues. If you are running the local application from the article above, you can also try relaunching Ollama and the application.
 
-## **12. Appendix B: Burp Plugin to Auto-Generate REST config JSON**
+## **13. Appendix B: Burp Plugin to Auto-Generate REST config JSON**
 
 Link and demo to be updated...
-
-
-
-***
-
-
-
-#### _**EVERYTHING BELOW: IGNORE**_
-
-_Generative AI Red-teaming & Assessment Kit - GARAK_
-
-`garak` checks if an LLM can be made to fail in a way we don't want. `garak` probes for hallucination, data leakage, prompt injection, misinformation, toxicity generation, jailbreaks, and many other weaknesses. If you know `nmap` or `msf` / Metasploit Framework, garak does somewhat similar things to them, but for LLMs.
-
-`garak` focuses on ways of making an LLM or dialog system fail. It combines static, dynamic, and adaptive probes to explore this.
-
-
-
-Installation
-
-Due to the intricacies of packages and to make sure our system packages don't break we'll use conda
-
-{% embed url="https://docs.conda.io/projects/conda/en/stable/user-guide/install/index.html" %}
-
-Use this to identify your env [https://repo.anaconda.com/archive/](https://repo.anaconda.com/archive/)
-
-I'll use "[Anaconda3-2025.06-1-Linux-x86\_64.sh](https://repo.anaconda.com/archive/Anaconda3-2025.06-1-Linux-x86_64.sh)" on my Linux machine
-
-
-
-Just install it with all default options
-
-***
-
-Once conda is installed, proceed with garak installation
-
-
-
-`conda create --name garak "python>=3.10,<=3.12"`\
-`conda activate garak`\
-`git clone` [`https://github.com/NVIDIA/garak.git`](https://github.com/NVIDIA/garak.git)
-
-`cd garak`\
-`python -m pip install -e .`
-
-Once installed, confirm the installation with
-
-`garak -h`
-
-***
-
-Now garak can connect to different LLM interfaces. Most common is the HTTP REST API endpoint that returns JSON/plaintext output.
-
-let's assume an LLM is replying on `/api/v1/ai/chat` endpoint on a host "example.com"
-
-Let's assume the API request looks like the following:
-
-```http
-POST /api/v1/ai/chat HTTP/1.1
-Host: example.com
-Cookie: Bearer AUTH TOKEN
-Content-Length: 349
-User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
-Content-Type: application/json
-Accept: */*
-Origin: example.com
-Accept-Encoding: gzip, deflate, br
-Priority: u=1, i
-Connection: keep-alive
-
-{"datetime":"2025-09-25T19:58:25.344+00:00","domain_id":"example.com","user_id":"1","content_id":"randomcontent","item_id":"123456789","prompt":"query","question":"What is the weather in jersey"}
-```
-
-Let's assume the response body looks like:
-
-```
-HTTP/1.1 200 OK
-Date: Thu, 25 Sep 2025 19:58:26 GMT
-Content-Type: application/json
-Content-Length: 518
-Connection: keep-alive
-Server: nginx
-Access-Control-Allow-Methods: POST, GET, OPTIONS
-
-{"version": "1", "response": [{"text": "### Weather in Jersey\n\nUnfortunately, the provided content does not contain information about the weather in Jersey. If you are looking for weather updates, it is recommended to check a reliable weather website or app for the most current information.", "rts": 0.8001093830025638, "logged": []}], "model": "gpt-35-turbo-16k-1106"}
-```
-
-You would manually need to create a JSON config file. You can refer to the docs here: [https://reference.garak.ai/en/latest/garak.generators.rest.html](https://reference.garak.ai/en/latest/garak.generators.rest.html)
-
-For our case, config becomes like:
-
-**api\_web\_config.json**
-
-```json
-{
-   "rest": {
-      "RestGenerator": {
-         "name": "Example Content Copilot",
-         "uri": "https://example.com/api/v1/ai/chat",
-         "method": "post",
-         "headers": {
-            "Cookie": "Bearer AUTH TOKEN",
-            "Content-Type": "application/json",
-	    "Accept": "*/*",
-	    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
-	    "Origin": "example.com",
-	    "Referer": "https://hsptpentest.latest.highspot.com/items/68d0267d9d2908070669c7de?lfrm=shp.1",
-	    "Accept-Encoding": "gzip, deflate, br",
-	    "Priority": "u=1, i",
-            "Connection": "keep-alive"
-	 },
-         "req_template_json_object": {
-            "datetime":"2025-09-25T15:49:27.950+00:00",
-            "domain_id":"example.com",
-            "user_id":"1",
-            "content_id":"randomcontent",
-            "item_id":"123456789",
-            "prompt":"query",
-            "question":"$INPUT",
-         },
-         "response_json": true,
-         "response_json_field": "$.response[0].text",
-         "skip_codes": [500,504,422],
-         "request_timeout": 3000
-      }
-   }
-}
-
-```
-
-Now the two main fields we need to focus in the config file above is identifying which parameter user sends their query in and which parameter does the LLM respond back in.
-
-Here, "question" parameter in the request holds user's query and "response.text" contains LLM response
-
-So, these two fields are specially marked in **api\_web\_config.json**
-
-**"$INPUT"** tells garak where to inject prompts in for testing. Put this in the user controlled param for LLM query in you case.
-
-"**response\_json\_field**" tells garak where to look for LLM response to analyze whether attack vectors worked or not. You can define the specific parameter using basic JSON object definition syntax. For example, here response is in the first field "text" encapsulated by "response" object so we defined "$.response\[0].text"
-
-
-
-Once done you are free to run garak!
-
-`garak --model_type rest -G api_web_config.json`
-
-You can ploy with speed throttles as well
-
-`garak --model_type rest -G api_web_config.json --parallel_attempts 20`
-
-***
-
-Test Garak
-
-
-
-`garak --model_type test.Blank --probes test.Test`
-
-`garak --model_type rest -G api_web_config.json --probes test.Test`
-
-Let's say you only want specific tests like prompt injections. You can use "garak --probes" to list all the different probes
-
-`garak --model_type rest -G api_web_config.json --probes promptinject --parallel_attempts 20`
-
-***
-
-**Reading the report**
-
-```bash
-# header
-echo 'uuid,probe_classname,prompt.turns.content.text,outputs.text' > out.csv
-
-# extract rows, skipping those without a valid uuid
-jq -r '
-  # stash id and filter: require a string uuid with length > 0
-  (.uuid // .UUID) as $id
-  | select($id != null and ($id | type) == "string" and ($id | length) > 0)
-  | [
-      $id,
-      (.probe_classname // ."probe classname" // ""),
-      ((.prompt.turns  // []) | map(.content?.text // "") | join(" | ")),
-      ((.outputs       // []) | map(.text // (.content?.text // "")) | join(" | "))
-    ]
-  | @csv
-' data-output-report.jsonl >> out.csv
-```
-
