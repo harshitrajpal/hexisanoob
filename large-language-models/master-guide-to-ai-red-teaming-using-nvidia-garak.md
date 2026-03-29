@@ -1340,4 +1340,6 @@ Ans: While difficult to pinpoint the reason, you can throttle down the number of
 
 ## **13. Appendix B: Burp Plugin to Auto-Generate REST config JSON**
 
-Link and demo to be updated...
+The following tool can be used to generate REST config. Simply copy-paste a request from the intercepted request and generate the config file in the plugin.
+
+[https://github.com/harshitrajpal/BurpXGarak](https://github.com/harshitrajpal/BurpXGarak)
